@@ -1,0 +1,8 @@
+openai
+ollama
+requests
+python-dotenv
+langchain
+langchain-openai
+langchain-anthropic
+langchain-google-genai
