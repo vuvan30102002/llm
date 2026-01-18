@@ -32,32 +32,28 @@ def read_file(path):
     with open(path, "r", encoding="utf-8") as f:
         return f.read()
 
-def export_debug_json(data: dict, DEBUG_DIR, BASE_FILENAME, mode: str = "increment") -> str:
+def export_debug_json(session_payload, data: dict, DEBUG_DIR, BASE_FILENAME, mode: str = "increment") -> str:
     os.makedirs(DEBUG_DIR, exist_ok=True)
     filepath = os.path.join(DEBUG_DIR, f"{BASE_FILENAME}.json")
 
-    payload = {
-        "timestamp": datetime.now(timezone.utc).isoformat(),
-        "data": data
-    }
+    session_payload["steps"].append(data)     
 
-    records = []
-
-    if os.path.exists(filepath):
+    if mode == "overwrite" or not os.path.exists(filepath):
+        records = [session_payload]
+    else:
         try:
             with open(filepath, "r", encoding="utf-8") as f:
                 records = json.load(f)
-            if not isinstance(records, list):
-                records = [records]
+            for idx, s in enumerate(records):
+                if s["session_id"] == session_payload["session_id"]:
+                    records[idx] = session_payload
+                    break
+                else:
+                    records.append(session_payload)
         except json.JSONDecodeError:
-            records = []
-
-    if mode == "overwrite":
-        records = [payload]
-    else:
-        records.append(payload)
+            pass
 
     with open(filepath, "w", encoding="utf-8") as f:
         json.dump(records, f, indent=2, ensure_ascii=False)
-
+        
     return filepath

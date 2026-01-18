@@ -19,8 +19,6 @@ prompt_template = PromptTemplate(
     input_variables=["knowledge", "question"]
 )
 
-
-# ================= LLM + AGENT =================
 llm = ChatGoogleGenerativeAI(
     model="models/gemini-2.5-flash",
     temperature=0
@@ -32,10 +30,13 @@ agent = create_agent(
     middleware=[handle_tool_errors]
 )
 
-
-# ================= LOOP =================
 mode = "overwrite"
 i = 0
+session_id = "quang" + str(random.randint(100,9999))
+payload = {
+    "session_id" : session_id,
+    "steps" : []
+}
 
 while True:
     user_input = input("You: ")
@@ -55,14 +56,15 @@ while True:
     })
 
     answer = extract_text(result["messages"][-1].content)
-    print(answer)
+    print(result)
 
     debug = {
         "step": i,
+        "timestamp": datetime.now(timezone.utc).isoformat(),
         "final_answer": answer,
         "trace": messages_to_debug_json(result["messages"])
     }
 
-    export_debug_json(debug, mode=mode)
+    export_debug_json(payload, debug, DEBUG_DIR, BASE_FILENAME, mode=mode)
     mode = "increment"
     i += 1
