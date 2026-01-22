@@ -19,3 +19,9 @@ class ErrorCode(str, Enum):
     # INFRA
     DB_CONNECTION_FAILED = "DB_CONNECTION_FAILED"                  # khong ket noi duoc db
     CACHE_UNAVAILABLE = "CACHE_UNAVAILABLE"                        # cache bi down
+    # Model is unreponse
+    MODEL_UNRESPONSE = "MODEL_UNRESPONSE"
+
+    MODEL_QUOTA_EXCEEDED = "MODEL_QUOTA_EXCEEDED"
+    MODEL_INVALID_API_KEY = "MODEL_INVALID_API_KEY"
+    MODEL_MAX_TOKEN_EXCEEDED = "MODEL_MAX_TOKEN_EXCEEDED"

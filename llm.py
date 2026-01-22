@@ -3,9 +3,11 @@ from langchain.agents import create_agent
 from langchain_google_genai import ChatGoogleGenerativeAI
 from langchain_core.messages import HumanMessage, SystemMessage
 from langchain_core.prompts import PromptTemplate
-from functions import read_file, extract_text, messages_to_debug_json, export_debug_json
+from functions import read_file, extract_text, messages_to_debug_json, export_debug_json, invoke_agent_with_status
 from tools import get_finance
 from wrap_tool_call import handle_tool_errors
+from error_status import ErrorStatus, AgentResult
+
 
 DEBUG_DIR = "./agent_debug"
 BASE_FILENAME = "debug"
@@ -21,7 +23,8 @@ prompt_template = PromptTemplate(
 
 llm = ChatGoogleGenerativeAI(
     model="models/gemini-2.5-flash",
-    temperature=0
+    temperature=0,
+    max_output_tokens = 1024,
 )
 
 agent = create_agent(
@@ -35,6 +38,11 @@ i = 0
 session_id = "quang" + str(random.randint(100,9999))
 payload = {
     "session_id" : session_id,
+    "model" : {
+        "model_name" : llm.model,
+        "temperature": llm.temperature,
+        "max_tokens": llm.max_output_tokens
+        },
     "steps" : []
 }
 
@@ -48,21 +56,16 @@ while True:
         question=user_input
     )
 
-    result = agent.invoke({
-        "messages": [
-            SystemMessage(content=system_prompt),
-            HumanMessage(content=user_input)
-        ]
-    })
-
-    answer = extract_text(result["messages"][-1].content)
-    print(result)
-
+    result = invoke_agent_with_status(agent, system_prompt, user_input, prompt_template)
     debug = {
         "step": i,
         "timestamp": datetime.now(timezone.utc).isoformat(),
-        "final_answer": answer,
-        "trace": messages_to_debug_json(result["messages"])
+        "user_input": user_input,
+        "final_answer": result.answer if result.answer else "",
+        "status": result.status,
+        "message": result.message,
+        "error_code" : result.error_code if result.error_code else "",
+        "trace": result.trace if result.trace else "",
     }
 
     export_debug_json(payload, debug, DEBUG_DIR, BASE_FILENAME, mode=mode)
