@@ -3,8 +3,8 @@ from langchain.agents import create_agent
 from langchain_google_genai import ChatGoogleGenerativeAI
 from langchain_core.messages import HumanMessage, SystemMessage
 from langchain_core.prompts import PromptTemplate
-from functions import read_file, extract_text, messages_to_debug_json, export_debug_json, invoke_agent_with_status
-from tools import get_finance
+from functions import *
+from tools import *
 from wrap_tool_call import handle_tool_errors
 from error_status import ErrorStatus, AgentResult
 
@@ -13,9 +13,19 @@ DEBUG_DIR = "./agent_debug"
 BASE_FILENAME = "debug"
 
 # ================= PROMPT =================
-prompt_path = Path("./prompts/prompt_v1.txt")
+prompt_path = Path("./prompts/prompt_system.txt")
 prompt_text = read_file(prompt_path)
 knowledge = read_file("./knowledge/financial_advice.txt")
+path_prompt_classification = Path("./prompts/prompt_classification.txt")
+
+bp1 = BusinessProcess("get_count_staff","nghiệp vụ này dùng để hướng dẫn người dùng lấy ra số lượng nhân viên",[{"get_1":get_1},{"get_2":get_2}, {"get_3":get_3}])
+bp2 = BusinessProcess("get_price","nghiệp vụ này dùng để trích xuất giá tiền",[{"get_4":get_4}, {"get_5":get_5}, {"get_6":get_6}])
+bp3 = BusinessProcess("get_quanlity","kiểm tra chất lượng của nhà máy",[{"get_7":get_7},{"get_8":get_8}, {"get_9":get_9}])
+bp4 = BusinessProcess("book_meet","đặt lịch phòng họp",[{"get_10":get_10}, {"get_11":get_11}, {"get_12":get_12}])
+bp5 = BusinessProcess("price_ticket_movie","kiểm tra giá vé xem phim",[{"get_13":get_13}, {"get_14":get_14}, {"get_15":get_15}])
+bp_list = [bp1, bp2, bp3, bp4, bp5]
+
+
 prompt_template = PromptTemplate(
     template=prompt_text,
     input_variables=["knowledge", "question"]
@@ -27,9 +37,13 @@ llm = ChatGoogleGenerativeAI(
     max_output_tokens = 1024,
 )
 
-agent = create_agent(
+# agent = create_agent(
+#     model=llm,
+#     tools=[get_finance],
+#     middleware=[handle_tool_errors]
+# )
+agent_classification = create_agent(
     model=llm,
-    tools=[get_finance],
     middleware=[handle_tool_errors]
 )
 
@@ -51,12 +65,31 @@ while True:
     if user_input == "exit":
         break
 
+    bp_llm = extract_bp(agent_classification, path_prompt_classification, bp_list, user_input)
+
+    select_tool = None
+    for bp in bp_list:
+        if bp_llm == bp.name:
+            select_tool = resolve_tools(bp.tools)
+            break
+    if select_tool is None:
+        agent = create_agent(
+            model=llm,
+            middleware=[handle_tool_errors]
+        )
+    else:
+        agent = create_agent(
+            model=llm,
+            tools=select_tool,
+            middleware=[handle_tool_errors]
+        )
+
     system_prompt = prompt_template.format(
         knowledge=knowledge,
         question=user_input
     )
-
     result = invoke_agent_with_status(agent, system_prompt, user_input, prompt_template)
+    tools = read_model(agent)
     debug = {
         "step": i,
         "timestamp": datetime.now(timezone.utc).isoformat(),
@@ -64,6 +97,7 @@ while True:
         "final_answer": result.answer if result.answer else "",
         "status": result.status,
         "message": result.message,
+        "tools": tools if tools else "",
         "error_code" : result.error_code if result.error_code else "",
         "trace": result.trace if result.trace else "",
     }
@@ -71,3 +105,26 @@ while True:
     export_debug_json(payload, debug, DEBUG_DIR, BASE_FILENAME, mode=mode)
     mode = "increment"
     i += 1
+
+
+
+# bp_llm = extract_bp(agent_classification, path_prompt_classification, bp_list, "kiểm tra giá vé xem phim")
+
+# select_tool = None
+# for bp in bp_list:
+#     if bp_llm == bp.name:
+#         select_tool = resolve_tools(bp.tools)
+#         break
+# if select_tool is None:
+#     agent = create_agent(
+#         model=llm,
+#         middleware=[handle_tool_errors]
+#     )
+# else:
+#     agent = create_agent(
+#         model=llm,
+#         tools=select_tool,
+#         middleware=[handle_tool_errors]
+#     )
+
+# print(agent.get_graph().nodes)
