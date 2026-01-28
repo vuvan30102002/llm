@@ -4,7 +4,10 @@ from langchain.agents import create_agent
 from error_code import ErrorCode
 from langchain.messages import SystemMessage, HumanMessage
 from langchain_core.prompts import PromptTemplate
+from langchain_core.runnables import RunnableSequence
 from tools import BusinessProcess
+from format_output import bp_parser, clean_question
+from langchain_google_genai import ChatGoogleGenerativeAI
 from lib import *
 
 def extract_text(content):
@@ -133,71 +136,50 @@ def read_model(agent):
         })
     return tools
 
-def read_prompt_classification(path: Path, bp_list: List[BusinessProcess], user_input: str):
-    with open(path, "r", encoding="utf-8") as f:
-        description = f.read()
 
-    # Convert dict -> text
-    business_processes = "\n".join(
-        f"- {bp.name}: {bp.description}" for bp in bp_list
+def build_classification_chain(llm, prompt_path):
+    with open(prompt_path, "r", encoding="utf-8") as f:
+        prompt_text = f.read()
+
+    prompt = PromptTemplate(
+        template=prompt_text,
+        input_variables = ["business_processes", "user_input"],
+        partial_variables = {
+            "format_instructions" : bp_parser.get_format_instructions()
+        }
     )
 
-    prompt_template = PromptTemplate(
-        template=description,
-        input_variables=["business_processes","user_input"]
+    chain = (prompt | llm | bp_parser)
+
+    return chain
+
+def run_classification(chain, bp_list, user_input):
+    business_processes = "\n".join(f"- {bp.name} : {bp.description}" for bp in bp_list)
+    result = chain.invoke({
+        "business_processes" : business_processes,
+        "user_input" : user_input
+    })
+    return result.business_process.strip().lower()
+
+def build_chain_clean_question(llm, prompt_path):
+    with open(prompt_path, "r", encoding="utf-8") as f:
+        prompt_text = f.read()
+    
+    prompt = PromptTemplate(
+        template=prompt_text,
+        input_variables = ["user_input"],
+        partial_variables = {
+            "format_instructions" : clean_question.get_format_instructions()
+        }
     )
+    chain = (prompt | llm | clean_question)
+    return chain
 
-    prompt = prompt_template.format(
-        business_processes=business_processes,
-        user_input = user_input
-    )
-
-    return prompt
-
-# bp1 = BusinessProcess("get_count_staff","nghiệp vụ này dùng để hướng dẫn người dùng lấy ra số lượng nhân viên",["get_1","get_2","get_3"])
-# bp2 = BusinessProcess("get_price","nghiệp vụ này dùng để trích xuất giá tiền",["get_4","get_5","get_6"])
-# bp3 = BusinessProcess("get_quanlity","kiểm tra chất lượng của nhà máy",["get_9","get_8","get_7"])
-# bp4 = BusinessProcess("book_meet","đặt lịch phòng họp",["get_12","get_11","get_10"])
-# bp5 = BusinessProcess("price_ticket_movie","kiểm tra giá vé xem phim",["get_13","get_14","get_15"])
-
-# path = Path("./prompts/prompt_classification.txt")
-# bp_list = [bp1, bp2, bp3, bp4, bp5]
-# a = read_prompt_classification(path, bp_list, user_input="hom nay co mua hay khong")
-# print(a)
-
-
-def invoke_agent_classification(agent, prompt_classification, user_input):
-    try:
-        response = agent.invoke({
-            "messages" : [
-                SystemMessage(content=prompt_classification),
-                HumanMessage(content=user_input)
-            ]
-        })
-        result = response["messages"][-1].content
-        return result
-
-    except Exception as e:
-        return "khong goi duoc agent"
-
-
-def extract_first_json(text):
-    start = text.find("{")
-    end = text.rfind("}") + 1
-
-    if start == -1 or end == -1:
-        raise ValueError("No JSON object found")
-
-    data = json.loads(text[start:end])
-    intent = data.get("business_process")
-
-    return intent
-
-def extract_bp(agent, prompt_classification, bp_list, user_input)->str:
-    prompt = read_prompt_classification(prompt_classification, bp_list, user_input)
-    result = invoke_agent_classification(agent, prompt, user_input)
-    bp = extract_first_json(result)
-    return bp.strip().lower()
+def run_clean_question(chain, user_input):
+    result = chain.invoke({
+        "user_input" : user_input
+    })
+    return result
 
 def resolve_tools(bp_tool_list):
     tools = []
@@ -211,3 +193,15 @@ def resolve_tools(bp_tool_list):
 
     return tools
 
+
+if __name__ == "__main__":
+    llm = ChatGoogleGenerativeAI(
+        model="models/gemini-2.5-flash",
+        temperature=0,
+        max_output_tokens = 1024,
+    )
+    prompt_clean_path = Path("./prompts/prompt_clean_question.txt")
+    chain = build_chain_clean_question(llm, prompt_clean_path)
+    result = run_clean_question(chain, "tài liệu nghiệp vụ thực tế")
+
+    print(result.question.strip().lower())

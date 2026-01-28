@@ -17,6 +17,7 @@ prompt_path = Path("./prompts/prompt_system.txt")
 prompt_text = read_file(prompt_path)
 knowledge = read_file("./knowledge/financial_advice.txt")
 path_prompt_classification = Path("./prompts/prompt_classification.txt")
+prompt_clean_path = Path("./prompts/prompt_clean_question.txt")
 
 bp1 = BusinessProcess("get_count_staff","nghiệp vụ này dùng để hướng dẫn người dùng lấy ra số lượng nhân viên",[{"get_1":get_1},{"get_2":get_2}, {"get_3":get_3}])
 bp2 = BusinessProcess("get_price","nghiệp vụ này dùng để trích xuất giá tiền",[{"get_4":get_4}, {"get_5":get_5}, {"get_6":get_6}])
@@ -64,9 +65,12 @@ while True:
     user_input = input("You: ")
     if user_input == "exit":
         break
+    chain_question = build_chain_clean_question(llm, prompt_clean_path)
+    question = run_clean_question(chain_question, "tài liệu nghiệp vụ thực tế")
 
-    bp_llm = extract_bp(agent_classification, path_prompt_classification, bp_list, user_input)
-
+    chain = build_classification_chain(llm,path_prompt_classification)
+    bp_llm = run_classification(chain, bp_list, question)
+    # print(bp_llm)
     select_tool = None
     for bp in bp_list:
         if bp_llm == bp.name:
@@ -75,6 +79,7 @@ while True:
     if select_tool is None:
         agent = create_agent(
             model=llm,
+            tools = [knowledge_question],
             middleware=[handle_tool_errors]
         )
     else:
@@ -105,26 +110,3 @@ while True:
     export_debug_json(payload, debug, DEBUG_DIR, BASE_FILENAME, mode=mode)
     mode = "increment"
     i += 1
-
-
-
-# bp_llm = extract_bp(agent_classification, path_prompt_classification, bp_list, "kiểm tra giá vé xem phim")
-
-# select_tool = None
-# for bp in bp_list:
-#     if bp_llm == bp.name:
-#         select_tool = resolve_tools(bp.tools)
-#         break
-# if select_tool is None:
-#     agent = create_agent(
-#         model=llm,
-#         middleware=[handle_tool_errors]
-#     )
-# else:
-#     agent = create_agent(
-#         model=llm,
-#         tools=select_tool,
-#         middleware=[handle_tool_errors]
-#     )
-
-# print(agent.get_graph().nodes)

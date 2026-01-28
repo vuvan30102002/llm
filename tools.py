@@ -37,6 +37,13 @@ class BusinessProcess:
     tools: List[str]
 
 
+@tool
+def knowledge_question():
+    """
+    Dựa vào nội dung tài liệu đã được cung cấp để trả lời câu hỏi của người dùng.
+    """
+    return "100000"
+
 
 @tool
 def get_1():
