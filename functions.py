@@ -6,7 +6,9 @@ from langchain.messages import SystemMessage, HumanMessage
 from langchain_core.prompts import PromptTemplate
 from langchain_core.runnables import RunnableSequence
 from tools import BusinessProcess
-from format_output import bp_parser, clean_question
+from format_output import bp_parser, clean_question, result_final
+from langchain_core.chat_history import InMemoryChatMessageHistory, BaseChatMessageHistory
+from langchain_core.runnables import RunnableWithMessageHistory
 from langchain_google_genai import ChatGoogleGenerativeAI
 from lib import *
 
@@ -88,23 +90,38 @@ def classify_gemini_error(err: Exception):
         return ErrorStatus.TIMEOUT, "Gemini request timeout", ErrorCode.MODEL_TIMEOUT
 
     return ErrorStatus.FAILED, "Unknown Gemini error", ErrorCode.MODEL_UNRESPONSE
+def dump_ai_message(msg):
+    return {
+        "class": msg.__class__.__name__,
+        "content": msg.content,
+        "additional_kwargs": msg.additional_kwargs,
+        "response_metadata": msg.response_metadata,
+    }
 
+def dump_history_message(msg):
+    return {
+        "role" : "human" if msg.__class__.__name__ == "HumanMessage" else "AI",
+        "content" : msg.content,
+    }
 
-def invoke_agent_with_status(agent, system_prompt, user_input, prompt_template):
+def dump_history(history):
+    return [dump_history_message(m) for m in history.messages]
+
+def invoke_agent_with_status(chain_with_memory, session_id, knowledge, user_input, summary_store):
     try:
-        result = agent.invoke({
-            "messages" : [
-                SystemMessage(content=system_prompt),
-                HumanMessage(content=user_input)
-            ]
-        })
-        answer = extract_text(result["messages"][-1].content)
-        trace=messages_to_debug_json(result["messages"], prompt_template)
+        result = chain_with_memory.invoke(
+            {
+                "user_input" : user_input,
+                "knowledge" : knowledge,
+                "summary" : summary_store.get(session_id, "")
+            },
+            config = {"configurable" : {"session_id" : session_id}}
+        )
         return AgentResult(
             status=ErrorStatus.SUCCESS,
             message="Agent execution successfully",
-            answer= answer,
-            trace=trace
+            answer=result.content,
+            trace=dump_ai_message(result)
         )
     except TimeoutError:
         return AgentResult(
@@ -194,14 +211,34 @@ def resolve_tools(bp_tool_list):
     return tools
 
 
+# windown_memory = 
+def build_chain_memory(llm, prompt_path):
+    with open(prompt_path, "r", encoding="utf-8") as f:
+        prompt_text = f.read()
+    
+    prompt = PromptTemplate(
+        template=prompt_text,
+        input_variables=["knowledge","user_input","history","summary"],
+    )
+    chain = (prompt | llm )
+    return chain
+def build_chain_summary(llm, prompt_path):
+    prompt_text = read_file(prompt_path)
+    prompt = PromptTemplate(
+        template=prompt_text,
+        input_variables=["history"]
+    )
+    chain = (prompt | llm)
+    return chain
+
 if __name__ == "__main__":
     llm = ChatGoogleGenerativeAI(
         model="models/gemini-2.5-flash",
         temperature=0,
         max_output_tokens = 1024,
     )
-    prompt_clean_path = Path("./prompts/prompt_clean_question.txt")
-    chain = build_chain_clean_question(llm, prompt_clean_path)
-    result = run_clean_question(chain, "tài liệu nghiệp vụ thực tế")
+    # prompt_clean_path = Path("./prompts/prompt_clean_question.txt")
+    # chain = build_chain_clean_question(llm, prompt_clean_path)
+    # result = run_clean_question(chain, "tài liệu nghiệp vụ thực tế")
 
-    print(result.question.strip().lower())
+    # print(result.question.strip().lower())

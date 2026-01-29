@@ -3,6 +3,7 @@ from langchain.agents import create_agent
 from langchain_google_genai import ChatGoogleGenerativeAI
 from langchain_core.messages import HumanMessage, SystemMessage
 from langchain_core.prompts import PromptTemplate
+from langchain_core.runnables import RunnableWithMessageHistory
 from functions import *
 from tools import *
 from wrap_tool_call import handle_tool_errors
@@ -17,6 +18,7 @@ prompt_path = Path("./prompts/prompt_system.txt")
 prompt_text = read_file(prompt_path)
 knowledge = read_file("./knowledge/financial_advice.txt")
 path_prompt_classification = Path("./prompts/prompt_classification.txt")
+prompt_sumary_path = Path("./prompts/prompt_summary.txt")
 prompt_clean_path = Path("./prompts/prompt_clean_question.txt")
 
 bp1 = BusinessProcess("get_count_staff","nghiệp vụ này dùng để hướng dẫn người dùng lấy ra số lượng nhân viên",[{"get_1":get_1},{"get_2":get_2}, {"get_3":get_3}])
@@ -38,11 +40,6 @@ llm = ChatGoogleGenerativeAI(
     max_output_tokens = 1024,
 )
 
-# agent = create_agent(
-#     model=llm,
-#     tools=[get_finance],
-#     middleware=[handle_tool_errors]
-# )
 agent_classification = create_agent(
     model=llm,
     middleware=[handle_tool_errors]
@@ -61,40 +58,70 @@ payload = {
     "steps" : []
 }
 
+store = {}
+summary_store = {}
+
+def get_history(session_id):
+    if session_id not in store:
+        store[session_id] = InMemoryChatMessageHistory()
+        summary_store[session_id] = ""
+
+    history = store[session_id]
+
+    if (len(history.messages) > 10):
+        conversation_text = "\n".join(f"{m.type} : {m.content}" for m in history.messages)
+        chain = build_chain_summary(llm, prompt_sumary_path)
+        conversation = chain.invoke({
+            "previous_summary": summary_store[session_id],
+            "conversation" : conversation_text
+        }).content
+        summary_store[session_id] = conversation
+        history.messages = history.messages[-2:]
+    return history
+
 while True:
     user_input = input("You: ")
     if user_input == "exit":
         break
-    chain_question = build_chain_clean_question(llm, prompt_clean_path)
-    question = run_clean_question(chain_question, "tài liệu nghiệp vụ thực tế")
+    # chain_question = build_chain_clean_question(llm, prompt_clean_path)
+    # question = run_clean_question(chain_question, "tài liệu nghiệp vụ thực tế")
 
-    chain = build_classification_chain(llm,path_prompt_classification)
-    bp_llm = run_classification(chain, bp_list, question)
-    # print(bp_llm)
-    select_tool = None
-    for bp in bp_list:
-        if bp_llm == bp.name:
-            select_tool = resolve_tools(bp.tools)
-            break
-    if select_tool is None:
-        agent = create_agent(
-            model=llm,
-            tools = [knowledge_question],
-            middleware=[handle_tool_errors]
-        )
-    else:
-        agent = create_agent(
-            model=llm,
-            tools=select_tool,
-            middleware=[handle_tool_errors]
-        )
+    # chain = build_classification_chain(llm,path_prompt_classification)
+    # bp_llm = run_classification(chain, bp_list, question)
+    # # print(bp_llm)
+    # select_tool = None
+    # for bp in bp_list:
+    #     if bp_llm == bp.name:
+    #         select_tool = resolve_tools(bp.tools)
+    #         break
+    # if select_tool is None:
+    #     agent = create_agent(
+    #         model=llm,
+    #         tools = [knowledge_question],
+    #         middleware=[handle_tool_errors]
+    #     )
+    # else:
+    #     agent = create_agent(
+    #         model=llm,
+    #         tools=select_tool,
+    #         middleware=[handle_tool_errors]
+    #     )
 
-    system_prompt = prompt_template.format(
-        knowledge=knowledge,
-        question=user_input
+
+
+    chain_main = build_chain_memory(llm, prompt_path)
+    chain_with_memory = RunnableWithMessageHistory(
+        chain_main,
+        get_history,
+        input_messages_key = "user_input",
+        history_messages_key = "history",
     )
-    result = invoke_agent_with_status(agent, system_prompt, user_input, prompt_template)
-    tools = read_model(agent)
+
+    result = invoke_agent_with_status(chain_with_memory, session_id, knowledge, user_input, summary_store)
+    history = get_history(session_id)
+    summary = summary_store.get(session_id,"")
+    # tools = read_model(agent)
+    tools = None    # tam thoi de do ton token
     debug = {
         "step": i,
         "timestamp": datetime.now(timezone.utc).isoformat(),
@@ -105,6 +132,8 @@ while True:
         "tools": tools if tools else "",
         "error_code" : result.error_code if result.error_code else "",
         "trace": result.trace if result.trace else "",
+        "history" : dump_history(history),
+        "summary" : summary,
     }
 
     export_debug_json(payload, debug, DEBUG_DIR, BASE_FILENAME, mode=mode)
