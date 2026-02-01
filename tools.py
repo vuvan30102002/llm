@@ -1,33 +1,31 @@
 from langchain.tools import tool
 from dataclasses import dataclass
 from typing import List
+import random
 
 @tool
-def get_finance(year: int) -> str:
+def get_user_by_id(user_id: int):
     """
-    Sử dụng tool này khi người dùng hỏi về:
-    - tình hình tài chính
-    - báo cáo tài chính
-    - tăng trưởng tài chính
-
-    Nếu trong câu hỏi có nhắc đến một năm cụ thể
-    (ví dụ: "năm 2024", "năm 2025", "năm 2026")
-    thì year chính là năm đó (kiểu số nguyên).
+    Sử dụng tool này khi người dùng muốn thấy thông tin của người dùng theo id mà người dùng cung cấp
     """
-    if year == 2026:
+    if user_id is None:
         return {
-            "status" : "failed",
-            "message": "Dữ liệu tài chính cho năm 2026 chưa được cập nhật. Bạn vui lòng đặt câu hỏi khác",
+            "status" : False,
+            "message" : "Người dùng chưa cung cấp thông tin mã user"
         }
-    if (year == 2025):
-        return {
-            "status" : "success",
-            "message" : f"Tài chính cho năm {year} là ổn định với mức tăng trưởng 5%."
+    info_user = {
+        111 : {
+            "user_id" : user_id,
+            "name" : "Vu Van Quang",
+            "email" : "quang@gmail.com"
+        },
+        222 : {
+             "user_id" : user_id,
+            "name" : "Nguyen Thi Yen",
+            "email" : "yen@gmail.com"
         }
-    return {
-        "status" : "failed",
-        "message" : "Xin lỗi, tôi không có dữ liệu tài chính cho năm bạn yêu cầu. Vui lòng thử lại với năm khác.",
     }
+    return info_user.get(user_id, {"error" : "User not found"})
 
 
 @dataclass
@@ -38,11 +36,28 @@ class BusinessProcess:
 
 
 @tool
-def knowledge_question():
+def knowledge_question(knowledge: str, question: str) -> str:
     """
-    Dựa vào nội dung tài liệu đã được cung cấp để trả lời câu hỏi của người dùng.
+    Trả lời câu hỏi dựa trên tài liệu đã được cung cấp.
     """
-    return "100000"
+    return (
+        f"Dựa trên thông tin hiện có:\n{knowledge}\n\n"
+        f"Vui lòng trả lời câu hỏi: {question}"
+    )
+
+
+@tool
+def chitchat(user_input: str) -> str:
+    """
+    Trả lời các câu nói xã giao, chào hỏi của khách hàng.
+    """
+    responses = [
+        "Dạ em chào anh/chị ạ 😊 Rất vui được hỗ trợ mình.",
+        "Chào anh/chị, em là trợ lý của nhà hàng. Em có thể giúp gì cho mình không ạ?",
+        "Dạ em xin chào ạ! Nếu anh/chị cần hỗ trợ, cứ nói em nhé."
+    ]
+    return random.choice(responses)
+
 
 
 @tool

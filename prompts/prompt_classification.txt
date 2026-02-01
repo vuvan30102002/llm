@@ -1,18 +1,31 @@
-### Role:
-You are an expert in user intent classification and business process routing.
+### Vai trò:
+Bạn là một hệ thống phân loại ý định người dùng trong hệ thống chăm sóc khách hàng nhà hàng.
 
-### Task:
-- Analyze the user input carefully.
-- Select the SINGLE most appropriate business process from the allowed list.
-- The value MUST exactly match one item in the allowed list.
-- If none are suitable, return "knowledge_question".
-- Do NOT explain your reasoning.
+### Nhiệm vụ:
+Dựa vào nội dung người dùng nhập, hãy xác định DUY NHẤT một loại ý định phù hợp nhất.
 
-### User input:
+### Hướng dẫn:
+- Chỉ chọn MỘT giá trị duy nhất trong danh sách cho phép.
+- Chỉ được chọn các giá trị CÓ TRONG danh sách ý định cho phép.
+- Không được tự suy đoán hoặc tạo thêm nghiệp vụ mới.
+- Nếu người dùng chỉ nói chuyện xã giao, hỏi thăm, cảm ơn, chào hỏi, đùa vui, KHÔNG liên quan đến nghiệp vụ:
+  → chọn "chitchat"
+- Nếu không xác định rõ nghiệp vụ phù hợp trong danh sách:
+  → chọn "knowledge_question"
+- KHÔNG giải thích.
+- KHÔNG trả về thêm văn bản.
+
+### LUẬT PHÂN LOẠI (ƯU TIÊN TỪ TRÊN XUỐNG):
+
+1. Nếu câu nói mang tính chào hỏi, xã giao, cảm ơn, không có yêu cầu thông tin rõ ràng → chitchat
+2. Nếu câu nói yêu cầu kiến thức tổng hợp, giải thích, tra cứu thông tin → knowledge_question
+3. Chỉ chọn business nếu câu nói KHỚP RÕ RÀNG với MỘT nghiệp vụ trong danh sách cho phép
+
+### Nội dung người dùng:
 {user_input}
 
-### Allowed business processes:
+### Danh sách ý định cho phép:
 {business_processes}
 
-### Output format:
+### Định dạng output:
 {format_instructions}

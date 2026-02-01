@@ -7,16 +7,17 @@ from langchain_core.runnables import RunnableWithMessageHistory
 from functions import *
 from tools import *
 from wrap_tool_call import handle_tool_errors
+from data_loader import vector_db
 from error_status import ErrorStatus, AgentResult
-
+from dotenv import load_dotenv
+load_dotenv()
 
 DEBUG_DIR = "./agent_debug"
 BASE_FILENAME = "debug"
 
 # ================= PROMPT =================
-prompt_path = Path("./prompts/prompt_system.txt")
-prompt_text = read_file(prompt_path)
-knowledge = read_file("./knowledge/financial_advice.txt")
+prompt_text = read_file(Path("./prompts/system_prompt.txt"))
+# knowledge = read_file("./knowledge/financial_advice.txt")
 path_prompt_classification = Path("./prompts/prompt_classification.txt")
 prompt_sumary_path = Path("./prompts/prompt_summary.txt")
 prompt_clean_path = Path("./prompts/prompt_clean_question.txt")
@@ -26,12 +27,13 @@ bp2 = BusinessProcess("get_price","nghiệp vụ này dùng để trích xuất 
 bp3 = BusinessProcess("get_quanlity","kiểm tra chất lượng của nhà máy",[{"get_7":get_7},{"get_8":get_8}, {"get_9":get_9}])
 bp4 = BusinessProcess("book_meet","đặt lịch phòng họp",[{"get_10":get_10}, {"get_11":get_11}, {"get_12":get_12}])
 bp5 = BusinessProcess("price_ticket_movie","kiểm tra giá vé xem phim",[{"get_13":get_13}, {"get_14":get_14}, {"get_15":get_15}])
-bp_list = [bp1, bp2, bp3, bp4, bp5]
+bp6 = BusinessProcess("get_user_by_id","Sử dụng tool này khi người dùng muốn thấy thông tin của người dùng theo id mà người dùng cung cấp",[{"get_user_by_id":get_user_by_id}])
+bp_list = [bp1, bp2, bp3, bp4, bp5, bp6]
 
 
 prompt_template = PromptTemplate(
     template=prompt_text,
-    input_variables=["knowledge", "question"]
+    input_variables=["knowledge", "summary"]
 )
 
 llm = ChatGoogleGenerativeAI(
@@ -79,53 +81,69 @@ def get_history(session_id):
         history.messages = history.messages[-2:]
     return history
 
+def get_or_create_agent(bp_name, tools):
+    if bp_name in agent_cache:
+        return agent_cache[bp_name]
+    agent = create_agent(
+        model=llm,
+        tools=tools,
+        middleware=[handle_tool_errors]
+    )
+    agent_cache[bp_name] = agent
+    return agent
+
 while True:
     user_input = input("You: ")
     if user_input == "exit":
         break
-    # chain_question = build_chain_clean_question(llm, prompt_clean_path)
-    # question = run_clean_question(chain_question, "tài liệu nghiệp vụ thực tế")
 
-    # chain = build_classification_chain(llm,path_prompt_classification)
-    # bp_llm = run_classification(chain, bp_list, question)
-    # # print(bp_llm)
-    # select_tool = None
-    # for bp in bp_list:
-    #     if bp_llm == bp.name:
-    #         select_tool = resolve_tools(bp.tools)
-    #         break
-    # if select_tool is None:
-    #     agent = create_agent(
-    #         model=llm,
-    #         tools = [knowledge_question],
-    #         middleware=[handle_tool_errors]
-    #     )
-    # else:
-    #     agent = create_agent(
-    #         model=llm,
-    #         tools=select_tool,
-    #         middleware=[handle_tool_errors]
-    #     )
+    chain_question = build_chain_clean_question(llm, prompt_clean_path)
+    question = run_clean_question(chain_question, user_input)
 
+    chain = build_classification_chain(llm,path_prompt_classification)
+    bp_llm = run_classification(chain, bp_list, question)
+    
+    agent_cache = {}
+    select_tool = None
+    for bp in bp_list:
+        if bp_llm == bp.name:
+            select_tool = resolve_tools(bp.tools)
+            break
 
+    if select_tool is None:
+        if bp_llm == "chitchat":
+            bp_name = "chitchat"
+            tools = [chitchat]
+        if bp_llm == "knowledge_question":
+            bp_name = "knowledge_question"
+            tools = [knowledge_question]
+    else:
+        bp_name = bp_llm
+        tools = select_tool
+    
+    agent = get_or_create_agent(bp_name, tools)
 
-    chain_main = build_chain_memory(llm, prompt_path)
-    chain_with_memory = RunnableWithMessageHistory(
-        chain_main,
+    agent_with_memory = RunnableWithMessageHistory(
+        agent,
         get_history,
-        input_messages_key = "user_input",
+        input_messages_key = "messages",
         history_messages_key = "history",
     )
+    knowledge = ""
+    if bp_name == "knowledge_question":
+        retriever = vector_db.as_retriever(similarity_top_k=5)
+        nodes = retriever.retrieve(user_input)
+        knowledge = "\n\n".join(node.text for node in nodes)
 
-    result = invoke_agent_with_status(chain_with_memory, session_id, knowledge, user_input, summary_store)
+    result = invoke_agent_with_status(agent_with_memory, session_id, knowledge, question, summary_store, prompt_template)
     history = get_history(session_id)
     summary = summary_store.get(session_id,"")
-    # tools = read_model(agent)
-    tools = None    # tam thoi de do ton token
+    tools = read_model(agent)
+    # tools = None    # tam thoi de do ton token
     debug = {
         "step": i,
         "timestamp": datetime.now(timezone.utc).isoformat(),
-        "user_input": user_input,
+        "user_input": question,
         "final_answer": result.answer if result.answer else "",
         "status": result.status,
         "message": result.message,

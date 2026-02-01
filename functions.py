@@ -24,23 +24,37 @@ def extract_text(content):
     return str(content)
 
 
-def messages_to_debug_json(messages, prompt_template):
+def messages_to_debug_json(messages):
     data = []
-    for m in messages:
+
+    for idx, m in enumerate(messages):
         item = {
-            "type": m.__class__.__name__,
-            "content": extract_text(m.content)
+            "index": idx,
+            "role": m.type,   # system | human | ai | tool
+            "message_type": m.__class__.__name__,
+            "content": extract_text(m.content) if m.content else ""
         }
-        if isinstance(m, SystemMessage):
-            item["quang"] = {
-                "prompt_text" : prompt_template.template,
-                "input_variables" : prompt_template.input_variables
-            }
-        if isinstance(m, AIMessage) and m.tool_calls:
-            item["tool_calls"] = m.tool_calls
+        # ✅ AI quyết định gọi tool
+        if isinstance(m, AIMessage):
+            if hasattr(m, "tool_calls") and m.tool_calls:
+                item["tool_calls"] = []
+                for call in m.tool_calls:
+                    item["tool_calls"].append({
+                        "tool_name": call.get("name"),
+                        "tool_input": call.get("args"),
+                        "tool_call_id": call.get("id")
+                    })
+
+        # ✅ Tool trả kết quả
         if isinstance(m, ToolMessage):
-            item["tool_call_id"] = m.tool_call_id
+            item["tool_response"] = {
+                "tool_name": m.name,
+                "tool_call_id": m.tool_call_id,
+                "output": m.content
+            }
+
         data.append(item)
+
     return data
 
 
@@ -101,27 +115,64 @@ def dump_ai_message(msg):
 def dump_history_message(msg):
     return {
         "role" : "human" if msg.__class__.__name__ == "HumanMessage" else "AI",
-        "content" : msg.content,
+        "content" : msg.content.text if msg.content.text else msg.content,
     }
 
 def dump_history(history):
     return [dump_history_message(m) for m in history.messages]
 
-def invoke_agent_with_status(chain_with_memory, session_id, knowledge, user_input, summary_store):
+# def invoke_agent_with_status(chain_with_memory, session_id, knowledge, user_input, summary_store):
+#     try:
+#         result = chain_with_memory.invoke(
+#             {
+#                 "user_input" : user_input,
+#                 "knowledge" : knowledge,
+#                 "summary" : summary_store.get(session_id, "")
+#             },
+#             config = {"configurable" : {"session_id" : session_id}}
+#         )
+#         return AgentResult(
+#             status=ErrorStatus.SUCCESS,
+#             message="Agent execution successfully",
+#             answer=result.content,
+#             trace=dump_ai_message(result)
+#         )
+#     except TimeoutError:
+#         return AgentResult(
+#             status=ErrorStatus.TIMEOUT,
+#             message="Agent execution timeout",
+#             error_code=ErrorCode.MODEL_TIMEOUT
+#         )
+#     except Exception as e:
+#         status, msg, code = classify_gemini_error(e)
+
+#         return AgentResult(
+#             status=status,
+#             message=msg,
+#             error_code=code,
+#             trace=str(e) 
+#         )
+
+def invoke_agent_with_status(agent_with_memory, session_id, knowledge, question, summary_store, prompt_template):
     try:
-        result = chain_with_memory.invoke(
+        system_prompt = prompt_template.format(
+            knowledge = knowledge,
+            summary = summary_store.get(session_id,"")
+        )
+        result = agent_with_memory.invoke(
             {
-                "user_input" : user_input,
-                "knowledge" : knowledge,
-                "summary" : summary_store.get(session_id, "")
+                "messages" : [
+                    SystemMessage(content=system_prompt),
+                    HumanMessage(content=question)
+                ]
             },
             config = {"configurable" : {"session_id" : session_id}}
         )
         return AgentResult(
             status=ErrorStatus.SUCCESS,
             message="Agent execution successfully",
-            answer=result.content,
-            trace=dump_ai_message(result)
+            answer=result["messages"][-1].content,
+            trace=messages_to_debug_json(result["messages"])
         )
     except TimeoutError:
         return AgentResult(
@@ -196,7 +247,7 @@ def run_clean_question(chain, user_input):
     result = chain.invoke({
         "user_input" : user_input
     })
-    return result
+    return result.question
 
 def resolve_tools(bp_tool_list):
     tools = []

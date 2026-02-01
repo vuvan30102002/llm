@@ -3,3 +3,5 @@ llm-venv/
 
 # environment variables
 .env
+
+storage/
