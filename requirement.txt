@@ -8,3 +8,5 @@ langchain-anthropic
 langchain-google-genai
 llama-index-embeddings-huggingface
 llama-index
+"fastapi[standard]"
+fastapi uvicorn

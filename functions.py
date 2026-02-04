@@ -62,30 +62,38 @@ def read_file(path):
     with open(path, "r", encoding="utf-8") as f:
         return f.read()
 
-def export_debug_json(session_payload, data: dict, DEBUG_DIR, BASE_FILENAME, mode: str = "increment") -> str:
+def export_debug_json(session_payload, data: dict, DEBUG_DIR, BASE_FILENAME, session_id) -> str:
     os.makedirs(DEBUG_DIR, exist_ok=True)
-    filepath = os.path.join(DEBUG_DIR, f"{BASE_FILENAME}.json")
+    filepath = os.path.join(DEBUG_DIR, f"{BASE_FILENAME}_{session_id}.json")
 
-    session_payload["steps"].append(data)     
+    # luôn append step mới
+    session_payload.setdefault("steps", []).append(data)
 
-    if mode == "overwrite" or not os.path.exists(filepath):
-        records = [session_payload]
-    else:
+    records = []
+
+    # Nếu file đã tồn tại → đọc lên
+    if os.path.exists(filepath):
         try:
             with open(filepath, "r", encoding="utf-8") as f:
                 records = json.load(f)
-            for idx, s in enumerate(records):
-                if s["session_id"] == session_payload["session_id"]:
-                    records[idx] = session_payload
-                    break
-                else:
-                    records.append(session_payload)
         except json.JSONDecodeError:
-            pass
+            records = []
 
+    # Cập nhật hoặc thêm session
+    updated = False
+    for idx, s in enumerate(records):
+        if s.get("session_id") == session_payload.get("session_id"):
+            records[idx] = session_payload
+            updated = True
+            break
+
+    if not updated:
+        records.append(session_payload)
+
+    # Ghi lại file
     with open(filepath, "w", encoding="utf-8") as f:
         json.dump(records, f, indent=2, ensure_ascii=False)
-        
+
     return filepath
 
 def classify_gemini_error(err: Exception):
@@ -115,7 +123,7 @@ def dump_ai_message(msg):
 def dump_history_message(msg):
     return {
         "role" : "human" if msg.__class__.__name__ == "HumanMessage" else "AI",
-        "content" : msg.content.text if msg.content.text else msg.content,
+        "content" : msg.content,
     }
 
 def dump_history(history):
