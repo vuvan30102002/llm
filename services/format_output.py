@@ -1,4 +1,4 @@
-from lib import *
+from core.lib import *
 from pydantic import BaseModel, Field
 from langchain_core.output_parsers import PydanticOutputParser
 

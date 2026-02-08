@@ -1,13 +1,13 @@
-from lib import *
+from LLM.core.lib import *
 from langchain.agents import create_agent
 from langchain_google_genai import ChatGoogleGenerativeAI
 from langchain_core.messages import HumanMessage, SystemMessage
 from langchain_core.prompts import PromptTemplate
 from langchain_core.runnables import RunnableWithMessageHistory
-from functions import *
-from tools import *
-from wrap_tool_call import handle_tool_errors
-from error_status import ErrorStatus, AgentResult
+from LLM.services.functions import *
+from LLM.services.tools import *
+from LLM.services.wrap_tool_call import handle_tool_errors
+from LLM.enums.error_status import ErrorStatus, AgentResult
 
 
 DEBUG_DIR = "./agent_debug"

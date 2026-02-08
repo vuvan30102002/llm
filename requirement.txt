@@ -10,3 +10,8 @@ llama-index-embeddings-huggingface
 llama-index
 "fastapi[standard]"
 fastapi uvicorn
+psycopg[binary]
+email-validator
+sqlalchemy
+python-jose
+passlib[bcrypt]
