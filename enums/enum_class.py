@@ -6,6 +6,8 @@ class messageEnum(str, Enum):
     ASSISTANT = "assistant"
     SYSTEM = "system"
     TOOL = "tool"
+    AI = "ai"
+    HUMAN = "human"
 
 class memoryEnum(str, Enum):
     PROFILE = "profile"

@@ -11,6 +11,7 @@ from enums.error_status import ErrorStatus, AgentResult
 from dotenv import load_dotenv
 from datetime import datetime, timezone
 from pathlib import Path
+from db.connect_db import *
 
 load_dotenv()
 
@@ -40,6 +41,7 @@ prompt_template = PromptTemplate(
 
 llm = ChatGoogleGenerativeAI(
     model="models/gemini-2.5-flash",
+    # model="gemini-2.0-flash",
     temperature=0,
     max_output_tokens=1024,
 )
@@ -94,8 +96,9 @@ def get_or_create_agent(bp_name, tools):
 
 
 # ================= MAIN =================
-def fastapi_agent(user_input: str, session_id: str) -> str:
+def fastapi_agent(question: str, session_id: str, user_id: int) -> str:
     global DEBUG_STEP
+    # user_id = get_user_id(session_id)
 
     payload = {
         "session_id": session_id,
@@ -107,8 +110,8 @@ def fastapi_agent(user_input: str, session_id: str) -> str:
         "steps": []
     }
 
-    chain_clean = build_chain_clean_question(llm, prompt_clean_path)
-    question = run_clean_question(chain_clean, user_input)
+    # chain_clean = build_chain_clean_question(llm, prompt_clean_path)
+    # question = run_clean_question(chain_clean, user_input)
 
     chain_cls = build_classification_chain(llm, path_prompt_classification)
     bp_name = run_classification(chain_cls, bp_list, question).strip().lower()
@@ -139,16 +142,22 @@ def fastapi_agent(user_input: str, session_id: str) -> str:
         nodes = retriever.retrieve(question)
         knowledge = "\n\n".join(node.text for node in nodes)
 
+    context_summary = get_summary_by_user_id(user_id)
+
     result = invoke_agent_with_status(
         agent_with_memory,
         session_id,
         knowledge,
         question,
         SUMMARY_STORE,
-        prompt_template
+        prompt_template,
+        context_summary
     )
 
     history = get_history(session_id)
+
+    conversation_id = get_conversation_id(user_id)
+    import_messages(history, conversation_id)
 
     debug = {
         "step": DEBUG_STEP,
@@ -166,5 +175,6 @@ def fastapi_agent(user_input: str, session_id: str) -> str:
 
     export_debug_json(payload, debug, DEBUG_DIR, BASE_FILENAME, session_id)
     DEBUG_STEP += 1
+
 
     return result.answer or ""

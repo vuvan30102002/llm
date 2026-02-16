@@ -1,10 +1,24 @@
 import psycopg
+from enums.enum_class import *
 from fastapi import Request, Response
 import uuid
-from enums.enum_class import messageEnum, memoryEnum
+from dotenv import load_dotenv
+import os
+load_dotenv(dotenv_path="../.env")
+
+HOST = os.getenv("HOST")
+PORT = os.getenv("PORT")
+DBNAME = os.getenv("DBNAME")
+USER = os.getenv("USER")
+PASSWORD = os.getenv("PASSWORD")
 
 def connect():
     conn =  psycopg.connect(
+        # host = HOST,
+        # port = PORT,
+        # dbname = DBNAME,
+        # user = USER,
+        # password = PASSWORD
         host = "localhost",
         port = 5432,
         dbname = "agent",
@@ -14,6 +28,8 @@ def connect():
     return conn
 
 def create_user(session_id: str, email: str | None=None, name: str | None=None):
+    conn = None
+    cur = None    
     try:
         conn = connect()
         cur = conn.cursor()
@@ -27,8 +43,10 @@ def create_user(session_id: str, email: str | None=None, name: str | None=None):
             "error" : str(e)
         }
     finally:
-        cur.close()
-        conn.close()
+        if cur:
+            cur.close()
+        if conn:
+            conn.close()
 
 def get_or_create_session(request: Request, response: Response):
     session_id = request.cookies.get("session_id")
@@ -44,6 +62,8 @@ def get_or_create_session(request: Request, response: Response):
     return session_id
 
 def create_conversation(user_id : int, title: str | None = None, context_summary: str | None = None, is_active: bool = True):
+    conn = None
+    cur = None    
     try:
         conn = connect()
         cur = conn.cursor()
@@ -57,10 +77,14 @@ def create_conversation(user_id : int, title: str | None = None, context_summary
             "error" : str(e)
         }
     finally:
-        cur.close()
-        conn.close()
+        if cur:
+            cur.close()
+        if conn:
+            conn.close()
 
 def create_message(conversation_id: str, role: messageEnum, content: str | None=None, tokens: int | None=None, model_name: str|None=None):
+    conn = None
+    cur = None    
     try:
         conn = connect()
         cur = conn.cursor()
@@ -74,10 +98,14 @@ def create_message(conversation_id: str, role: messageEnum, content: str | None=
             "error" : str(e)
         }
     finally:
-        cur.close()
-        conn.close()
+        if cur:
+            cur.close()
+        if conn:
+            conn.close()
 
 def create_memories(user_id: int, conversation_id: str, memory_type: memoryEnum, content: str | None=None):
+    conn = None
+    cur = None    
     try:
         conn = connect()
         cur = conn.cursor()
@@ -91,7 +119,165 @@ def create_memories(user_id: int, conversation_id: str, memory_type: memoryEnum,
             "error" : str(e)
         }
     finally:
-        cur.close()
-        conn.close()
+        if cur:
+            cur.close()
+        if conn:
+            conn.close()
+
+def update_conversation(id: str, user_id: int, content_summary: str):
+    conn = None
+    cur = None    
+    try:
+        conn = connect()
+        cur = conn.cursor()
+        cur.execute("""UPDATE conversations SET context_summary = %s WHERE id = %s AND user_id = %s""",
+            (content_summary, id, user_id)
+        )
+        conn.commit()
+        return {
+            "message" : "Successfully"
+        }
+    except Exception as e:
+        return {
+            "error" : str(e)
+        }
+    finally:
+        if cur:
+            cur.close()
+        if conn:
+            conn.close()
+
+def get_user_id(session_id: str):
+    conn = None
+    cur = None
+    try:
+        conn = connect()
+        cur = conn.cursor()
+
+        cur.execute(
+            "SELECT id FROM users WHERE session_id = %s",
+            (session_id,)
+        )
+        row = cur.fetchone()
+
+        if row:
+            return row[0]
+
+        # Insert nếu chưa tồn tại
+        cur.execute(
+            "INSERT INTO users (session_id) VALUES (%s) RETURNING id",
+            (session_id,)
+        )
+
+        user_id = cur.fetchone()[0]
+        conn.commit()
+
+        return user_id
+
+    except Exception as e:
+        if conn:
+            conn.rollback()
+        return {"error": str(e)}
+
+    finally:
+        if cur:
+            cur.close()
+        if conn:
+            conn.close()
+
+def get_conversation_id(user_id: int):
+    cur = None
+    conn = None
+    try:
+        conn = connect()
+        cur = conn.cursor()
+        cur.execute("SELECT id FROM conversations WHERE user_id = %s AND is_active = 't'",(user_id,))
+        row = cur.fetchone()
+        if row:
+            conversation_id = row[0]
+        else:
+            conversation_id = None
+        return conversation_id
+    except Exception as e:
+        return {
+            "error" : str(e)
+        }
+    finally:
+        if cur:
+            cur.close()
+        if conn:
+            conn.close()
+
+ROLE_MAPPING = {
+    messageEnum.USER : "user",
+    messageEnum.SYSTEM : "system",
+    messageEnum.ASSISTANT : "assistant",
+    messageEnum.AI : "ai",
+    messageEnum.HUMAN : "human",
+    messageEnum.TOOL : "tool",
+}
+
+def import_messages(history_obj, conversation_id):
+    conn = None
+    cur = None
+    try:
+        conn = connect()
+        cur = conn.cursor()
+
+        last_two = history_obj.messages[-2:]
+
+        for msg in last_two:
+
+            if msg.type == "system" or msg.type == "tool":
+                continue
+
+            role = ROLE_MAPPING.get(msg.type)
+
+            if not role:
+                continue
+
+            cur.execute(
+                """
+                INSERT INTO messages 
+                (conversation_id, role, content) 
+                VALUES (%s, %s, %s)
+                """,
+                (conversation_id, role, msg.content)
+            )
+
+        conn.commit()
+
+    except Exception as e:
+        if conn:
+            conn.rollback()
+        return {"error": str(e)}
+
+    finally:
+        if cur:
+            cur.close()
+        if conn:
+            conn.close()
 
 
+def get_summary_by_user_id(user_id: int):
+    conn = None
+    cur = None
+    try:
+        conn = connect()
+        cur = conn.cursor()
+        cur.execute("SELECT context_summary FROM conversations WHERE user_id = %s AND is_active = 't'",(user_id,))
+        row = cur.fetchone()
+        if row:
+            summary = row[0]
+        else:
+            summary = None
+        return summary
+    except Exception as e:
+        return{
+            "error" : str(e)
+        }
+    finally:
+        if cur:
+            cur.close()
+        if conn:
+            conn.close()

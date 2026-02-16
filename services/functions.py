@@ -11,6 +11,8 @@ from langchain_core.chat_history import InMemoryChatMessageHistory, BaseChatMess
 from langchain_core.runnables import RunnableWithMessageHistory
 from langchain_google_genai import ChatGoogleGenerativeAI
 from core.lib import *
+from db.connect_db import create_message
+from enums.enum_class import messageEnum
 
 def extract_text(content):
     if isinstance(content, str):
@@ -161,11 +163,11 @@ def dump_history(history):
 #             trace=str(e) 
 #         )
 
-def invoke_agent_with_status(agent_with_memory, session_id, knowledge, question, summary_store, prompt_template):
+def invoke_agent_with_status(agent_with_memory, session_id, knowledge, question, SUMMARY_STORE, prompt_template, context_summary):
     try:
         system_prompt = prompt_template.format(
             knowledge = knowledge,
-            summary = summary_store.get(session_id,"")
+            summary = SUMMARY_STORE.get(session_id, context_summary)
         )
         result = agent_with_memory.invoke(
             {
@@ -180,7 +182,7 @@ def invoke_agent_with_status(agent_with_memory, session_id, knowledge, question,
             status=ErrorStatus.SUCCESS,
             message="Agent execution successfully",
             answer=result["messages"][-1].content,
-            trace=messages_to_debug_json(result["messages"])
+            trace=messages_to_debug_json([result["messages"][-1]])
         )
     except TimeoutError:
         return AgentResult(
@@ -289,6 +291,7 @@ def build_chain_summary(llm, prompt_path):
     )
     chain = (prompt | llm)
     return chain
+
 
 if __name__ == "__main__":
     llm = ChatGoogleGenerativeAI(

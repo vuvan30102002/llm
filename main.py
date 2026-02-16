@@ -2,37 +2,37 @@ from fastapi import FastAPI, Cookie, Response, HTTPException, Request
 from pydantic import BaseModel, EmailStr, Field
 from typing import Optional
 import uuid
-# from llm import fastapi_agent
+from services.llm import fastapi_agent
 import psycopg
 from db.connect_db import *
 from enums.enum_class import messageEnum, memoryEnum
 
 app = FastAPI()
 
-# @app.get("/chat")
-# def chat(
-#     user_input: str,
-#     response: Response,
-#     session_id: str = Cookie(default=None)
-# ):
-#     if not session_id:
-#         session_id = str(uuid.uuid4())
-#         response.set_cookie(
-#             key="session_id",
-#             value=session_id,
-#             httponly=True
-#         )
+@app.get("/chat")
+def chat(user_input: str, request: Request, response: Response):
+    session_id = get_or_create_session(request, response)
+    user_id = get_user_id(session_id)
+    if not user_id:
+        return {"error": "Cannot create user"}
+    # create_conversation(user_id)
+    result = fastapi_agent(user_input, session_id, int(user_id))
 
-#     result = fastapi_agent(user_input, session_id)
-
-#     return {
-#         "session_id": session_id,
-#         "message": result
-#     }
+    return {
+        "session_id": session_id,
+        "message": result,
+        "user_id" : user_id
+    }
 class UserCreate(BaseModel):
-    session_id : Optional[str]
+    session_id : Optional[str] = Field(
+        min_length=2,
+        max_length=50
+    )
     email: EmailStr
-    name: Optional[str]
+    name: Optional[str] = Field(
+        min_length=2,
+        max_length=50
+    )
     
 class Conversation(BaseModel):
     user_id : int
@@ -75,9 +75,9 @@ def start_chat(payload: UserCreate):
 
 @app.get("/get-session")
 def get_session(request: Request, response: Response):
-    session = get_or_create_session(request, response)
+    session_id = get_or_create_session(request, response)
     return {
-        "session_id" : session,
+        "session_id" : session_id,
     }
 
 @app.post("/conversation")
@@ -91,3 +91,7 @@ def message(payload: Message):
 @app.post("/memory")
 def memory(payload: Memory):
     return create_memories(payload.user_id, payload.conversation_id, payload.memory_type, payload.content)
+
+@app.get("/summary")
+def summary(user_id: int):
+    return get_summary_by_user_id(user_id)

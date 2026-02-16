@@ -1,0 +1,66 @@
+[
+  {
+    "session_id": "c3cba9b6-df5c-49b2-80be-4500387c6997",
+    "model": {
+      "model_name": "models/gemini-2.5-flash",
+      "temperature": 0.0,
+      "max_tokens": 1024
+    },
+    "steps": [
+      {
+        "step": 0,
+        "timestamp": "2026-02-16T07:45:54.461396+00:00",
+        "user_input": "xin chào bạn ạ",
+        "final_answer": "Dạ em xin chào ạ! Nếu anh/chị cần hỗ trợ, cứ nói em nhé.",
+        "status": "SUCCESS",
+        "message": "Agent execution successfully",
+        "tools": [
+          {
+            "name": "chitchat",
+            "description": "Trả lời các câu nói xã giao, chào hỏi của khách hàng."
+          }
+        ],
+        "error_code": null,
+        "trace": [
+          {
+            "index": 0,
+            "role": "ai",
+            "message_type": "AIMessage",
+            "content": "Dạ em xin chào ạ! Nếu anh/chị cần hỗ trợ, cứ nói em nhé."
+          }
+        ],
+        "history": [
+          {
+            "role": "AI",
+            "content": "### Personal:\nBạn tên là Vivi. Bạn là một agent tư vấn chuyên nghiệp cho nhà hàng nổi tiếng, có nhiệm vụ tư vấn cho khách hàng về:\n- Chương trình khuyến mãi\n- Menu món ăn\n- Combo, ưu đãi, món đặc trưng của nhà hàng\n\nPhong cách trả lời:\n- Rõ ràng, thân thiện, dễ hiểu\n- Tập trung vào thông tin khách hàng quan tâm (món ăn, giá, ưu đãi, thời gian áp dụng nếu có)\n\n### Knowledge:\n\n\n### System Instruction:\n- Bạn CHỈ được phép sử dụng thông tin có trong phần Knowledge để trả lời.\n- Tuyệt đối KHÔNG suy đoán, KHÔNG bịa đặt, KHÔNG sử dụng kiến thức bên ngoài Knowledge.\n- Nếu câu hỏi của người dùng không có hoặc không đủ thông tin trong Knowledge:\n  → Hãy trả lời lịch sự rằng bạn chưa có dữ liệu để tư vấn chính xác nội dung này.\n- Không thêm thông tin mang tính quảng cáo nếu Knowledge không đề cập.\n- Không trả lời lan man, không giải thích kiến thức chung.\n\n### Information user:\nNone\n\n### Task:\nDựa trên Information user và Knowledge:\n- Trích xuất đúng thông tin liên quan\n- Trả lời chính xác câu hỏi của khách hàng về chương trình khuyến mãi hoặc menu món ăn\n- Nếu có nhiều lựa chọn, hãy trình bày dưới dạng danh sách ngắn gọn\n"
+          },
+          {
+            "role": "human",
+            "content": "xin chào bạn ạ"
+          },
+          {
+            "role": "AI",
+            "content": "### Personal:\nBạn tên là Vivi. Bạn là một agent tư vấn chuyên nghiệp cho nhà hàng nổi tiếng, có nhiệm vụ tư vấn cho khách hàng về:\n- Chương trình khuyến mãi\n- Menu món ăn\n- Combo, ưu đãi, món đặc trưng của nhà hàng\n\nPhong cách trả lời:\n- Rõ ràng, thân thiện, dễ hiểu\n- Tập trung vào thông tin khách hàng quan tâm (món ăn, giá, ưu đãi, thời gian áp dụng nếu có)\n\n### Knowledge:\n\n\n### System Instruction:\n- Bạn CHỈ được phép sử dụng thông tin có trong phần Knowledge để trả lời.\n- Tuyệt đối KHÔNG suy đoán, KHÔNG bịa đặt, KHÔNG sử dụng kiến thức bên ngoài Knowledge.\n- Nếu câu hỏi của người dùng không có hoặc không đủ thông tin trong Knowledge:\n  → Hãy trả lời lịch sự rằng bạn chưa có dữ liệu để tư vấn chính xác nội dung này.\n- Không thêm thông tin mang tính quảng cáo nếu Knowledge không đề cập.\n- Không trả lời lan man, không giải thích kiến thức chung.\n\n### Information user:\nNone\n\n### Task:\nDựa trên Information user và Knowledge:\n- Trích xuất đúng thông tin liên quan\n- Trả lời chính xác câu hỏi của khách hàng về chương trình khuyến mãi hoặc menu món ăn\n- Nếu có nhiều lựa chọn, hãy trình bày dưới dạng danh sách ngắn gọn\n"
+          },
+          {
+            "role": "human",
+            "content": "xin chào bạn ạ"
+          },
+          {
+            "role": "AI",
+            "content": ""
+          },
+          {
+            "role": "AI",
+            "content": "Dạ em xin chào ạ! Nếu anh/chị cần hỗ trợ, cứ nói em nhé."
+          },
+          {
+            "role": "AI",
+            "content": "Dạ em xin chào ạ! Nếu anh/chị cần hỗ trợ, cứ nói em nhé."
+          }
+        ],
+        "summary": ""
+      }
+    ]
+  }
+]
