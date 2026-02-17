@@ -228,12 +228,20 @@ def import_messages(history_obj, conversation_id):
 
         for msg in last_two:
 
-            if msg.type == "system" or msg.type == "tool":
+            if msg.type in ["system", "tool"] or not msg.content:
                 continue
 
             role = ROLE_MAPPING.get(msg.type)
 
             if not role:
+                continue
+
+            # Kiểm tra xem tin nhắn này ĐÃ TỒN TẠI chưa trong conversation hiện tại
+            cur.execute(
+                "SELECT 1 FROM messages WHERE conversation_id = %s AND role = %s AND content = %s LIMIT 1",
+                (conversation_id, role, msg.content)
+            )
+            if cur.fetchone():
                 continue
 
             cur.execute(
@@ -258,7 +266,6 @@ def import_messages(history_obj, conversation_id):
         if conn:
             conn.close()
 
-
 def get_summary_by_user_id(user_id: int):
     conn = None
     cur = None
@@ -274,6 +281,31 @@ def get_summary_by_user_id(user_id: int):
         return summary
     except Exception as e:
         return{
+            "error" : str(e)
+        }
+    finally:
+        if cur:
+            cur.close()
+        if conn:
+            conn.close()
+
+def update_conversation(user_id: int, context_summary: str):
+    conn = None
+    cur = None
+    try:
+        conn = connect()
+        cur = conn.cursor()
+        cur.execute(
+            """
+            UPDATE conversations
+            SET context_summary = %s
+            WHERE user_id = %s AND is_active = 't'
+            """,
+            (context_summary, user_id)
+        )
+        conn.commit()   
+    except Exception as e:
+        return {
             "error" : str(e)
         }
     finally:

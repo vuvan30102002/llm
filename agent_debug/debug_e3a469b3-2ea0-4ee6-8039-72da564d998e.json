@@ -1,0 +1,456 @@
+[
+  {
+    "session_id": "e3a469b3-2ea0-4ee6-8039-72da564d998e",
+    "model": {
+      "model_name": "models/gemini-2.5-flash",
+      "temperature": 0.0,
+      "max_tokens": 1024
+    },
+    "steps": [
+      {
+        "step": 0,
+        "timestamp": "2026-02-16T09:06:18.601803+00:00",
+        "user_input": "chào ku",
+        "final_answer": "Chào bạn, Vivi đây! Rất vui được hỗ trợ bạn. Bạn đang quan tâm đến chương trình khuyến mãi hay menu món ăn của nhà hàng mình ạ?",
+        "status": "SUCCESS",
+        "message": "Agent execution successfully",
+        "tools": [
+          {
+            "name": "knowledge_question",
+            "description": "Trả lời câu hỏi dựa trên tài liệu đã được cung cấp."
+          }
+        ],
+        "error_code": null,
+        "trace": [
+          {
+            "index": 0,
+            "role": "ai",
+            "message_type": "AIMessage",
+            "content": "Chào bạn, Vivi đây! Rất vui được hỗ trợ bạn. Bạn đang quan tâm đến chương trình khuyến mãi hay menu món ăn của nhà hàng mình ạ?"
+          }
+        ],
+        "history": [
+          {
+            "role": "human",
+            "content": "chào ku"
+          },
+          {
+            "role": "AI",
+            "content": "Chào bạn, Vivi đây! Rất vui được hỗ trợ bạn. Bạn đang quan tâm đến chương trình khuyến mãi hay menu món ăn của nhà hàng mình ạ?"
+          }
+        ],
+        "summary": ""
+      },
+      {
+        "step": 1,
+        "timestamp": "2026-02-16T09:06:55.484497+00:00",
+        "user_input": "cho tôi xem món ăn trong menu yatai",
+        "final_answer": [
+          {
+            "type": "text",
+            "text": "Chào bạn, đây là các món ăn trong menu Yatai của nhà hàng mình nhé:\n\n*   Mì Udon\n*   Bánh bạch tuộc Takoyaki\n*   Bánh xèo Nhật Bản Okonomiyaki\n*   Xiên nướng Yakitori\n*   Cơm hộp Bento\n\nBạn có muốn biết thêm thông tin về món nào không ạ?",
+            "extras": {
+              "signature": "Cv0CAb4+9vuQTbKJkX6O+3ad2qvY1V+VzfgrnBnkbvFA68wsk13yXmqPF8Rs3VrDtd+Ldhm6zQgtM/KwrKPdldAXedAFMPFxVveA8N5euIrIvZuapei9c1x89oUK8nCSU+A6Z7qmI+9wRa+QYEWpZy4OCrHDAlzsACo0k5p2q/Ggp3XbB/TBHMrWKLTjAKxRFvDnK6ITFIwm81Sau2qFU/0wFhGpBZOC7j29uoBJ2P2ymOhqrwlefpIfCh2lyMguRYKkvHedkR8kTsVqr6Rmjv/xz7wzx8shVoFsb8mchTIbSBGm/R+EY393g60HNHUWS/YIJb7ss8fHieod0dK53bTC6ZmNvVbj5Sui1OX4wwrJh/yWfgovz///HHHCSgLa3OiW2ttnLQZ3KfUPyS7dqJx8BLa1rvNzwVFQAmMDiJmVvLNpoAAnIoF0mITIwLxcJg/tbhjHZ7LH3UY62oL/BOXDQQWc03JFW+SAJkzywgWMRS3K9/f5rjxZt3djzlxn"
+            }
+          }
+        ],
+        "status": "SUCCESS",
+        "message": "Agent execution successfully",
+        "tools": [
+          {
+            "name": "knowledge_question",
+            "description": "Trả lời câu hỏi dựa trên tài liệu đã được cung cấp."
+          }
+        ],
+        "error_code": null,
+        "trace": [
+          {
+            "index": 0,
+            "role": "ai",
+            "message_type": "AIMessage",
+            "content": "Chào bạn, đây là các món ăn trong menu Yatai của nhà hàng mình nhé:\n\n*   Mì Udon\n*   Bánh bạch tuộc Takoyaki\n*   Bánh xèo Nhật Bản Okonomiyaki\n*   Xiên nướng Yakitori\n*   Cơm hộp Bento\n\nBạn có muốn biết thêm thông tin về món nào không ạ?"
+          }
+        ],
+        "history": [
+          {
+            "role": "human",
+            "content": "chào ku"
+          },
+          {
+            "role": "AI",
+            "content": "Chào bạn, Vivi đây! Rất vui được hỗ trợ bạn. Bạn đang quan tâm đến chương trình khuyến mãi hay menu món ăn của nhà hàng mình ạ?"
+          },
+          {
+            "role": "human",
+            "content": "cho tôi xem món ăn trong menu yatai"
+          },
+          {
+            "role": "AI",
+            "content": "Dựa trên thông tin hiện có:\n\n- Menu Yatai:\n  - Mì Udon\n  - Bánh bạch tuộc Takoyaki\n  - Bánh xèo Nhật Bản Okonomiyaki\n  - Xiên nướng Yakitori\n  - Cơm hộp Bento\n\n\nVui lòng trả lời câu hỏi: \nLiệt kê các món ăn trong menu Yatai.\n"
+          },
+          {
+            "role": "AI",
+            "content": [
+              {
+                "type": "text",
+                "text": "Chào bạn, đây là các món ăn trong menu Yatai của nhà hàng mình nhé:\n\n*   Mì Udon\n*   Bánh bạch tuộc Takoyaki\n*   Bánh xèo Nhật Bản Okonomiyaki\n*   Xiên nướng Yakitori\n*   Cơm hộp Bento\n\nBạn có muốn biết thêm thông tin về món nào không ạ?",
+                "extras": {
+                  "signature": "Cv0CAb4+9vuQTbKJkX6O+3ad2qvY1V+VzfgrnBnkbvFA68wsk13yXmqPF8Rs3VrDtd+Ldhm6zQgtM/KwrKPdldAXedAFMPFxVveA8N5euIrIvZuapei9c1x89oUK8nCSU+A6Z7qmI+9wRa+QYEWpZy4OCrHDAlzsACo0k5p2q/Ggp3XbB/TBHMrWKLTjAKxRFvDnK6ITFIwm81Sau2qFU/0wFhGpBZOC7j29uoBJ2P2ymOhqrwlefpIfCh2lyMguRYKkvHedkR8kTsVqr6Rmjv/xz7wzx8shVoFsb8mchTIbSBGm/R+EY393g60HNHUWS/YIJb7ss8fHieod0dK53bTC6ZmNvVbj5Sui1OX4wwrJh/yWfgovz///HHHCSgLa3OiW2ttnLQZ3KfUPyS7dqJx8BLa1rvNzwVFQAmMDiJmVvLNpoAAnIoF0mITIwLxcJg/tbhjHZ7LH3UY62oL/BOXDQQWc03JFW+SAJkzywgWMRS3K9/f5rjxZt3djzlxn"
+                }
+              }
+            ]
+          }
+        ],
+        "summary": ""
+      },
+      {
+        "step": 2,
+        "timestamp": "2026-02-16T09:10:59.211994+00:00",
+        "user_input": "tôi tên là quang năm nay 24 tuổi thích ăn thịt bò",
+        "final_answer": "Chào Quang, rất vui được biết bạn. Bạn muốn tìm hiểu về các món thịt bò trong menu hay có chương trình khuyến mãi nào liên quan đến thịt bò không ạ?",
+        "status": "SUCCESS",
+        "message": "Agent execution successfully",
+        "tools": [
+          {
+            "name": "chitchat",
+            "description": "Trả lời các câu nói xã giao, chào hỏi của khách hàng."
+          }
+        ],
+        "error_code": null,
+        "trace": [
+          {
+            "index": 0,
+            "role": "ai",
+            "message_type": "AIMessage",
+            "content": "Chào Quang, rất vui được biết bạn. Bạn muốn tìm hiểu về các món thịt bò trong menu hay có chương trình khuyến mãi nào liên quan đến thịt bò không ạ?"
+          }
+        ],
+        "history": [
+          {
+            "role": "human",
+            "content": "chào ku"
+          },
+          {
+            "role": "AI",
+            "content": "Chào bạn, Vivi đây! Rất vui được hỗ trợ bạn. Bạn đang quan tâm đến chương trình khuyến mãi hay menu món ăn của nhà hàng mình ạ?"
+          },
+          {
+            "role": "human",
+            "content": "cho tôi xem món ăn trong menu yatai"
+          },
+          {
+            "role": "AI",
+            "content": "Dựa trên thông tin hiện có:\n\n- Menu Yatai:\n  - Mì Udon\n  - Bánh bạch tuộc Takoyaki\n  - Bánh xèo Nhật Bản Okonomiyaki\n  - Xiên nướng Yakitori\n  - Cơm hộp Bento\n\n\nVui lòng trả lời câu hỏi: \nLiệt kê các món ăn trong menu Yatai.\n"
+          },
+          {
+            "role": "AI",
+            "content": [
+              {
+                "type": "text",
+                "text": "Chào bạn, đây là các món ăn trong menu Yatai của nhà hàng mình nhé:\n\n*   Mì Udon\n*   Bánh bạch tuộc Takoyaki\n*   Bánh xèo Nhật Bản Okonomiyaki\n*   Xiên nướng Yakitori\n*   Cơm hộp Bento\n\nBạn có muốn biết thêm thông tin về món nào không ạ?",
+                "extras": {
+                  "signature": "Cv0CAb4+9vuQTbKJkX6O+3ad2qvY1V+VzfgrnBnkbvFA68wsk13yXmqPF8Rs3VrDtd+Ldhm6zQgtM/KwrKPdldAXedAFMPFxVveA8N5euIrIvZuapei9c1x89oUK8nCSU+A6Z7qmI+9wRa+QYEWpZy4OCrHDAlzsACo0k5p2q/Ggp3XbB/TBHMrWKLTjAKxRFvDnK6ITFIwm81Sau2qFU/0wFhGpBZOC7j29uoBJ2P2ymOhqrwlefpIfCh2lyMguRYKkvHedkR8kTsVqr6Rmjv/xz7wzx8shVoFsb8mchTIbSBGm/R+EY393g60HNHUWS/YIJb7ss8fHieod0dK53bTC6ZmNvVbj5Sui1OX4wwrJh/yWfgovz///HHHCSgLa3OiW2ttnLQZ3KfUPyS7dqJx8BLa1rvNzwVFQAmMDiJmVvLNpoAAnIoF0mITIwLxcJg/tbhjHZ7LH3UY62oL/BOXDQQWc03JFW+SAJkzywgWMRS3K9/f5rjxZt3djzlxn"
+                }
+              }
+            ]
+          },
+          {
+            "role": "human",
+            "content": "tôi tên là quang năm nay 24 tuổi thích ăn thịt bò"
+          },
+          {
+            "role": "AI",
+            "content": "Chào Quang, rất vui được biết bạn. Bạn muốn tìm hiểu về các món thịt bò trong menu hay có chương trình khuyến mãi nào liên quan đến thịt bò không ạ?"
+          }
+        ],
+        "summary": ""
+      },
+      {
+        "step": 3,
+        "timestamp": "2026-02-16T09:11:36.691097+00:00",
+        "user_input": "bạn tên là quangvivi bạn 23 tuổi, bạn tên là gì",
+        "final_answer": [
+          {
+            "type": "text",
+            "text": "Chào bạn, mình là Vivi. Rất vui được hỗ trợ bạn!",
+            "extras": {
+              "signature": "CosCAb4+9vsm+uci2lM3y5vRHuyqfCnAN6/wqm/Vvyxm1MiF/puL/ylSJ59Odcfh91qX3H3ZY5uN1umrjK7Wh1eyxnOlUbncFZuLJYF0fiuXrDm5idT930QF0xOeguBIvOF6UH1E/wP92YSpW0OQ+8BUlfKGlysQroXflDilw0WQsG8M8nZGrxkG5b91pxCW3tz9BZpuy+hlBa/AsUfFn/gNEM0GiQUZwNXCRSmtFyHEV+ZcWRng5npSi7OvySbzsYvKsJPzZBO+2yrWcC+ocX+Uj4UpUahaQlacQv3oT9SLEuqyPJNgEwxxnpG/XWWe3GgGkWGFLAOnhPyAOqYZg9EGfZDLau3ML2o8HQJ+"
+            }
+          }
+        ],
+        "status": "SUCCESS",
+        "message": "Agent execution successfully",
+        "tools": [
+          {
+            "name": "chitchat",
+            "description": "Trả lời các câu nói xã giao, chào hỏi của khách hàng."
+          }
+        ],
+        "error_code": null,
+        "trace": [
+          {
+            "index": 0,
+            "role": "ai",
+            "message_type": "AIMessage",
+            "content": "Chào bạn, mình là Vivi. Rất vui được hỗ trợ bạn!"
+          }
+        ],
+        "history": [
+          {
+            "role": "human",
+            "content": "chào ku"
+          },
+          {
+            "role": "AI",
+            "content": "Chào bạn, Vivi đây! Rất vui được hỗ trợ bạn. Bạn đang quan tâm đến chương trình khuyến mãi hay menu món ăn của nhà hàng mình ạ?"
+          },
+          {
+            "role": "human",
+            "content": "cho tôi xem món ăn trong menu yatai"
+          },
+          {
+            "role": "AI",
+            "content": "Dựa trên thông tin hiện có:\n\n- Menu Yatai:\n  - Mì Udon\n  - Bánh bạch tuộc Takoyaki\n  - Bánh xèo Nhật Bản Okonomiyaki\n  - Xiên nướng Yakitori\n  - Cơm hộp Bento\n\n\nVui lòng trả lời câu hỏi: \nLiệt kê các món ăn trong menu Yatai.\n"
+          },
+          {
+            "role": "AI",
+            "content": [
+              {
+                "type": "text",
+                "text": "Chào bạn, đây là các món ăn trong menu Yatai của nhà hàng mình nhé:\n\n*   Mì Udon\n*   Bánh bạch tuộc Takoyaki\n*   Bánh xèo Nhật Bản Okonomiyaki\n*   Xiên nướng Yakitori\n*   Cơm hộp Bento\n\nBạn có muốn biết thêm thông tin về món nào không ạ?",
+                "extras": {
+                  "signature": "Cv0CAb4+9vuQTbKJkX6O+3ad2qvY1V+VzfgrnBnkbvFA68wsk13yXmqPF8Rs3VrDtd+Ldhm6zQgtM/KwrKPdldAXedAFMPFxVveA8N5euIrIvZuapei9c1x89oUK8nCSU+A6Z7qmI+9wRa+QYEWpZy4OCrHDAlzsACo0k5p2q/Ggp3XbB/TBHMrWKLTjAKxRFvDnK6ITFIwm81Sau2qFU/0wFhGpBZOC7j29uoBJ2P2ymOhqrwlefpIfCh2lyMguRYKkvHedkR8kTsVqr6Rmjv/xz7wzx8shVoFsb8mchTIbSBGm/R+EY393g60HNHUWS/YIJb7ss8fHieod0dK53bTC6ZmNvVbj5Sui1OX4wwrJh/yWfgovz///HHHCSgLa3OiW2ttnLQZ3KfUPyS7dqJx8BLa1rvNzwVFQAmMDiJmVvLNpoAAnIoF0mITIwLxcJg/tbhjHZ7LH3UY62oL/BOXDQQWc03JFW+SAJkzywgWMRS3K9/f5rjxZt3djzlxn"
+                }
+              }
+            ]
+          },
+          {
+            "role": "human",
+            "content": "tôi tên là quang năm nay 24 tuổi thích ăn thịt bò"
+          },
+          {
+            "role": "AI",
+            "content": "Chào Quang, rất vui được biết bạn. Bạn muốn tìm hiểu về các món thịt bò trong menu hay có chương trình khuyến mãi nào liên quan đến thịt bò không ạ?"
+          },
+          {
+            "role": "human",
+            "content": "bạn tên là quangvivi bạn 23 tuổi, bạn tên là gì"
+          },
+          {
+            "role": "AI",
+            "content": [
+              {
+                "type": "text",
+                "text": "Chào bạn, mình là Vivi. Rất vui được hỗ trợ bạn!",
+                "extras": {
+                  "signature": "CosCAb4+9vsm+uci2lM3y5vRHuyqfCnAN6/wqm/Vvyxm1MiF/puL/ylSJ59Odcfh91qX3H3ZY5uN1umrjK7Wh1eyxnOlUbncFZuLJYF0fiuXrDm5idT930QF0xOeguBIvOF6UH1E/wP92YSpW0OQ+8BUlfKGlysQroXflDilw0WQsG8M8nZGrxkG5b91pxCW3tz9BZpuy+hlBa/AsUfFn/gNEM0GiQUZwNXCRSmtFyHEV+ZcWRng5npSi7OvySbzsYvKsJPzZBO+2yrWcC+ocX+Uj4UpUahaQlacQv3oT9SLEuqyPJNgEwxxnpG/XWWe3GgGkWGFLAOnhPyAOqYZg9EGfZDLau3ML2o8HQJ+"
+                }
+              }
+            ]
+          }
+        ],
+        "summary": ""
+      },
+      {
+        "step": 4,
+        "timestamp": "2026-02-16T09:12:11.373201+00:00",
+        "user_input": "bạn biết tôi thích chơi thể thao gì không",
+        "final_answer": [
+          {
+            "type": "text",
+            "text": "Chào bạn, Vivi là một agent tư vấn cho nhà hàng nên Vivi không có thông tin về sở thích cá nhân của bạn. Vivi chỉ có thể hỗ trợ bạn về các chương trình khuyến mãi, menu món ăn, combo, ưu đãi và các món đặc trưng của nhà hàng thôi ạ.",
+            "extras": {
+              "signature": "CooDAb4+9vsU2MwpUO7i3vejcYCAe9/0wfr97OvnNP3NChl+maxzfJjNUgXP4FA4gA1M6tSg8P86hV1mPIhaiC90eWj2vDIcimQLOVRq2Mrava2psmUcIUXjVeDbXv50+UlyTp36oNK2yVKUdbzYtVxlBfFnK5QABIssAWFnk4NWpn1gX4VpL9cdYM0Dt0Q+YsXlQ+FDizvEygyTW3C2qqo2nW35Huq/LojiTRZKIUzNE2ZrE/Xo1nIZ0RiOSrMssKGZ0auwEfvwLO+LC/pRakuY5XWVmhzC7IY+W47Rr289pIJcJrK34WLLreIoft2eZnnGfs5CW6lYjwNWNlSd3kK9q6jdkukeVUFaosO81brerUk1sFXmZ63RhudidjTpdKuorcUrJjVPz7bu0FW4ou/Aq2xRe0Ts92riwd4dGGUv1jjk1ZTCghssQV5cixna7ee3uvL9gztF/uHyqT0TuJgSHKAsKCQzMk0qYzMwo2k4YpH7iQk7zVWANeHMKGx1EZ0djERVnZr1bEA9Ag=="
+            }
+          }
+        ],
+        "status": "SUCCESS",
+        "message": "Agent execution successfully",
+        "tools": [
+          {
+            "name": "knowledge_question",
+            "description": "Trả lời câu hỏi dựa trên tài liệu đã được cung cấp."
+          }
+        ],
+        "error_code": null,
+        "trace": [
+          {
+            "index": 0,
+            "role": "ai",
+            "message_type": "AIMessage",
+            "content": "Chào bạn, Vivi là một agent tư vấn cho nhà hàng nên Vivi không có thông tin về sở thích cá nhân của bạn. Vivi chỉ có thể hỗ trợ bạn về các chương trình khuyến mãi, menu món ăn, combo, ưu đãi và các món đặc trưng của nhà hàng thôi ạ."
+          }
+        ],
+        "history": [
+          {
+            "role": "human",
+            "content": "bạn biết tôi thích chơi thể thao gì không"
+          },
+          {
+            "role": "AI",
+            "content": [
+              {
+                "type": "text",
+                "text": "Chào bạn, Vivi là một agent tư vấn cho nhà hàng nên Vivi không có thông tin về sở thích cá nhân của bạn. Vivi chỉ có thể hỗ trợ bạn về các chương trình khuyến mãi, menu món ăn, combo, ưu đãi và các món đặc trưng của nhà hàng thôi ạ.",
+                "extras": {
+                  "signature": "CooDAb4+9vsU2MwpUO7i3vejcYCAe9/0wfr97OvnNP3NChl+maxzfJjNUgXP4FA4gA1M6tSg8P86hV1mPIhaiC90eWj2vDIcimQLOVRq2Mrava2psmUcIUXjVeDbXv50+UlyTp36oNK2yVKUdbzYtVxlBfFnK5QABIssAWFnk4NWpn1gX4VpL9cdYM0Dt0Q+YsXlQ+FDizvEygyTW3C2qqo2nW35Huq/LojiTRZKIUzNE2ZrE/Xo1nIZ0RiOSrMssKGZ0auwEfvwLO+LC/pRakuY5XWVmhzC7IY+W47Rr289pIJcJrK34WLLreIoft2eZnnGfs5CW6lYjwNWNlSd3kK9q6jdkukeVUFaosO81brerUk1sFXmZ63RhudidjTpdKuorcUrJjVPz7bu0FW4ou/Aq2xRe0Ts92riwd4dGGUv1jjk1ZTCghssQV5cixna7ee3uvL9gztF/uHyqT0TuJgSHKAsKCQzMk0qYzMwo2k4YpH7iQk7zVWANeHMKGx1EZ0djERVnZr1bEA9Ag=="
+                }
+              }
+            ]
+          }
+        ],
+        "summary": "Dựa trên lịch sử hội thoại, thông tin của khách hàng được tóm tắt như sau:\n\n*   **Tên:** Quang\n*   **Tuổi:** 24\n*"
+      },
+      {
+        "step": 5,
+        "timestamp": "2026-02-16T09:12:48.248992+00:00",
+        "user_input": "tôi tên là gì",
+        "final_answer": [
+          {
+            "type": "text",
+            "text": "Chào bạn, tôi là Vivi. Rất vui được hỗ trợ bạn. Tuy nhiên, tôi không có thông tin về tên của bạn.",
+            "extras": {
+              "signature": "CpYDAb4+9vvVLCBgt3lWDxvag0djfrWLIbnEAUm9DL7obSfCFPRlb2Yxe/rfO3vb/gLXQKKsWut2UvrfVYuh16mu137MYLiZ1KHOR7T1WoowCHs6f/Q8CoeU6SyjxnriT+XAi/Drh2GJ1QvOv3aLCFitp8vKcBZi4UH3GkzpyeGZJ0YAhhC4HA9pAuNmFj1/tNl2RT/p+3OwyplSaXk9cqkJxRuj8Cvp+dIPLUNnZ7nSW1SGHGGd6ATaKXaLI6Xl5V5deD3pzhCQP8p3h6tEn7gA9y+rizEYcjqSGhcUnjI2SZvgRrWXb1gEYBlbCQF/fTHe2p5ggrZ09rQ35X8Md+jRJbDPXfaikC8CN4b9b+kTYZCZWOBhMo/RIYXTtTjGBWI8VSLv21jNnQS9Vy/TXIUJhU7yCzfVRyh1JjLoyvgRql/TMtcdu8KQVGsQ7nOn9gK5uyBbyDHVWlTg2ISaKfS1tWRm7fPR6Y+hAemzQzuCGLsDn3IyPa83n+LKdYdm2V0DIV8TreicvOQohmfrHEnwDUdZnfJwrA=="
+            }
+          }
+        ],
+        "status": "SUCCESS",
+        "message": "Agent execution successfully",
+        "tools": [
+          {
+            "name": "knowledge_question",
+            "description": "Trả lời câu hỏi dựa trên tài liệu đã được cung cấp."
+          }
+        ],
+        "error_code": null,
+        "trace": [
+          {
+            "index": 0,
+            "role": "ai",
+            "message_type": "AIMessage",
+            "content": "Chào bạn, tôi là Vivi. Rất vui được hỗ trợ bạn. Tuy nhiên, tôi không có thông tin về tên của bạn."
+          }
+        ],
+        "history": [
+          {
+            "role": "human",
+            "content": "bạn biết tôi thích chơi thể thao gì không"
+          },
+          {
+            "role": "AI",
+            "content": [
+              {
+                "type": "text",
+                "text": "Chào bạn, Vivi là một agent tư vấn cho nhà hàng nên Vivi không có thông tin về sở thích cá nhân của bạn. Vivi chỉ có thể hỗ trợ bạn về các chương trình khuyến mãi, menu món ăn, combo, ưu đãi và các món đặc trưng của nhà hàng thôi ạ.",
+                "extras": {
+                  "signature": "CooDAb4+9vsU2MwpUO7i3vejcYCAe9/0wfr97OvnNP3NChl+maxzfJjNUgXP4FA4gA1M6tSg8P86hV1mPIhaiC90eWj2vDIcimQLOVRq2Mrava2psmUcIUXjVeDbXv50+UlyTp36oNK2yVKUdbzYtVxlBfFnK5QABIssAWFnk4NWpn1gX4VpL9cdYM0Dt0Q+YsXlQ+FDizvEygyTW3C2qqo2nW35Huq/LojiTRZKIUzNE2ZrE/Xo1nIZ0RiOSrMssKGZ0auwEfvwLO+LC/pRakuY5XWVmhzC7IY+W47Rr289pIJcJrK34WLLreIoft2eZnnGfs5CW6lYjwNWNlSd3kK9q6jdkukeVUFaosO81brerUk1sFXmZ63RhudidjTpdKuorcUrJjVPz7bu0FW4ou/Aq2xRe0Ts92riwd4dGGUv1jjk1ZTCghssQV5cixna7ee3uvL9gztF/uHyqT0TuJgSHKAsKCQzMk0qYzMwo2k4YpH7iQk7zVWANeHMKGx1EZ0djERVnZr1bEA9Ag=="
+                }
+              }
+            ]
+          },
+          {
+            "role": "human",
+            "content": "tôi tên là gì"
+          },
+          {
+            "role": "AI",
+            "content": [
+              {
+                "type": "text",
+                "text": "Chào bạn, tôi là Vivi. Rất vui được hỗ trợ bạn. Tuy nhiên, tôi không có thông tin về tên của bạn.",
+                "extras": {
+                  "signature": "CpYDAb4+9vvVLCBgt3lWDxvag0djfrWLIbnEAUm9DL7obSfCFPRlb2Yxe/rfO3vb/gLXQKKsWut2UvrfVYuh16mu137MYLiZ1KHOR7T1WoowCHs6f/Q8CoeU6SyjxnriT+XAi/Drh2GJ1QvOv3aLCFitp8vKcBZi4UH3GkzpyeGZJ0YAhhC4HA9pAuNmFj1/tNl2RT/p+3OwyplSaXk9cqkJxRuj8Cvp+dIPLUNnZ7nSW1SGHGGd6ATaKXaLI6Xl5V5deD3pzhCQP8p3h6tEn7gA9y+rizEYcjqSGhcUnjI2SZvgRrWXb1gEYBlbCQF/fTHe2p5ggrZ09rQ35X8Md+jRJbDPXfaikC8CN4b9b+kTYZCZWOBhMo/RIYXTtTjGBWI8VSLv21jNnQS9Vy/TXIUJhU7yCzfVRyh1JjLoyvgRql/TMtcdu8KQVGsQ7nOn9gK5uyBbyDHVWlTg2ISaKfS1tWRm7fPR6Y+hAemzQzuCGLsDn3IyPa83n+LKdYdm2V0DIV8TreicvOQohmfrHEnwDUdZnfJwrA=="
+                }
+              }
+            ]
+          }
+        ],
+        "summary": "Dựa trên lịch sử hội thoại, thông tin của khách hàng được tóm tắt như sau:\n\n*   **Tên:** Quang\n*   **Tuổi:** 24\n*"
+      },
+      {
+        "step": 0,
+        "timestamp": "2026-02-16T09:25:20.253639+00:00",
+        "user_input": "tôi năm nay bao nhiêu tuổi",
+        "final_answer": [
+          {
+            "type": "text",
+            "text": "Chào bạn, tôi là Vivi, một trợ lý ảo. Tôi không có thông tin cá nhân như tuổi tác. Tôi có thể giúp bạn về các chương trình khuyến mãi, menu món ăn, combo, ưu đãi và món đặc trưng của nhà hàng. Bạn muốn tìm hiểu về điều gì ạ?",
+            "extras": {
+              "signature": "Cs0EAb4+9vt5VqAVo+L7dJH2BUWLfWC+orNBH9z/Du47qmPkIHy8vlIMOY+rmY5YFpQsuKXJDF1EHVgYFGPobZpz8OSaqOTyC6C9UYKQJ4YODRUm96QtHBVGf07zsQrwGZ533WIX/i48GpLgTH/H1DGt4EO90YXtklWt3Xc6fCXjESXI+xXLTs8HgBaSlmNGw5rAaA6muHM2LKzaISKqfvvP04pwAhuEX70WmxqxRBqpJ4jiIM0WTDtqnnerQe4cK616WvOD8Bj7MuC4TJQZ/n1kKkD86tYMVBMMwuTjmx3IF0d5Xgp0kLJJhmE2XhkJe4lp1TAnzNZUfbD91DRPO6yRvz3wGGBwq7AE1B0jw9Rceyfj/YrftXkPeVvIsankgFN9K8YbgycLZw43rXNMcTsfZLUupUz0saMjV8PSWAnGPu7Vdtd+RVPV/C11f1dqBOueSySynbAkAI8CGBZ9JDpAQWzteUoZw/Efy9zi944ZuT4R3V/ploGoJlFbJn261Z+jT8/xOwNmN1CMyUY0mEsrdnCrZ8lFhni4CG6sjfU7wE6bue3U7Y+Het8oceqxWH+MnRqWfWOD5MLJAdfZgbEKY5RbfB/Jf1LV5lD+Zk1rhn1a7dZPMVdJxbCYSXIpzuy+z8tPJGXUNab+4HhtNDkn6xNpGblCbyTnQHGzPEkhRz9zUaWMRYPHZS1weRJpoVZJpMla5iFPC8GFj8DgwdPQSqz5UZbQsoWR8tEze7c3R3x0UCfeuwzchx1Qk7Mf/EWRCwuVjVxeF7VcoNPF9g=="
+            }
+          }
+        ],
+        "status": "SUCCESS",
+        "message": "Agent execution successfully",
+        "tools": [
+          {
+            "name": "knowledge_question",
+            "description": "Trả lời câu hỏi dựa trên tài liệu đã được cung cấp."
+          }
+        ],
+        "error_code": null,
+        "trace": [
+          {
+            "index": 0,
+            "role": "ai",
+            "message_type": "AIMessage",
+            "content": "Chào bạn, tôi là Vivi, một trợ lý ảo. Tôi không có thông tin cá nhân như tuổi tác. Tôi có thể giúp bạn về các chương trình khuyến mãi, menu món ăn, combo, ưu đãi và món đặc trưng của nhà hàng. Bạn muốn tìm hiểu về điều gì ạ?"
+          }
+        ],
+        "history": [
+          {
+            "role": "human",
+            "content": "tôi năm nay bao nhiêu tuổi"
+          },
+          {
+            "role": "AI",
+            "content": [
+              {
+                "type": "text",
+                "text": "Chào bạn, tôi là Vivi, một trợ lý ảo. Tôi không có thông tin cá nhân như tuổi tác. Tôi có thể giúp bạn về các chương trình khuyến mãi, menu món ăn, combo, ưu đãi và món đặc trưng của nhà hàng. Bạn muốn tìm hiểu về điều gì ạ?",
+                "extras": {
+                  "signature": "Cs0EAb4+9vt5VqAVo+L7dJH2BUWLfWC+orNBH9z/Du47qmPkIHy8vlIMOY+rmY5YFpQsuKXJDF1EHVgYFGPobZpz8OSaqOTyC6C9UYKQJ4YODRUm96QtHBVGf07zsQrwGZ533WIX/i48GpLgTH/H1DGt4EO90YXtklWt3Xc6fCXjESXI+xXLTs8HgBaSlmNGw5rAaA6muHM2LKzaISKqfvvP04pwAhuEX70WmxqxRBqpJ4jiIM0WTDtqnnerQe4cK616WvOD8Bj7MuC4TJQZ/n1kKkD86tYMVBMMwuTjmx3IF0d5Xgp0kLJJhmE2XhkJe4lp1TAnzNZUfbD91DRPO6yRvz3wGGBwq7AE1B0jw9Rceyfj/YrftXkPeVvIsankgFN9K8YbgycLZw43rXNMcTsfZLUupUz0saMjV8PSWAnGPu7Vdtd+RVPV/C11f1dqBOueSySynbAkAI8CGBZ9JDpAQWzteUoZw/Efy9zi944ZuT4R3V/ploGoJlFbJn261Z+jT8/xOwNmN1CMyUY0mEsrdnCrZ8lFhni4CG6sjfU7wE6bue3U7Y+Het8oceqxWH+MnRqWfWOD5MLJAdfZgbEKY5RbfB/Jf1LV5lD+Zk1rhn1a7dZPMVdJxbCYSXIpzuy+z8tPJGXUNab+4HhtNDkn6xNpGblCbyTnQHGzPEkhRz9zUaWMRYPHZS1weRJpoVZJpMla5iFPC8GFj8DgwdPQSqz5UZbQsoWR8tEze7c3R3x0UCfeuwzchx1Qk7Mf/EWRCwuVjVxeF7VcoNPF9g=="
+                }
+              }
+            ]
+          }
+        ],
+        "summary": ""
+      },
+      {
+        "step": 0,
+        "timestamp": "2026-02-16T09:27:52.364420+00:00",
+        "user_input": "tôi tên là quang năm nay đã 24 tuổi rồi và tôi rất thích chơi cầu lông",
+        "final_answer": "Chào Quang, rất vui được biết bạn! Bạn có câu hỏi nào về nhà hàng của chúng tôi không?",
+        "status": "SUCCESS",
+        "message": "Agent execution successfully",
+        "tools": [
+          {
+            "name": "chitchat",
+            "description": "Trả lời các câu nói xã giao, chào hỏi của khách hàng."
+          }
+        ],
+        "error_code": null,
+        "trace": [
+          {
+            "index": 0,
+            "role": "ai",
+            "message_type": "AIMessage",
+            "content": "Chào Quang, rất vui được biết bạn! Bạn có câu hỏi nào về nhà hàng của chúng tôi không?"
+          }
+        ],
+        "history": [
+          {
+            "role": "human",
+            "content": "tôi tên là quang năm nay đã 24 tuổi rồi và tôi rất thích chơi cầu lông"
+          },
+          {
+            "role": "AI",
+            "content": "Chào Quang, rất vui được biết bạn! Bạn có câu hỏi nào về nhà hàng của chúng tôi không?"
+          }
+        ],
+        "summary": ""
+      }
+    ]
+  }
+]

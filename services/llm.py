@@ -19,7 +19,8 @@ DEBUG_DIR = "./agent_debug"
 BASE_FILENAME = "debug"
 
 # ================= PROMPT =================
-prompt_text = read_file(Path("./prompts/system_prompt.txt"))
+# prompt_text = read_file(Path("./prompts/system_prompt.txt"))
+prompt_text = read_file(Path("./prompts/prompt_system.txt"))
 path_prompt_classification = Path("./prompts/prompt_classification.txt")
 prompt_sumary_path = Path("./prompts/prompt_summary.txt")
 prompt_clean_path = Path("./prompts/prompt_clean_question.txt")
@@ -34,10 +35,10 @@ bp6 = BusinessProcess("get_user_by_id","lấy user theo id",[{"get_user_by_id":g
 
 bp_list = [bp1, bp2, bp3, bp4, bp5, bp6]
 
-prompt_template = PromptTemplate(
-    template=prompt_text,
-    input_variables=["knowledge", "summary"]
-)
+# prompt_template = PromptTemplate(
+#     template=prompt_text,
+#     input_variables=["knowledge", "summary"]
+# )
 
 llm = ChatGoogleGenerativeAI(
     model="models/gemini-2.5-flash",
@@ -54,12 +55,25 @@ DEBUG_STEP = 0
 
 
 # ================= HISTORY =================
-def get_history(session_id: str):
+class FilteredChatMessageHistory(InMemoryChatMessageHistory):
+    def add_message(self, message):
+        # Chỉ thêm nếu tin nhắn khác hoàn toàn với tin nhắn cuối cùng (nội dung và loại)
+        if self.messages and self.messages[-1].content == message.content and self.messages[-1].type == message.type:
+            return
+        # Loại bỏ các tin nhắn AI rỗng (thường do agent tạo ra trong quá trình lặp)
+        if message.type == "ai" and not message.content:
+            return
+        super().add_message(message)
+
+
+def get_history(session_id: str, **kwargs):
+    user_id = kwargs.get("user_id","")
     if session_id not in STORE:
-        STORE[session_id] = InMemoryChatMessageHistory()
+        STORE[session_id] = FilteredChatMessageHistory()
         SUMMARY_STORE[session_id] = ""
 
     history = STORE[session_id]
+
 
     if len(history.messages) > 10:
         conversation_text = "\n".join(
@@ -68,11 +82,11 @@ def get_history(session_id: str):
 
         SUMMARY_CHAIN = build_chain_summary(llm, prompt_sumary_path)
         summary = SUMMARY_CHAIN.invoke({
-            "previous_summary": SUMMARY_STORE[session_id],
             "conversation": conversation_text
         }).content
 
         SUMMARY_STORE[session_id] = summary
+        update_conversation(user_id, summary)
 
         last_messages = history.messages[-2:]
         history.clear()
@@ -89,6 +103,7 @@ def get_or_create_agent(bp_name, tools):
     agent = create_agent(
         model=llm,
         tools=tools,
+        system_prompt=prompt_text,
         middleware=[handle_tool_errors]
     )
     AGENT_CACHE[bp_name] = agent
@@ -131,7 +146,7 @@ def fastapi_agent(question: str, session_id: str, user_id: int) -> str:
 
     agent_with_memory = RunnableWithMessageHistory(
         agent,
-        get_history,
+        lambda session_id: get_history(session_id, user_id=user_id),
         input_messages_key="messages",
         history_messages_key="history",
     )
@@ -147,14 +162,14 @@ def fastapi_agent(question: str, session_id: str, user_id: int) -> str:
     result = invoke_agent_with_status(
         agent_with_memory,
         session_id,
+        user_id,
         knowledge,
         question,
         SUMMARY_STORE,
-        prompt_template,
         context_summary
     )
 
-    history = get_history(session_id)
+    history = get_history(session_id, user_id=user_id)
 
     conversation_id = get_conversation_id(user_id)
     import_messages(history, conversation_id)

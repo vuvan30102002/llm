@@ -68,12 +68,9 @@ def export_debug_json(session_payload, data: dict, DEBUG_DIR, BASE_FILENAME, ses
     os.makedirs(DEBUG_DIR, exist_ok=True)
     filepath = os.path.join(DEBUG_DIR, f"{BASE_FILENAME}_{session_id}.json")
 
-    # luôn append step mới
-    session_payload.setdefault("steps", []).append(data)
-
     records = []
 
-    # Nếu file đã tồn tại → đọc lên
+    # Đọc file nếu tồn tại
     if os.path.exists(filepath):
         try:
             with open(filepath, "r", encoding="utf-8") as f:
@@ -81,22 +78,27 @@ def export_debug_json(session_payload, data: dict, DEBUG_DIR, BASE_FILENAME, ses
         except json.JSONDecodeError:
             records = []
 
-    # Cập nhật hoặc thêm session
     updated = False
+
     for idx, s in enumerate(records):
         if s.get("session_id") == session_payload.get("session_id"):
-            records[idx] = session_payload
+            # nếu đã tồn tại session → append step vào steps cũ
+            s.setdefault("steps", []).append(data)
+            records[idx] = s
             updated = True
             break
 
     if not updated:
+        # tạo session mới với step đầu tiên
+        session_payload["steps"] = [data]
         records.append(session_payload)
 
-    # Ghi lại file
+    # ghi lại
     with open(filepath, "w", encoding="utf-8") as f:
         json.dump(records, f, indent=2, ensure_ascii=False)
 
     return filepath
+
 
 def classify_gemini_error(err: Exception):
     msg = str(err).lower()
@@ -163,21 +165,21 @@ def dump_history(history):
 #             trace=str(e) 
 #         )
 
-def invoke_agent_with_status(agent_with_memory, session_id, knowledge, question, SUMMARY_STORE, prompt_template, context_summary):
+def invoke_agent_with_status(agent_with_memory, session_id, user_id, knowledge, question, SUMMARY_STORE, context_summary):
+    print(context_summary)
     try:
-        system_prompt = prompt_template.format(
-            knowledge = knowledge,
-            summary = SUMMARY_STORE.get(session_id, context_summary)
-        )
+        summary = SUMMARY_STORE.get(session_id) or context_summary
         result = agent_with_memory.invoke(
             {
-                "messages" : [
-                    SystemMessage(content=system_prompt),
+                "messages": [
+                    SystemMessage(content=f"User profile:\n{summary}"),
+                    SystemMessage(content=f"Knowledge:\n{knowledge}"),
                     HumanMessage(content=question)
-                ]
+                ],
             },
-            config = {"configurable" : {"session_id" : session_id}}
+            config={"configurable": {"session_id": session_id, "user_id": user_id}}
         )
+
         return AgentResult(
             status=ErrorStatus.SUCCESS,
             message="Agent execution successfully",
@@ -287,7 +289,7 @@ def build_chain_summary(llm, prompt_path):
     prompt_text = read_file(prompt_path)
     prompt = PromptTemplate(
         template=prompt_text,
-        input_variables=["history"]
+        input_variables=["conversation"]
     )
     chain = (prompt | llm)
     return chain
