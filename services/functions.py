@@ -294,6 +294,15 @@ def build_chain_summary(llm, prompt_path):
     chain = (prompt | llm)
     return chain
 
+def convert_result(result):
+    try:
+        if isinstance(result, list) and len(result) > 0:
+            return result[0].get("text", "")
+        return str(result)
+    except Exception as e:
+        print("Convert error:", e)
+        return "Xin lỗi, không thể xử lý phản hồi."
+
 
 if __name__ == "__main__":
     llm = ChatGoogleGenerativeAI(

@@ -69,13 +69,9 @@ def create_conversation(user_id : int, title: str | None = None, context_summary
         cur = conn.cursor()
         cur.execute("INSERT INTO conversations (user_id, title, context_summary, is_active) VALUES (%s, %s, %s, %s)", (user_id, title, context_summary, is_active))
         conn.commit()
-        return {
-            "message": "Successfully"
-        }
+        return True
     except Exception as e:
-        return {
-            "error" : str(e)
-        }
+        return False
     finally:
         if cur:
             cur.close()
@@ -147,7 +143,7 @@ def update_conversation(id: str, user_id: int, content_summary: str):
         if conn:
             conn.close()
 
-def get_user_id(session_id: str):
+def get_user_id(session_id: str, name: str|None=None, email:str|None=None):
     conn = None
     cur = None
     try:
@@ -165,8 +161,8 @@ def get_user_id(session_id: str):
 
         # Insert nếu chưa tồn tại
         cur.execute(
-            "INSERT INTO users (session_id) VALUES (%s) RETURNING id",
-            (session_id,)
+            "INSERT INTO users (session_id,name,email) VALUES (%s,%s,%s) RETURNING id",
+            (session_id,name,email)
         )
 
         user_id = cur.fetchone()[0]
@@ -308,6 +304,69 @@ def update_conversation(user_id: int, context_summary: str):
         return {
             "error" : str(e)
         }
+    finally:
+        if cur:
+            cur.close()
+        if conn:
+            conn.close()
+
+def get_messages(conversation_id: str, limit: int):
+    conn = None
+    cur = None
+    try:
+        conn = connect()
+        cur = conn.cursor()
+        cur.execute("SELECT role, content FROM messages WHERE conversation_id = %s ORDER BY created_at ASC LIMIT %s", (conversation_id, limit))
+        rows = cur.fetchall()
+        if rows:
+            messages = [
+                {
+                    "role" : r[0],
+                    "content" : r[1],
+                }
+                for r in rows
+            ]
+        return {
+            "messages" : messages
+        }
+    except Exception as e:
+        return {
+            "error" : str(e)
+        }
+    finally:
+        if cur:
+            cur.close()
+        if conn:
+            conn.close()
+
+def check_session_id(session_id: str):
+    conn = None
+    cur = None
+    try:
+        conn = connect()
+        cur = conn.cursor()
+        cur.execute("SELECT id FROM users WHERE session_id = %s",(session_id,))
+        row = cur.fetchone()
+        if row:
+            return row[0]
+        else:
+            return None 
+    except Exception as e:
+        return None
+    
+def get_latest_conversation(user_id: int):
+    conn = None
+    cur = None
+    try:
+        conn = connect()
+        cur = conn.cursor()
+        cur.execute("SELECT id FROM conversations WHERE user_id = %s",(user_id,))
+        row = cur.fetchone()
+        if row:
+            return row[0]
+        return None
+    except Exception as e:
+        return None
     finally:
         if cur:
             cur.close()
