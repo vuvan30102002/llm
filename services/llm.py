@@ -61,12 +61,26 @@ class FilteredChatMessageHistory(InMemoryChatMessageHistory):
         msg_type = message.type  # lowercase
 
         # Bỏ system
-        # if msg_type == "system":
-        #     return
+        if msg_type == "system":
+            return
 
         # Bỏ ai rỗng
-        if msg_type == "ai" and not (message.content or "").strip():
-            return
+        # if msg_type == "ai" and not (message.content or "").strip():
+        #     return
+        if msg_type == "ai":
+            text = ""
+
+            if isinstance(message.content, str):
+                text = message.content
+            elif isinstance(message.content, list):
+                text = " ".join(
+                    item.get("text", "")
+                    for item in message.content
+                    if isinstance(item, dict)
+                )
+
+            if not text.strip():
+                return
 
         super().add_message(message)
 

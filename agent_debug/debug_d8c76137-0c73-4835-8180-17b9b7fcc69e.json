@@ -1,0 +1,582 @@
+[
+  {
+    "session_id": "d8c76137-0c73-4835-8180-17b9b7fcc69e",
+    "model": {
+      "model_name": "models/gemini-2.5-flash",
+      "temperature": 0.0,
+      "max_tokens": 1024
+    },
+    "steps": [
+      {
+        "step": 0,
+        "timestamp": "2026-03-02T15:24:14.424703+00:00",
+        "user_input": "Xin chào",
+        "final_answer": "Chào anh/chị, em là trợ lý của nhà hàng. Em có thể giúp gì cho mình không ạ?",
+        "status": "SUCCESS",
+        "message": "Agent execution successfully",
+        "tools": [
+          {
+            "name": "chitchat",
+            "description": "Trả lời các câu nói xã giao, chào hỏi của khách hàng."
+          }
+        ],
+        "error_code": null,
+        "trace": [
+          {
+            "index": 0,
+            "role": "ai",
+            "message_type": "AIMessage",
+            "content": "Chào anh/chị, em là trợ lý của nhà hàng. Em có thể giúp gì cho mình không ạ?"
+          }
+        ],
+        "history": [
+          {
+            "role": "SystemMessage",
+            "content": "User profile:\nNone"
+          },
+          {
+            "role": "SystemMessage",
+            "content": "Knowledge:\n"
+          },
+          {
+            "role": "HumanMessage",
+            "content": "Xin chào"
+          },
+          {
+            "role": "SystemMessage",
+            "content": "User profile:\nNone"
+          },
+          {
+            "role": "SystemMessage",
+            "content": "Knowledge:\n"
+          },
+          {
+            "role": "HumanMessage",
+            "content": "Xin chào"
+          },
+          {
+            "role": "ToolMessage",
+            "content": "Chào anh/chị, em là trợ lý của nhà hàng. Em có thể giúp gì cho mình không ạ?"
+          },
+          {
+            "role": "AIMessage",
+            "content": "Chào anh/chị, em là trợ lý của nhà hàng. Em có thể giúp gì cho mình không ạ?"
+          }
+        ],
+        "summary": ""
+      },
+      {
+        "step": 1,
+        "timestamp": "2026-03-02T15:25:05.701112+00:00",
+        "user_input": "xin chào bạn, mình là quang năm nay đã 24 tuổi rồi",
+        "final_answer": "Chào Quang, rất vui được hỗ trợ bạn. Bạn muốn tìm hiểu về chương trình khuyến mãi hay menu của nhà hàng mình ạ?",
+        "status": "SUCCESS",
+        "message": "Agent execution successfully",
+        "tools": [
+          {
+            "name": "chitchat",
+            "description": "Trả lời các câu nói xã giao, chào hỏi của khách hàng."
+          }
+        ],
+        "error_code": null,
+        "trace": [
+          {
+            "index": 0,
+            "role": "ai",
+            "message_type": "AIMessage",
+            "content": "Chào Quang, rất vui được hỗ trợ bạn. Bạn muốn tìm hiểu về chương trình khuyến mãi hay menu của nhà hàng mình ạ?"
+          }
+        ],
+        "history": [
+          {
+            "role": "HumanMessage",
+            "content": "xin chào bạn, mình là quang năm nay đã 24 tuổi rồi"
+          },
+          {
+            "role": "AIMessage",
+            "content": "Chào Quang, rất vui được hỗ trợ bạn. Bạn muốn tìm hiểu về chương trình khuyến mãi hay menu của nhà hàng mình ạ?"
+          }
+        ],
+        "summary": "**Tóm tắt thông tin khách hàng:**\n\n*   **Tên:** Quang\n*   **Tuổi:** 24"
+      },
+      {
+        "step": 2,
+        "timestamp": "2026-03-02T15:25:40.011653+00:00",
+        "user_input": "bên bạn có món ăn nướng không",
+        "final_answer": [
+          {
+            "type": "text",
+            "text": "Chào Quang, bên mình có rất nhiều món nướng hấp dẫn trong menu buffet Yatai 399k đó ạ.\n\nCác món nướng bao gồm:\n*   **Nhóm Bò BBQ:** Dẻ sườn bò Mỹ Xốt BBQ, Dẻ sườn bò Mỹ Xốt miso cay, Bò Hanabi xốt BBQ, Bò Hanabi xốt Miso cay, Bò Hanabi xốt Niniku, Bò Hanabi xốt Sake, Lõi thăn bò xốt BBQ, Lõi thăn bò xốt Miso cay, Thăn vai bò xốt niniku, Thăn vai bò xốt sake.\n*   **Nhóm Heo BBQ:** Sườn heo hảo hạng Xốt BBQ, Sườn heo Xốt niniku, Sườn heo Xốt sake, Sườn heo nướng Xốt shiogoma, Gáy heo nướng, Ba chỉ heo Xốt sake, Ba chỉ heo Xốt Shiho, Ba chỉ heo nướng Xốt BBQ, Ba chỉ heo Xốt niniku, Nạc dăm heo Xốt Sake, Nạc dăm heo Xốt Miso, Nạc dăm heo Xốt ninniku.\n\nNgoài ra, còn có một số món nướng khác như Cá saba nướng muối, Cá hồi nướng mù tạt, Cá hồi nướng sốt teriyaki, Cá Sugi nướng phô-mai nấm.\n\nBạn có muốn xem chi tiết menu buffet Yatai 399k không ạ?",
+            "extras": {
+              "signature": "CrQEAb4+9vt77B5zk/j8K41Z3V5RqWA1YVoy/0yl2V5CZAMpPglmpSXmky6WHRkRp6h/nJgT+qWY+OaI7n9zmG0uYCjsk+svjsToGmm1OAAh/gbXWg1nJLhaTWgIgv6Drgbxx0/4DsB0p6RdLPD0DtFDb2+lVPunX6apahhq2JZ7ab9ppu9gVS48P2ulrzqgk0bmxUyqtXw20valGjADs/frcaSxci06F80inscHe/hmhR8fPTl06nIIMcLdqWVj7ozzxkpQ7uDMyV++ObVTis9HIMgFEmCJuggfiS3cbt/gf1pfRz5gIedm+zkJN42x6c2iCmkJkQAkylMVxfc8zJ9pnpvDXjBkpAwYWJF7vOK7wEQeqk6MvJB7ddqputqDsdVQudhZUsl2tn64kV4Mvd2g1pzkmAylA1EPcPTdYdUj9iHw/8yl599yA4/vKijt0V4KLY42e+/7fOkEhNklJFQQleindHGWPDIu7R7N7bAH2Kcss0xLh9TynS7ncIFs7GXf5dlF14xNvO/Ra/P9XNlhH/pMGsC0Z4/+SrRD5uhRZUy6pZpV0e0myepWhH6KkK4dKb2shn0iSD1i9BMy+CqtHvV/AFrglLkVf9hkQxo+35YTpzokftkr8COALhXqXikkHYawxU4nSuH+lNHHsE+jZVb6HjzRwGbOhxtvu0feCC+loegjhfsBK6PBbhLCaFTGLEsAe389cdv/4jMmkYTo04+Y6nWKMFRGZ4oawsYRONeyuJsB"
+            }
+          }
+        ],
+        "status": "SUCCESS",
+        "message": "Agent execution successfully",
+        "tools": [
+          {
+            "name": "knowledge_question",
+            "description": "Trả lời câu hỏi dựa trên tài liệu đã được cung cấp."
+          }
+        ],
+        "error_code": null,
+        "trace": [
+          {
+            "index": 0,
+            "role": "ai",
+            "message_type": "AIMessage",
+            "content": "Chào Quang, bên mình có rất nhiều món nướng hấp dẫn trong menu buffet Yatai 399k đó ạ.\n\nCác món nướng bao gồm:\n*   **Nhóm Bò BBQ:** Dẻ sườn bò Mỹ Xốt BBQ, Dẻ sườn bò Mỹ Xốt miso cay, Bò Hanabi xốt BBQ, Bò Hanabi xốt Miso cay, Bò Hanabi xốt Niniku, Bò Hanabi xốt Sake, Lõi thăn bò xốt BBQ, Lõi thăn bò xốt Miso cay, Thăn vai bò xốt niniku, Thăn vai bò xốt sake.\n*   **Nhóm Heo BBQ:** Sườn heo hảo hạng Xốt BBQ, Sườn heo Xốt niniku, Sườn heo Xốt sake, Sườn heo nướng Xốt shiogoma, Gáy heo nướng, Ba chỉ heo Xốt sake, Ba chỉ heo Xốt Shiho, Ba chỉ heo nướng Xốt BBQ, Ba chỉ heo Xốt niniku, Nạc dăm heo Xốt Sake, Nạc dăm heo Xốt Miso, Nạc dăm heo Xốt ninniku.\n\nNgoài ra, còn có một số món nướng khác như Cá saba nướng muối, Cá hồi nướng mù tạt, Cá hồi nướng sốt teriyaki, Cá Sugi nướng phô-mai nấm.\n\nBạn có muốn xem chi tiết menu buffet Yatai 399k không ạ?"
+          }
+        ],
+        "history": [
+          {
+            "role": "HumanMessage",
+            "content": "xin chào bạn, mình là quang năm nay đã 24 tuổi rồi"
+          },
+          {
+            "role": "AIMessage",
+            "content": "Chào Quang, rất vui được hỗ trợ bạn. Bạn muốn tìm hiểu về chương trình khuyến mãi hay menu của nhà hàng mình ạ?"
+          },
+          {
+            "role": "SystemMessage",
+            "content": "User profile:\n**Tóm tắt thông tin khách hàng:**\n\n*   **Tên:** Quang\n*   **Tuổi:** 24"
+          },
+          {
+            "role": "SystemMessage",
+            "content": "Knowledge:\n. I. Ăn 4 tặng 1 với menu buffet Yatai 399k . • TÊN CHƯƠNG TRÌNH: Ăn 4 tặng 1 với menu buffet Yatai 399k . • THỜI GIAN BẮT ĐẦU: 01/08/2025 . • THỜI GIAN KẾT THÚC: 31/08/2025 . • ĐỊA ĐIỂM ÁP DỤNG: Shogun Nguyễn Văn Lộc (Thành Phố Hà Nội). . • NỘI DUNG CHƯƠNG TRÌNH: Miễn phí nâng hạng: Buffet Yatai 399k giá chỉ 299k . áp dụng nhóm 4 khách hàng trở lên . • Áp dụng cho các khách hàng biết đến đến chương trình trên Golden SpoonS; . nhận được ưu đãi qua Zalo OA; khách hàng biết đến chương trình từ trước khi . đến nhà hàng thông qua kênh Facebook hay Tiktok . • Ưu đãi có áp dụng luỹ kế . • Ưu đãi không áp dụng song song với ưu đãi khác .\n\n. I. Danh sách link menu Shogun . Danh sách link menu tại Hà Nội, Hồ Chí Minh và Bắc Ninh: . 1) Menu buffet Robata 299.000đ/người: Menu này đã dừng bán . 2) Menu buffet Yatai 399.000đ/người: . https://drive.google.com/file/d/1rbsnZmZmg4fIvqeZE384OuGrYXqxJlnd/view . 3) Menu buffet Nomikai 469.000đ/người: . https://drive.google.com/file/d/1W5vy5M9LyAM0cjYZ8jxfvNPRpC9_oSbl/view . 4) Menu buffet Jito 419.000đ/người (chỉ áp dụng tại Nguyễn Văn Lộc - Hà Nội): . https://drive.google.com/file/d/1mdPzP2zXsbAkZnJi_kSmsBETdHDDFwm0/view . 5) Menu combo: . https://drive.google.com/file/d/14CdwVrptnwLdOnCp_sEyx0ssi2B3QbV2/view . 6) Menu gọi món/ALC: https://drive.google.com/file/d/1Kx_uiur2OKUw24KwSxhx-. V5Pei84qUzA/view . Một số lưu ý: .\n\n• Gà chiên kiểu Nhật . • Cá saba nướng muối . • Cá hồi nướng mù tạt . • Cá hồi nướng sốt teriyaki . • Lườn cá hồi sốt mayo spicy . • Râu mực chiên kiểu Nhật . • Gà karrage tưới sốt Taru . • Bánh xèo . • Khoai lang mật vừng . • Khoai chiên kiểu Okonomi . • Cá Sugi nướng phô-mai nấm . • Cá trứng chiên xù sốt taru . • Nấm tiên xào bơ tỏi . • Mực sốt mentako\n\n. + Điều kiện áp dụng về tất cả các menu trên: Áp dụng cả tuần . + Từ 30/8 đến 2/9 Shogun Hà Nội chỉ bán Menu Combo/ Menu ALC & Menu Buffet . 469k, Áp dụng tại: Shogun Nguyễn Văn Lộc, Shogun Vincom Phạm Ngọc Thạch, . Shogun Times City, Shogun Royal City, Shogun Lotte Đào Tấn.\n\nI. Buffet Yatai 399k . Nhóm Bò BBQ: . + Dẻ sườn bò Mỹ Xốt BBQ . + Dẻ sườn bò Mỹ Xốt miso cay . + Bò Hanabi xốt BBQ . + Bò Hanabi xốt Miso cay . + Bò Hanabi xốt Niniku . + Bò Hanabi xốt Sake . + Lõi thăn bò xốt BBQ . + Lõi thăn bò xốt Miso cay . + Thăn vai bò xốt niniku . + Thăn vai bò xốt sake . Nhóm Heo BBQ: . + Sườn heo hảo hạng Xốt BBQ . + Sườn heo Xốt niniku . + Sườn heo Xốt sake . + Sườn heo nướng Xốt shiogoma . + Gáy heo nướng . + Ba chỉ heo Xốt sake . + Ba chỉ heo Xốt Shiho . + Ba chỉ heo nướng Xốt BBQ . + Ba chỉ heo Xốt niniku . + Nạc dăm heo Xốt Sake . + Nạc dăm heo Xốt Miso . + Nạc dăm heo Xốt ninniku . Nhóm Lẩu: . + Lẩu miso kim chi . + Lẩu shabu . + Lẩu chanko"
+          },
+          {
+            "role": "HumanMessage",
+            "content": "bên bạn có món ăn nướng không"
+          },
+          {
+            "role": "SystemMessage",
+            "content": "User profile:\n**Tóm tắt thông tin khách hàng:**\n\n*   **Tên:** Quang\n*   **Tuổi:** 24"
+          },
+          {
+            "role": "SystemMessage",
+            "content": "Knowledge:\n. I. Ăn 4 tặng 1 với menu buffet Yatai 399k . • TÊN CHƯƠNG TRÌNH: Ăn 4 tặng 1 với menu buffet Yatai 399k . • THỜI GIAN BẮT ĐẦU: 01/08/2025 . • THỜI GIAN KẾT THÚC: 31/08/2025 . • ĐỊA ĐIỂM ÁP DỤNG: Shogun Nguyễn Văn Lộc (Thành Phố Hà Nội). . • NỘI DUNG CHƯƠNG TRÌNH: Miễn phí nâng hạng: Buffet Yatai 399k giá chỉ 299k . áp dụng nhóm 4 khách hàng trở lên . • Áp dụng cho các khách hàng biết đến đến chương trình trên Golden SpoonS; . nhận được ưu đãi qua Zalo OA; khách hàng biết đến chương trình từ trước khi . đến nhà hàng thông qua kênh Facebook hay Tiktok . • Ưu đãi có áp dụng luỹ kế . • Ưu đãi không áp dụng song song với ưu đãi khác .\n\n. I. Danh sách link menu Shogun . Danh sách link menu tại Hà Nội, Hồ Chí Minh và Bắc Ninh: . 1) Menu buffet Robata 299.000đ/người: Menu này đã dừng bán . 2) Menu buffet Yatai 399.000đ/người: . https://drive.google.com/file/d/1rbsnZmZmg4fIvqeZE384OuGrYXqxJlnd/view . 3) Menu buffet Nomikai 469.000đ/người: . https://drive.google.com/file/d/1W5vy5M9LyAM0cjYZ8jxfvNPRpC9_oSbl/view . 4) Menu buffet Jito 419.000đ/người (chỉ áp dụng tại Nguyễn Văn Lộc - Hà Nội): . https://drive.google.com/file/d/1mdPzP2zXsbAkZnJi_kSmsBETdHDDFwm0/view . 5) Menu combo: . https://drive.google.com/file/d/14CdwVrptnwLdOnCp_sEyx0ssi2B3QbV2/view . 6) Menu gọi món/ALC: https://drive.google.com/file/d/1Kx_uiur2OKUw24KwSxhx-. V5Pei84qUzA/view . Một số lưu ý: .\n\n• Gà chiên kiểu Nhật . • Cá saba nướng muối . • Cá hồi nướng mù tạt . • Cá hồi nướng sốt teriyaki . • Lườn cá hồi sốt mayo spicy . • Râu mực chiên kiểu Nhật . • Gà karrage tưới sốt Taru . • Bánh xèo . • Khoai lang mật vừng . • Khoai chiên kiểu Okonomi . • Cá Sugi nướng phô-mai nấm . • Cá trứng chiên xù sốt taru . • Nấm tiên xào bơ tỏi . • Mực sốt mentako\n\n. + Điều kiện áp dụng về tất cả các menu trên: Áp dụng cả tuần . + Từ 30/8 đến 2/9 Shogun Hà Nội chỉ bán Menu Combo/ Menu ALC & Menu Buffet . 469k, Áp dụng tại: Shogun Nguyễn Văn Lộc, Shogun Vincom Phạm Ngọc Thạch, . Shogun Times City, Shogun Royal City, Shogun Lotte Đào Tấn.\n\nI. Buffet Yatai 399k . Nhóm Bò BBQ: . + Dẻ sườn bò Mỹ Xốt BBQ . + Dẻ sườn bò Mỹ Xốt miso cay . + Bò Hanabi xốt BBQ . + Bò Hanabi xốt Miso cay . + Bò Hanabi xốt Niniku . + Bò Hanabi xốt Sake . + Lõi thăn bò xốt BBQ . + Lõi thăn bò xốt Miso cay . + Thăn vai bò xốt niniku . + Thăn vai bò xốt sake . Nhóm Heo BBQ: . + Sườn heo hảo hạng Xốt BBQ . + Sườn heo Xốt niniku . + Sườn heo Xốt sake . + Sườn heo nướng Xốt shiogoma . + Gáy heo nướng . + Ba chỉ heo Xốt sake . + Ba chỉ heo Xốt Shiho . + Ba chỉ heo nướng Xốt BBQ . + Ba chỉ heo Xốt niniku . + Nạc dăm heo Xốt Sake . + Nạc dăm heo Xốt Miso . + Nạc dăm heo Xốt ninniku . Nhóm Lẩu: . + Lẩu miso kim chi . + Lẩu shabu . + Lẩu chanko"
+          },
+          {
+            "role": "HumanMessage",
+            "content": "bên bạn có món ăn nướng không"
+          }
+        ],
+        "summary": "**Tóm tắt thông tin khách hàng:**\n\n*   **Tên:** Quang\n*   **Tuổi:** 24"
+      },
+      {
+        "step": 0,
+        "timestamp": "2026-03-02T15:27:18.712245+00:00",
+        "user_input": "mình tên là gì",
+        "final_answer": [
+          {
+            "type": "text",
+            "text": "Chào bạn, tôi là Vivi. Rất tiếc, tôi không có thông tin về tên của bạn.",
+            "extras": {
+              "signature": "CvgCAb4+9vu6TQUzLp4wgd6p8pWj3EqULQYyr0uauc/j1QoXv/PmiAxx1TNR4nW22jnsSp0YcsgmumT1m9nIYiUuI2L7r5qy8chVL78o8qx3WosYpf+VU2565rdcYhNKzHummm+R0LyCF+REnrAzUpKl4MnbNUxEDc/Zlq7SlH0rX9vjhTrJwX8wxyW523rFTR1wU4mDXbQ8RMUaNi7nwbhJSqvNB7P7v5uLnCgzeULHgzRj82P7en9hJVDQfBlgTuikeTkETSUwBsYlYxsL+cHPXt/UM/izOec2stPPmgw2IT2GlAEt1/bBy9X513XVEw5H+CAmygM4bhh3Sb2augauw4BQLSl4D2GzWWvwpmZnd/1iMuhiKRxkYa0IY7Vg4yQeEDqkeLhRJ/Eo/boprmaBRdQcYLiWn2GaoHN8jvhzlDr5MTmXxVjDExZYmf03Z+ZO+YayaJoy+oQc96/C/yUkEKOSiW2OZbH4mRepyGE+AMIJCTsVMgGEbA=="
+            }
+          }
+        ],
+        "status": "SUCCESS",
+        "message": "Agent execution successfully",
+        "tools": [
+          {
+            "name": "knowledge_question",
+            "description": "Trả lời câu hỏi dựa trên tài liệu đã được cung cấp."
+          }
+        ],
+        "error_code": null,
+        "trace": [
+          {
+            "index": 0,
+            "role": "ai",
+            "message_type": "AIMessage",
+            "content": "Chào bạn, tôi là Vivi. Rất tiếc, tôi không có thông tin về tên của bạn."
+          }
+        ],
+        "history": [
+          {
+            "role": "SystemMessage",
+            "content": "User profile:\nNone"
+          },
+          {
+            "role": "SystemMessage",
+            "content": "Knowledge:\nII. Chương trình khuyến mãi - Ngày hội Tướng Quân T9 . : Buffet Nomikai 469k giảm còn 369k . • TÊN CHƯƠNG TRÌNH: Ngày hội Tướng Quân Tháng 9 . • THỜI GIAN BẮT ĐẦU: 03/09/2025 . • THỜI GIAN KẾT THÚC: 30/09/2025\n\n• Gà chiên kiểu Nhật . • Cá saba nướng muối . • Cá hồi nướng mù tạt . • Cá hồi nướng sốt teriyaki . • Lườn cá hồi sốt mayo spicy . • Râu mực chiên kiểu Nhật . • Gà karrage tưới sốt Taru . • Bánh xèo . • Khoai lang mật vừng . • Khoai chiên kiểu Okonomi . • Cá Sugi nướng phô-mai nấm . • Cá trứng chiên xù sốt taru . • Nấm tiên xào bơ tỏi . • Mực sốt mentako\n\n. • Không áp dụng giảm giá thẻ nhân viên/thẻ đối tác. . • Được áp dụng song song với Gói Tiết Kiệm. . • Áp dụng tại các nhà hàng: Shogun Nguyễn Văn Lộc, Shogun Vincom Phạm Ngọc . Thạch, Shogun Times City, Shogun Royal City, Shogun Lotte Đào Tấn. . • Thời gian áp dụng: Thứ 4 các ngày trong tuần từ 03/09/2025 - 30/09/2025 . • Khách đi từ 3 người trở lên, được giảm 100k/ vé buffet khi đáp ứng đủ điều kiện . trên, áp dụng cho cả bàn. . • Thông tin phụ thu lễ 2/9: 30/8 - 31/8 là phụ thu 5% và 1/9 - 2/9 là phụ thu 10% . . . III. Chương trình khuyến mãi - Giảm 15% cho cư dân . trong mall . • TÊN CHƯƠNG TRÌNH: Giảm 15% cho cư dân trong mall .\n\nI. Buffet Yatai 399k . Nhóm Bò BBQ: . + Dẻ sườn bò Mỹ Xốt BBQ . + Dẻ sườn bò Mỹ Xốt miso cay . + Bò Hanabi xốt BBQ . + Bò Hanabi xốt Miso cay . + Bò Hanabi xốt Niniku . + Bò Hanabi xốt Sake . + Lõi thăn bò xốt BBQ . + Lõi thăn bò xốt Miso cay . + Thăn vai bò xốt niniku . + Thăn vai bò xốt sake . Nhóm Heo BBQ: . + Sườn heo hảo hạng Xốt BBQ . + Sườn heo Xốt niniku . + Sườn heo Xốt sake . + Sườn heo nướng Xốt shiogoma . + Gáy heo nướng . + Ba chỉ heo Xốt sake . + Ba chỉ heo Xốt Shiho . + Ba chỉ heo nướng Xốt BBQ . + Ba chỉ heo Xốt niniku . + Nạc dăm heo Xốt Sake . + Nạc dăm heo Xốt Miso . + Nạc dăm heo Xốt ninniku . Nhóm Lẩu: . + Lẩu miso kim chi . + Lẩu shabu . + Lẩu chanko\n\nI. Menu DRINK/ Đồ uống . • Nước uống strongbow vị đào lon 330ml . • Strongbow Vị Thơm Và Lựu Lon 320ml . • Strongbow Vị Kiwi & Thanh Long Lon 320ml . • Nước khoáng Bonita 500ml . • Nước suối Dasani Purified chai 500ml . • Nước cherry việt quất . • Nước thanh long táo . • Nước thanh long chanh vàng . • Nước uống sangria cam vàng . • Nước pha chế Sangria táo . • Nước pha chế Highball . • Nước uống sangria chanh leo . • Nước chanh tươi/Nước chanh . • Nước chanh dây/Chanh leo . • Nước dưa hấu/Dưa hấu ép . • Nước dứa . • Nước cam nguyên chất/Nước cam tươi . • Trà Nhật . • Suất Buffet Trà . • Trà đá bình . • Summer Mix . • Fuzetea+ Passion&Chia Seed PET 350ml ."
+          },
+          {
+            "role": "HumanMessage",
+            "content": "mình tên là gì"
+          },
+          {
+            "role": "SystemMessage",
+            "content": "User profile:\nNone"
+          },
+          {
+            "role": "SystemMessage",
+            "content": "Knowledge:\nII. Chương trình khuyến mãi - Ngày hội Tướng Quân T9 . : Buffet Nomikai 469k giảm còn 369k . • TÊN CHƯƠNG TRÌNH: Ngày hội Tướng Quân Tháng 9 . • THỜI GIAN BẮT ĐẦU: 03/09/2025 . • THỜI GIAN KẾT THÚC: 30/09/2025\n\n• Gà chiên kiểu Nhật . • Cá saba nướng muối . • Cá hồi nướng mù tạt . • Cá hồi nướng sốt teriyaki . • Lườn cá hồi sốt mayo spicy . • Râu mực chiên kiểu Nhật . • Gà karrage tưới sốt Taru . • Bánh xèo . • Khoai lang mật vừng . • Khoai chiên kiểu Okonomi . • Cá Sugi nướng phô-mai nấm . • Cá trứng chiên xù sốt taru . • Nấm tiên xào bơ tỏi . • Mực sốt mentako\n\n. • Không áp dụng giảm giá thẻ nhân viên/thẻ đối tác. . • Được áp dụng song song với Gói Tiết Kiệm. . • Áp dụng tại các nhà hàng: Shogun Nguyễn Văn Lộc, Shogun Vincom Phạm Ngọc . Thạch, Shogun Times City, Shogun Royal City, Shogun Lotte Đào Tấn. . • Thời gian áp dụng: Thứ 4 các ngày trong tuần từ 03/09/2025 - 30/09/2025 . • Khách đi từ 3 người trở lên, được giảm 100k/ vé buffet khi đáp ứng đủ điều kiện . trên, áp dụng cho cả bàn. . • Thông tin phụ thu lễ 2/9: 30/8 - 31/8 là phụ thu 5% và 1/9 - 2/9 là phụ thu 10% . . . III. Chương trình khuyến mãi - Giảm 15% cho cư dân . trong mall . • TÊN CHƯƠNG TRÌNH: Giảm 15% cho cư dân trong mall .\n\nI. Buffet Yatai 399k . Nhóm Bò BBQ: . + Dẻ sườn bò Mỹ Xốt BBQ . + Dẻ sườn bò Mỹ Xốt miso cay . + Bò Hanabi xốt BBQ . + Bò Hanabi xốt Miso cay . + Bò Hanabi xốt Niniku . + Bò Hanabi xốt Sake . + Lõi thăn bò xốt BBQ . + Lõi thăn bò xốt Miso cay . + Thăn vai bò xốt niniku . + Thăn vai bò xốt sake . Nhóm Heo BBQ: . + Sườn heo hảo hạng Xốt BBQ . + Sườn heo Xốt niniku . + Sườn heo Xốt sake . + Sườn heo nướng Xốt shiogoma . + Gáy heo nướng . + Ba chỉ heo Xốt sake . + Ba chỉ heo Xốt Shiho . + Ba chỉ heo nướng Xốt BBQ . + Ba chỉ heo Xốt niniku . + Nạc dăm heo Xốt Sake . + Nạc dăm heo Xốt Miso . + Nạc dăm heo Xốt ninniku . Nhóm Lẩu: . + Lẩu miso kim chi . + Lẩu shabu . + Lẩu chanko\n\nI. Menu DRINK/ Đồ uống . • Nước uống strongbow vị đào lon 330ml . • Strongbow Vị Thơm Và Lựu Lon 320ml . • Strongbow Vị Kiwi & Thanh Long Lon 320ml . • Nước khoáng Bonita 500ml . • Nước suối Dasani Purified chai 500ml . • Nước cherry việt quất . • Nước thanh long táo . • Nước thanh long chanh vàng . • Nước uống sangria cam vàng . • Nước pha chế Sangria táo . • Nước pha chế Highball . • Nước uống sangria chanh leo . • Nước chanh tươi/Nước chanh . • Nước chanh dây/Chanh leo . • Nước dưa hấu/Dưa hấu ép . • Nước dứa . • Nước cam nguyên chất/Nước cam tươi . • Trà Nhật . • Suất Buffet Trà . • Trà đá bình . • Summer Mix . • Fuzetea+ Passion&Chia Seed PET 350ml ."
+          },
+          {
+            "role": "HumanMessage",
+            "content": "mình tên là gì"
+          },
+          {
+            "role": "AIMessage",
+            "content": [
+              {
+                "type": "text",
+                "text": "Chào bạn, tôi là Vivi. Rất tiếc, tôi không có thông tin về tên của bạn.",
+                "extras": {
+                  "signature": "CvgCAb4+9vu6TQUzLp4wgd6p8pWj3EqULQYyr0uauc/j1QoXv/PmiAxx1TNR4nW22jnsSp0YcsgmumT1m9nIYiUuI2L7r5qy8chVL78o8qx3WosYpf+VU2565rdcYhNKzHummm+R0LyCF+REnrAzUpKl4MnbNUxEDc/Zlq7SlH0rX9vjhTrJwX8wxyW523rFTR1wU4mDXbQ8RMUaNi7nwbhJSqvNB7P7v5uLnCgzeULHgzRj82P7en9hJVDQfBlgTuikeTkETSUwBsYlYxsL+cHPXt/UM/izOec2stPPmgw2IT2GlAEt1/bBy9X513XVEw5H+CAmygM4bhh3Sb2augauw4BQLSl4D2GzWWvwpmZnd/1iMuhiKRxkYa0IY7Vg4yQeEDqkeLhRJ/Eo/boprmaBRdQcYLiWn2GaoHN8jvhzlDr5MTmXxVjDExZYmf03Z+ZO+YayaJoy+oQc96/C/yUkEKOSiW2OZbH4mRepyGE+AMIJCTsVMgGEbA=="
+                }
+              }
+            ]
+          }
+        ],
+        "summary": ""
+      },
+      {
+        "step": 0,
+        "timestamp": "2026-03-02T15:34:23.194665+00:00",
+        "user_input": "xin chào bạn mình là quang còn bạn là ai",
+        "final_answer": [
+          {
+            "type": "text",
+            "text": "Xin chào Quang, mình là Vivi, chuyên viên tư vấn của nhà hàng. Rất vui được hỗ trợ bạn!",
+            "extras": {
+              "signature": "CtsBAb4+9vt36vHXQBiRoslJpxqu6HtjoQy3CBRlHlAZira117I8KS6kcZjJkakd6Djctx6SA6SF6At6XCERAKwktw1TyrPTJGe6NXC+dZ9JE/o7HC4+FMduxk27mwT93kKE9+/RLbNkASueQo4HRtJ8C9C8JeDKoTLErlRJ/WtxwzVtIIYMZzjAi9TQAbiK1+Wov9TuaIcBRr84lLA9SjCcMY9T9l4oTK5uFB++Rp6g6ThldO8DaZU112KoFdB4bnEeaWkua/lkYwVbEI15TVbbS2jRWAYtaGjUWHqp"
+            }
+          }
+        ],
+        "status": "SUCCESS",
+        "message": "Agent execution successfully",
+        "tools": [
+          {
+            "name": "chitchat",
+            "description": "Trả lời các câu nói xã giao, chào hỏi của khách hàng."
+          }
+        ],
+        "error_code": null,
+        "trace": [
+          {
+            "index": 0,
+            "role": "ai",
+            "message_type": "AIMessage",
+            "content": "Xin chào Quang, mình là Vivi, chuyên viên tư vấn của nhà hàng. Rất vui được hỗ trợ bạn!"
+          }
+        ],
+        "history": [
+          {
+            "role": "HumanMessage",
+            "content": "xin chào bạn mình là quang còn bạn là ai"
+          },
+          {
+            "role": "HumanMessage",
+            "content": "xin chào bạn mình là quang còn bạn là ai"
+          },
+          {
+            "role": "AIMessage",
+            "content": [
+              {
+                "type": "text",
+                "text": "Xin chào Quang, mình là Vivi, chuyên viên tư vấn của nhà hàng. Rất vui được hỗ trợ bạn!",
+                "extras": {
+                  "signature": "CtsBAb4+9vt36vHXQBiRoslJpxqu6HtjoQy3CBRlHlAZira117I8KS6kcZjJkakd6Djctx6SA6SF6At6XCERAKwktw1TyrPTJGe6NXC+dZ9JE/o7HC4+FMduxk27mwT93kKE9+/RLbNkASueQo4HRtJ8C9C8JeDKoTLErlRJ/WtxwzVtIIYMZzjAi9TQAbiK1+Wov9TuaIcBRr84lLA9SjCcMY9T9l4oTK5uFB++Rp6g6ThldO8DaZU112KoFdB4bnEeaWkua/lkYwVbEI15TVbbS2jRWAYtaGjUWHqp"
+                }
+              }
+            ]
+          }
+        ],
+        "summary": ""
+      },
+      {
+        "step": 1,
+        "timestamp": "2026-03-02T15:35:08.452071+00:00",
+        "user_input": "tôi năm nay đã 24 tồi rồi và thích chơi cầu lông",
+        "final_answer": [
+          {
+            "type": "text",
+            "text": "Chào bạn, Vivi rất vui được hỗ trợ bạn. Tuy nhiên, thông tin bạn cung cấp về tuổi và sở thích cá nhân không liên quan đến các chương trình khuyến mãi hay menu của nhà hàng. Vivi chưa có dữ liệu để tư vấn chính xác nội dung này.\n\nBạn có câu hỏi nào về chương trình khuyến mãi hoặc menu của nhà hàng không? Vivi sẵn lòng giải đáp!",
+            "extras": {
+              "signature": "CvgDAb4+9vurZgFokg0IdB0Nohi7kJZD1bDSWuvMtyyUQD0wAtJoui9gcJU814UzCl2ac+iy8Qg1d9J5ReHMLn2OxXWzCj4JeP2hRtG/PnLTBZIMjDAXZ3Oi9Cf3RxKfgj+eVIM6rEOA8HwndBYwmqU6QWk5Mp31fRs9b4OH7RDRfRcL5e8dvfUyg6mhZE3LcaDekZ2fS9L9IND7bNz1UVaEcFLn9jufTLq3u4IUTgGAKUYicgrE2NHNxUAGjwMjmhXPSWf2tag9bN3MLRAxzdLoakckTX66AGdvFBRLNu6xLlmkFyA4/7lSxNT/ifVzwIChxZ6vC66zCTZ0epYE2FkCzQkcp6jasAF54dPXm6c3a3x1JbeizFbKIXr9vByR/f0ldyULTvyvuxv0DM7jDmPJfcbAa8lytpBEqnfjDqdjSNM6cpntKXhhFWhdN9wTY5V5IfK2AWKdsNBc6OhT5lKOipwXAtVzj1uS6hPZXoOKr8OevtVyjeZeEsvgfvj+HYO1cWajD4CHo9B9ymZhOePr1DyMwqQq4BOZ6UPWBZbrpF2uvNrl3rbaAfRQ7K9/JRahTYJ7MxTllbHEVopwpiBHRvQjRbDn/yj6jisn3Xho/tPYrWtUrZNADmaw9dQB73lbOX4uLDYIHh1oXnW8acSXxqfUUbHYGHjx"
+            }
+          }
+        ],
+        "status": "SUCCESS",
+        "message": "Agent execution successfully",
+        "tools": [
+          {
+            "name": "knowledge_question",
+            "description": "Trả lời câu hỏi dựa trên tài liệu đã được cung cấp."
+          }
+        ],
+        "error_code": null,
+        "trace": [
+          {
+            "index": 0,
+            "role": "ai",
+            "message_type": "AIMessage",
+            "content": "Chào bạn, Vivi rất vui được hỗ trợ bạn. Tuy nhiên, thông tin bạn cung cấp về tuổi và sở thích cá nhân không liên quan đến các chương trình khuyến mãi hay menu của nhà hàng. Vivi chưa có dữ liệu để tư vấn chính xác nội dung này.\n\nBạn có câu hỏi nào về chương trình khuyến mãi hoặc menu của nhà hàng không? Vivi sẵn lòng giải đáp!"
+          }
+        ],
+        "history": [
+          {
+            "role": "HumanMessage",
+            "content": "xin chào bạn mình là quang còn bạn là ai"
+          },
+          {
+            "role": "HumanMessage",
+            "content": "xin chào bạn mình là quang còn bạn là ai"
+          },
+          {
+            "role": "AIMessage",
+            "content": [
+              {
+                "type": "text",
+                "text": "Xin chào Quang, mình là Vivi, chuyên viên tư vấn của nhà hàng. Rất vui được hỗ trợ bạn!",
+                "extras": {
+                  "signature": "CtsBAb4+9vt36vHXQBiRoslJpxqu6HtjoQy3CBRlHlAZira117I8KS6kcZjJkakd6Djctx6SA6SF6At6XCERAKwktw1TyrPTJGe6NXC+dZ9JE/o7HC4+FMduxk27mwT93kKE9+/RLbNkASueQo4HRtJ8C9C8JeDKoTLErlRJ/WtxwzVtIIYMZzjAi9TQAbiK1+Wov9TuaIcBRr84lLA9SjCcMY9T9l4oTK5uFB++Rp6g6ThldO8DaZU112KoFdB4bnEeaWkua/lkYwVbEI15TVbbS2jRWAYtaGjUWHqp"
+                }
+              }
+            ]
+          },
+          {
+            "role": "HumanMessage",
+            "content": "tôi năm nay đã 24 tồi rồi và thích chơi cầu lông"
+          },
+          {
+            "role": "HumanMessage",
+            "content": "tôi năm nay đã 24 tồi rồi và thích chơi cầu lông"
+          },
+          {
+            "role": "AIMessage",
+            "content": [
+              {
+                "type": "text",
+                "text": "Chào bạn, Vivi rất vui được hỗ trợ bạn. Tuy nhiên, thông tin bạn cung cấp về tuổi và sở thích cá nhân không liên quan đến các chương trình khuyến mãi hay menu của nhà hàng. Vivi chưa có dữ liệu để tư vấn chính xác nội dung này.\n\nBạn có câu hỏi nào về chương trình khuyến mãi hoặc menu của nhà hàng không? Vivi sẵn lòng giải đáp!",
+                "extras": {
+                  "signature": "CvgDAb4+9vurZgFokg0IdB0Nohi7kJZD1bDSWuvMtyyUQD0wAtJoui9gcJU814UzCl2ac+iy8Qg1d9J5ReHMLn2OxXWzCj4JeP2hRtG/PnLTBZIMjDAXZ3Oi9Cf3RxKfgj+eVIM6rEOA8HwndBYwmqU6QWk5Mp31fRs9b4OH7RDRfRcL5e8dvfUyg6mhZE3LcaDekZ2fS9L9IND7bNz1UVaEcFLn9jufTLq3u4IUTgGAKUYicgrE2NHNxUAGjwMjmhXPSWf2tag9bN3MLRAxzdLoakckTX66AGdvFBRLNu6xLlmkFyA4/7lSxNT/ifVzwIChxZ6vC66zCTZ0epYE2FkCzQkcp6jasAF54dPXm6c3a3x1JbeizFbKIXr9vByR/f0ldyULTvyvuxv0DM7jDmPJfcbAa8lytpBEqnfjDqdjSNM6cpntKXhhFWhdN9wTY5V5IfK2AWKdsNBc6OhT5lKOipwXAtVzj1uS6hPZXoOKr8OevtVyjeZeEsvgfvj+HYO1cWajD4CHo9B9ymZhOePr1DyMwqQq4BOZ6UPWBZbrpF2uvNrl3rbaAfRQ7K9/JRahTYJ7MxTllbHEVopwpiBHRvQjRbDn/yj6jisn3Xho/tPYrWtUrZNADmaw9dQB73lbOX4uLDYIHh1oXnW8acSXxqfUUbHYGHjx"
+                }
+              }
+            ]
+          }
+        ],
+        "summary": ""
+      },
+      {
+        "step": 2,
+        "timestamp": "2026-03-02T15:35:44.185463+00:00",
+        "user_input": "bạn có set nướng không",
+        "final_answer": [
+          {
+            "type": "text",
+            "text": "Chào bạn, nhà hàng có set nướng trong menu Buffet Yatai 399k với nhiều lựa chọn hấp dẫn:\n\n**Nhóm Bò BBQ:**\n*   Dẻ sườn bò Mỹ Xốt BBQ\n*   Dẻ sườn bò Mỹ Xốt miso cay\n*   Bò Hanabi xốt BBQ\n*   Bò Hanabi xốt Miso cay\n*   Bò Hanabi xốt Niniku\n*   Bò Hanabi xốt Sake\n*   Lõi thăn bò xốt BBQ\n*   Lõi thăn bò xốt Miso cay\n*   Thăn vai bò xốt niniku\n*   Thăn vai bò xốt sake\n\n**Nhóm Heo BBQ:**\n*   Sườn heo hảo hạng Xốt BBQ\n*   Sườn heo Xốt niniku\n*   Sườn heo Xốt sake\n*   Sườn heo nướng Xốt shiogoma\n*   Gáy heo nướng\n*   Ba chỉ heo Xốt sake\n*   Ba chỉ heo Xốt Shiho\n*   Ba chỉ heo nướng Xốt BBQ\n*   Ba chỉ heo Xốt niniku\n*   Nạc dăm heo Xốt Sake\n*   Nạc dăm heo Xốt Miso\n*   Nạc dăm heo Xốt ninniku\n\nNgoài ra, buffet còn có các món lẩu như Lẩu miso kim chi, Lẩu shabu, Lẩu chanko.",
+            "extras": {
+              "signature": "CuICAb4+9vt/cFArn6ZKkekD0n8kGqBBS9NXE41eAqaT/9f36kB6iy8o2ZoBbO5VXKXKDqg+Nlg45nPeEeOIdGeaft7xqB+fitFpdaCH54XxFaO8IXUBXOTH9ypfOTZkGVsaoHZcp1sKq0qBMIZ8LZhZhm9lS0niL4nXwBlBfzqmmUBRgpwqJXeVV363ebZhVvUDfqbuP+Paqq7NiBRBrbSyFmJsipbeU+OSpiuS2nHP/R9bElVBk6I3DaPRMA7KTXqlx5YrBnitmCMWeXgckki9Hk8NLGdB7xnj9wG1FOA/EJ7FiF4z3h9G893psEmyr6G7rqSADWJSzXeTP4zinpL8/PEGmck/owkBsvPqyKnv/4GManmMTo2IPHnRQFXdpbPqYzN+SbYrCK7RoyjKgzUnuyx2U/lHovWMvKaXFmVG8bcbZk2lWW9gqMHgVwrDra6cyHdbn28w82O87vTAhfAYwj+r"
+            }
+          }
+        ],
+        "status": "SUCCESS",
+        "message": "Agent execution successfully",
+        "tools": [
+          {
+            "name": "knowledge_question",
+            "description": "Trả lời câu hỏi dựa trên tài liệu đã được cung cấp."
+          }
+        ],
+        "error_code": null,
+        "trace": [
+          {
+            "index": 0,
+            "role": "ai",
+            "message_type": "AIMessage",
+            "content": "Chào bạn, nhà hàng có set nướng trong menu Buffet Yatai 399k với nhiều lựa chọn hấp dẫn:\n\n**Nhóm Bò BBQ:**\n*   Dẻ sườn bò Mỹ Xốt BBQ\n*   Dẻ sườn bò Mỹ Xốt miso cay\n*   Bò Hanabi xốt BBQ\n*   Bò Hanabi xốt Miso cay\n*   Bò Hanabi xốt Niniku\n*   Bò Hanabi xốt Sake\n*   Lõi thăn bò xốt BBQ\n*   Lõi thăn bò xốt Miso cay\n*   Thăn vai bò xốt niniku\n*   Thăn vai bò xốt sake\n\n**Nhóm Heo BBQ:**\n*   Sườn heo hảo hạng Xốt BBQ\n*   Sườn heo Xốt niniku\n*   Sườn heo Xốt sake\n*   Sườn heo nướng Xốt shiogoma\n*   Gáy heo nướng\n*   Ba chỉ heo Xốt sake\n*   Ba chỉ heo Xốt Shiho\n*   Ba chỉ heo nướng Xốt BBQ\n*   Ba chỉ heo Xốt niniku\n*   Nạc dăm heo Xốt Sake\n*   Nạc dăm heo Xốt Miso\n*   Nạc dăm heo Xốt ninniku\n\nNgoài ra, buffet còn có các món lẩu như Lẩu miso kim chi, Lẩu shabu, Lẩu chanko."
+          }
+        ],
+        "history": [
+          {
+            "role": "HumanMessage",
+            "content": "xin chào bạn mình là quang còn bạn là ai"
+          },
+          {
+            "role": "HumanMessage",
+            "content": "xin chào bạn mình là quang còn bạn là ai"
+          },
+          {
+            "role": "AIMessage",
+            "content": [
+              {
+                "type": "text",
+                "text": "Xin chào Quang, mình là Vivi, chuyên viên tư vấn của nhà hàng. Rất vui được hỗ trợ bạn!",
+                "extras": {
+                  "signature": "CtsBAb4+9vt36vHXQBiRoslJpxqu6HtjoQy3CBRlHlAZira117I8KS6kcZjJkakd6Djctx6SA6SF6At6XCERAKwktw1TyrPTJGe6NXC+dZ9JE/o7HC4+FMduxk27mwT93kKE9+/RLbNkASueQo4HRtJ8C9C8JeDKoTLErlRJ/WtxwzVtIIYMZzjAi9TQAbiK1+Wov9TuaIcBRr84lLA9SjCcMY9T9l4oTK5uFB++Rp6g6ThldO8DaZU112KoFdB4bnEeaWkua/lkYwVbEI15TVbbS2jRWAYtaGjUWHqp"
+                }
+              }
+            ]
+          },
+          {
+            "role": "HumanMessage",
+            "content": "tôi năm nay đã 24 tồi rồi và thích chơi cầu lông"
+          },
+          {
+            "role": "HumanMessage",
+            "content": "tôi năm nay đã 24 tồi rồi và thích chơi cầu lông"
+          },
+          {
+            "role": "AIMessage",
+            "content": [
+              {
+                "type": "text",
+                "text": "Chào bạn, Vivi rất vui được hỗ trợ bạn. Tuy nhiên, thông tin bạn cung cấp về tuổi và sở thích cá nhân không liên quan đến các chương trình khuyến mãi hay menu của nhà hàng. Vivi chưa có dữ liệu để tư vấn chính xác nội dung này.\n\nBạn có câu hỏi nào về chương trình khuyến mãi hoặc menu của nhà hàng không? Vivi sẵn lòng giải đáp!",
+                "extras": {
+                  "signature": "CvgDAb4+9vurZgFokg0IdB0Nohi7kJZD1bDSWuvMtyyUQD0wAtJoui9gcJU814UzCl2ac+iy8Qg1d9J5ReHMLn2OxXWzCj4JeP2hRtG/PnLTBZIMjDAXZ3Oi9Cf3RxKfgj+eVIM6rEOA8HwndBYwmqU6QWk5Mp31fRs9b4OH7RDRfRcL5e8dvfUyg6mhZE3LcaDekZ2fS9L9IND7bNz1UVaEcFLn9jufTLq3u4IUTgGAKUYicgrE2NHNxUAGjwMjmhXPSWf2tag9bN3MLRAxzdLoakckTX66AGdvFBRLNu6xLlmkFyA4/7lSxNT/ifVzwIChxZ6vC66zCTZ0epYE2FkCzQkcp6jasAF54dPXm6c3a3x1JbeizFbKIXr9vByR/f0ldyULTvyvuxv0DM7jDmPJfcbAa8lytpBEqnfjDqdjSNM6cpntKXhhFWhdN9wTY5V5IfK2AWKdsNBc6OhT5lKOipwXAtVzj1uS6hPZXoOKr8OevtVyjeZeEsvgfvj+HYO1cWajD4CHo9B9ymZhOePr1DyMwqQq4BOZ6UPWBZbrpF2uvNrl3rbaAfRQ7K9/JRahTYJ7MxTllbHEVopwpiBHRvQjRbDn/yj6jisn3Xho/tPYrWtUrZNADmaw9dQB73lbOX4uLDYIHh1oXnW8acSXxqfUUbHYGHjx"
+                }
+              }
+            ]
+          },
+          {
+            "role": "HumanMessage",
+            "content": "bạn có set nướng không"
+          },
+          {
+            "role": "HumanMessage",
+            "content": "bạn có set nướng không"
+          },
+          {
+            "role": "AIMessage",
+            "content": [
+              {
+                "type": "text",
+                "text": "Chào bạn, nhà hàng có set nướng trong menu Buffet Yatai 399k với nhiều lựa chọn hấp dẫn:\n\n**Nhóm Bò BBQ:**\n*   Dẻ sườn bò Mỹ Xốt BBQ\n*   Dẻ sườn bò Mỹ Xốt miso cay\n*   Bò Hanabi xốt BBQ\n*   Bò Hanabi xốt Miso cay\n*   Bò Hanabi xốt Niniku\n*   Bò Hanabi xốt Sake\n*   Lõi thăn bò xốt BBQ\n*   Lõi thăn bò xốt Miso cay\n*   Thăn vai bò xốt niniku\n*   Thăn vai bò xốt sake\n\n**Nhóm Heo BBQ:**\n*   Sườn heo hảo hạng Xốt BBQ\n*   Sườn heo Xốt niniku\n*   Sườn heo Xốt sake\n*   Sườn heo nướng Xốt shiogoma\n*   Gáy heo nướng\n*   Ba chỉ heo Xốt sake\n*   Ba chỉ heo Xốt Shiho\n*   Ba chỉ heo nướng Xốt BBQ\n*   Ba chỉ heo Xốt niniku\n*   Nạc dăm heo Xốt Sake\n*   Nạc dăm heo Xốt Miso\n*   Nạc dăm heo Xốt ninniku\n\nNgoài ra, buffet còn có các món lẩu như Lẩu miso kim chi, Lẩu shabu, Lẩu chanko.",
+                "extras": {
+                  "signature": "CuICAb4+9vt/cFArn6ZKkekD0n8kGqBBS9NXE41eAqaT/9f36kB6iy8o2ZoBbO5VXKXKDqg+Nlg45nPeEeOIdGeaft7xqB+fitFpdaCH54XxFaO8IXUBXOTH9ypfOTZkGVsaoHZcp1sKq0qBMIZ8LZhZhm9lS0niL4nXwBlBfzqmmUBRgpwqJXeVV363ebZhVvUDfqbuP+Paqq7NiBRBrbSyFmJsipbeU+OSpiuS2nHP/R9bElVBk6I3DaPRMA7KTXqlx5YrBnitmCMWeXgckki9Hk8NLGdB7xnj9wG1FOA/EJ7FiF4z3h9G893psEmyr6G7rqSADWJSzXeTP4zinpL8/PEGmck/owkBsvPqyKnv/4GManmMTo2IPHnRQFXdpbPqYzN+SbYrCK7RoyjKgzUnuyx2U/lHovWMvKaXFmVG8bcbZk2lWW9gqMHgVwrDra6cyHdbn28w82O87vTAhfAYwj+r"
+                }
+              }
+            ]
+          }
+        ],
+        "summary": ""
+      },
+      {
+        "step": 3,
+        "timestamp": "2026-03-02T15:36:27.067515+00:00",
+        "user_input": "tôi tên là gì",
+        "final_answer": [
+          {
+            "type": "text",
+            "text": "Chào bạn, Vivi chưa có thông tin về tên của bạn trong dữ liệu.",
+            "extras": {
+              "signature": "CqoCAb4+9vu3ETRRZZpbn3prs21jU8VIlDJ7bP/Xam1DswWCO0JIgJo+9LB16Oc0hDJDQtiTapgj5eG4F9DzqAIT26Hu1HonpvoPlbnEJIdYb1iDRs7aNxOStzmNKyjTzLvP5SNYXCd2/tmaQE4V3RbmAgxmdgyIcPkIL3nchtN7nnGjyQmByoVgtrmsfWdSA1nHarwpiUA7+w4AFhQl1K50VXvrtPbJH9WNN3V7uPIl/7O0KZuS6Pbl5gEilKu0EH1y8I+jVVup1DIo345486cDxFNH4ODoG07/2HHJQC11G+qoGaVqk0/oBRvu96CdUsMb+e2pSAGHOtwiYCbMpi535RF8heDhTyJ+XzyZ8AE+L54sl03i87lAlfm0r9EhzoUQsoszMBejDrqEeQ=="
+            }
+          }
+        ],
+        "status": "SUCCESS",
+        "message": "Agent execution successfully",
+        "tools": [
+          {
+            "name": "knowledge_question",
+            "description": "Trả lời câu hỏi dựa trên tài liệu đã được cung cấp."
+          }
+        ],
+        "error_code": null,
+        "trace": [
+          {
+            "index": 0,
+            "role": "ai",
+            "message_type": "AIMessage",
+            "content": "Chào bạn, Vivi chưa có thông tin về tên của bạn trong dữ liệu."
+          }
+        ],
+        "history": [
+          {
+            "role": "HumanMessage",
+            "content": "tôi tên là gì"
+          },
+          {
+            "role": "AIMessage",
+            "content": [
+              {
+                "type": "text",
+                "text": "Chào bạn, Vivi chưa có thông tin về tên của bạn trong dữ liệu.",
+                "extras": {
+                  "signature": "CqoCAb4+9vu3ETRRZZpbn3prs21jU8VIlDJ7bP/Xam1DswWCO0JIgJo+9LB16Oc0hDJDQtiTapgj5eG4F9DzqAIT26Hu1HonpvoPlbnEJIdYb1iDRs7aNxOStzmNKyjTzLvP5SNYXCd2/tmaQE4V3RbmAgxmdgyIcPkIL3nchtN7nnGjyQmByoVgtrmsfWdSA1nHarwpiUA7+w4AFhQl1K50VXvrtPbJH9WNN3V7uPIl/7O0KZuS6Pbl5gEilKu0EH1y8I+jVVup1DIo345486cDxFNH4ODoG07/2HHJQC11G+qoGaVqk0/oBRvu96CdUsMb+e2pSAGHOtwiYCbMpi535RF8heDhTyJ+XzyZ8AE+L54sl03i87lAlfm0r9EhzoUQsoszMBejDrqEeQ=="
+                }
+              }
+            ]
+          }
+        ],
+        "summary": "Dựa vào lịch sử hội thoại, thông tin của khách hàng như sau:\n\n*   **Tên:** Quang\n*   **Tuổi:** 24 tuổi\n*   **Sở thích:** Chơi cầu lông\n*   **Quan tâm:** Các set nướng/BBQ trong menu của nhà hàng."
+      },
+      {
+        "step": 4,
+        "timestamp": "2026-03-02T15:36:47.267569+00:00",
+        "user_input": "tôi tên là gì",
+        "final_answer": [
+          {
+            "type": "text",
+            "text": "Chào Quang, bạn tên là Quang ạ.",
+            "extras": {
+              "signature": "CskBAb4+9vsFmplBnazLzsujyHZEWn0GFNYgeQgAPxm6SZ7wucbNLyAzd8QH54/zwmv9IrNw10nQhR67Xtq+sPlZtoSPiDw4YRnu48aW/XOOu6J10pYATKs44mXrKUsq1ELmfjXLW+2bTHfa38dDM28Bja8OL//x2AzaXR4poql9sHx+6vsafK3lPydh/cpeOTA8hwYACaCS8krQLssafgwJ2JwrRNNi6K944nVrzxwqVfrFNk+NYsiyYkLnk4k0Cg4slbtL5XUpgypE"
+            }
+          }
+        ],
+        "status": "SUCCESS",
+        "message": "Agent execution successfully",
+        "tools": [
+          {
+            "name": "knowledge_question",
+            "description": "Trả lời câu hỏi dựa trên tài liệu đã được cung cấp."
+          }
+        ],
+        "error_code": null,
+        "trace": [
+          {
+            "index": 0,
+            "role": "ai",
+            "message_type": "AIMessage",
+            "content": "Chào Quang, bạn tên là Quang ạ."
+          }
+        ],
+        "history": [
+          {
+            "role": "HumanMessage",
+            "content": "tôi tên là gì"
+          },
+          {
+            "role": "AIMessage",
+            "content": [
+              {
+                "type": "text",
+                "text": "Chào bạn, Vivi chưa có thông tin về tên của bạn trong dữ liệu.",
+                "extras": {
+                  "signature": "CqoCAb4+9vu3ETRRZZpbn3prs21jU8VIlDJ7bP/Xam1DswWCO0JIgJo+9LB16Oc0hDJDQtiTapgj5eG4F9DzqAIT26Hu1HonpvoPlbnEJIdYb1iDRs7aNxOStzmNKyjTzLvP5SNYXCd2/tmaQE4V3RbmAgxmdgyIcPkIL3nchtN7nnGjyQmByoVgtrmsfWdSA1nHarwpiUA7+w4AFhQl1K50VXvrtPbJH9WNN3V7uPIl/7O0KZuS6Pbl5gEilKu0EH1y8I+jVVup1DIo345486cDxFNH4ODoG07/2HHJQC11G+qoGaVqk0/oBRvu96CdUsMb+e2pSAGHOtwiYCbMpi535RF8heDhTyJ+XzyZ8AE+L54sl03i87lAlfm0r9EhzoUQsoszMBejDrqEeQ=="
+                }
+              }
+            ]
+          },
+          {
+            "role": "HumanMessage",
+            "content": "tôi tên là gì"
+          },
+          {
+            "role": "HumanMessage",
+            "content": "tôi tên là gì"
+          },
+          {
+            "role": "AIMessage",
+            "content": [
+              {
+                "type": "text",
+                "text": "Chào Quang, bạn tên là Quang ạ.",
+                "extras": {
+                  "signature": "CskBAb4+9vsFmplBnazLzsujyHZEWn0GFNYgeQgAPxm6SZ7wucbNLyAzd8QH54/zwmv9IrNw10nQhR67Xtq+sPlZtoSPiDw4YRnu48aW/XOOu6J10pYATKs44mXrKUsq1ELmfjXLW+2bTHfa38dDM28Bja8OL//x2AzaXR4poql9sHx+6vsafK3lPydh/cpeOTA8hwYACaCS8krQLssafgwJ2JwrRNNi6K944nVrzxwqVfrFNk+NYsiyYkLnk4k0Cg4slbtL5XUpgypE"
+                }
+              }
+            ]
+          }
+        ],
+        "summary": "Dựa vào lịch sử hội thoại, thông tin của khách hàng như sau:\n\n*   **Tên:** Quang\n*   **Tuổi:** 24 tuổi\n*   **Sở thích:** Chơi cầu lông\n*   **Quan tâm:** Các set nướng/BBQ trong menu của nhà hàng."
+      }
+    ]
+  }
+]
