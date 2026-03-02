@@ -126,7 +126,7 @@ def dump_ai_message(msg):
 
 def dump_history_message(msg):
     return {
-        "role" : "human" if msg.__class__.__name__ == "HumanMessage" else "AI",
+        "role" : msg.__class__.__name__,
         "content" : msg.content,
     }
 

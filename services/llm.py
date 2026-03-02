@@ -56,18 +56,21 @@ DEBUG_STEP = 0
 
 # ================= HISTORY =================
 class FilteredChatMessageHistory(InMemoryChatMessageHistory):
+
     def add_message(self, message):
-        # Chỉ thêm nếu tin nhắn khác hoàn toàn với tin nhắn cuối cùng (nội dung và loại)
-        if self.messages and self.messages[-1].content == message.content and self.messages[-1].type == message.type:
+        msg_type = message.type  # lowercase
+
+        # Bỏ system
+        # if msg_type == "system":
+        #     return
+
+        # Bỏ ai rỗng
+        if msg_type == "ai" and not (message.content or "").strip():
             return
-        # Loại bỏ các tin nhắn AI rỗng (thường do agent tạo ra trong quá trình lặp)
-        if message.type == "ai" and not message.content:
-            return
+
         super().add_message(message)
 
-
-def get_history(session_id: str, **kwargs):
-    user_id = kwargs.get("user_id","")
+def get_history(session_id: str):
     if session_id not in STORE:
         STORE[session_id] = FilteredChatMessageHistory()
         SUMMARY_STORE[session_id] = ""
@@ -86,7 +89,6 @@ def get_history(session_id: str, **kwargs):
         }).content
 
         SUMMARY_STORE[session_id] = summary
-        update_conversation(user_id, summary)
 
         last_messages = history.messages[-2:]
         history.clear()
@@ -146,7 +148,7 @@ def fastapi_agent(question: str, session_id: str, user_id: int) -> str:
 
     agent_with_memory = RunnableWithMessageHistory(
         agent,
-        lambda session_id: get_history(session_id, user_id=user_id),
+        get_history,
         input_messages_key="messages",
         history_messages_key="history",
     )
@@ -169,7 +171,21 @@ def fastapi_agent(question: str, session_id: str, user_id: int) -> str:
         context_summary
     )
 
-    history = get_history(session_id, user_id=user_id)
+    history = get_history(session_id)
+
+    if len(history.messages) > 10:
+        conversation_text = "\n".join(
+            f"{m.type}: {m.content}" for m in history.messages
+        )
+
+        SUMMARY_CHAIN = build_chain_summary(llm, prompt_sumary_path)
+        summary = SUMMARY_CHAIN.invoke({
+            "conversation": conversation_text
+        }).content
+
+        SUMMARY_STORE[session_id] = summary
+        update_conversation(user_id, summary)
+
 
     conversation_id = get_conversation_id(user_id)
     import_messages(history, conversation_id)
