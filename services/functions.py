@@ -166,7 +166,6 @@ def dump_history(history):
 #         )
 
 def invoke_agent_with_status(agent_with_memory, session_id, user_id, knowledge, question, SUMMARY_STORE, context_summary):
-    print(context_summary)
     try:
         summary = SUMMARY_STORE.get(session_id) or context_summary
         result = agent_with_memory.invoke(
@@ -303,6 +302,46 @@ def convert_result(result):
         print("Convert error:", e)
         return "Xin lỗi, không thể xử lý phản hồi."
 
+def normalize_history(messages):
+    cleaned = []
+    i = 0
+
+    while i < len(messages):
+        current = messages[i]
+
+        # -------------------------
+        # 1️⃣ Nếu 2 Human giống nhau liên tiếp
+        # -------------------------
+        if (
+            current.type.lower() == "human"
+            and i + 1 < len(messages)
+            and messages[i + 1].type.lower() == "human"
+            and current.content.strip() == messages[i + 1].content.strip()
+        ):
+            cleaned.append(current)
+            i += 2
+            continue
+
+        # -------------------------
+        # 2️⃣ Nếu Tool + AI cùng nội dung
+        # -------------------------
+        if (
+            current.type.lower() == "tool"
+            and i + 1 < len(messages)
+            and messages[i + 1].type.lower() == "ai"
+            and current.content.strip() == messages[i + 1].content.strip()
+        ):
+            cleaned.append(messages[i + 1])  # chỉ giữ AI
+            i += 2
+            continue
+
+        # -------------------------
+        # Các trường hợp còn lại giữ nguyên
+        # -------------------------
+        cleaned.append(current)
+        i += 1
+
+    return cleaned
 
 if __name__ == "__main__":
     llm = ChatGoogleGenerativeAI(

@@ -1,0 +1,350 @@
+[
+  {
+    "session_id": "f2e2c4ff-3675-4658-a04c-5c393bbf7667",
+    "model": {
+      "model_name": "models/gemini-2.5-flash",
+      "temperature": 0.0,
+      "max_tokens": 1024
+    },
+    "steps": [
+      {
+        "step": 0,
+        "timestamp": "2026-03-04T14:50:23.665619+00:00",
+        "user_input": "Xin chào",
+        "final_answer": "Dạ em xin chào ạ! Nếu anh/chị cần hỗ trợ, cứ nói em nhé.",
+        "status": "SUCCESS",
+        "message": "Agent execution successfully",
+        "tools": [
+          {
+            "name": "chitchat",
+            "description": "Trả lời các câu nói xã giao, chào hỏi của khách hàng."
+          }
+        ],
+        "error_code": null,
+        "trace": [
+          {
+            "index": 0,
+            "role": "ai",
+            "message_type": "AIMessage",
+            "content": "Dạ em xin chào ạ! Nếu anh/chị cần hỗ trợ, cứ nói em nhé."
+          }
+        ],
+        "history": [
+          {
+            "role": "HumanMessage",
+            "content": "Xin chào"
+          },
+          {
+            "role": "HumanMessage",
+            "content": "Xin chào"
+          },
+          {
+            "role": "ToolMessage",
+            "content": "Dạ em xin chào ạ! Nếu anh/chị cần hỗ trợ, cứ nói em nhé."
+          },
+          {
+            "role": "AIMessage",
+            "content": "Dạ em xin chào ạ! Nếu anh/chị cần hỗ trợ, cứ nói em nhé."
+          }
+        ],
+        "summary": ""
+      },
+      {
+        "step": 1,
+        "timestamp": "2026-03-04T14:51:30.848213+00:00",
+        "user_input": "hellllo",
+        "final_answer": "Chào anh/chị, em là trợ lý của nhà hàng. Em có thể giúp gì cho mình không ạ?",
+        "status": "SUCCESS",
+        "message": "Agent execution successfully",
+        "tools": [
+          {
+            "name": "chitchat",
+            "description": "Trả lời các câu nói xã giao, chào hỏi của khách hàng."
+          }
+        ],
+        "error_code": null,
+        "trace": [
+          {
+            "index": 0,
+            "role": "ai",
+            "message_type": "AIMessage",
+            "content": "Chào anh/chị, em là trợ lý của nhà hàng. Em có thể giúp gì cho mình không ạ?"
+          }
+        ],
+        "history": [
+          {
+            "role": "HumanMessage",
+            "content": "Xin chào"
+          },
+          {
+            "role": "HumanMessage",
+            "content": "Xin chào"
+          },
+          {
+            "role": "ToolMessage",
+            "content": "Dạ em xin chào ạ! Nếu anh/chị cần hỗ trợ, cứ nói em nhé."
+          },
+          {
+            "role": "AIMessage",
+            "content": "Dạ em xin chào ạ! Nếu anh/chị cần hỗ trợ, cứ nói em nhé."
+          },
+          {
+            "role": "HumanMessage",
+            "content": "hellllo"
+          },
+          {
+            "role": "HumanMessage",
+            "content": "hellllo"
+          },
+          {
+            "role": "ToolMessage",
+            "content": "Chào anh/chị, em là trợ lý của nhà hàng. Em có thể giúp gì cho mình không ạ?"
+          },
+          {
+            "role": "AIMessage",
+            "content": "Chào anh/chị, em là trợ lý của nhà hàng. Em có thể giúp gì cho mình không ạ?"
+          }
+        ],
+        "summary": ""
+      },
+      {
+        "step": 2,
+        "timestamp": "2026-03-04T14:52:00.709885+00:00",
+        "user_input": "bạn là ai",
+        "final_answer": "Chào bạn, tôi là Vivi, một agent tư vấn chuyên nghiệp cho nhà hàng Shogun. Tôi ở đây để giúp bạn tìm hiểu về các chương trình khuyến mãi, menu món ăn, combo, ưu đãi và các món đặc trưng của nhà hàng.",
+        "status": "SUCCESS",
+        "message": "Agent execution successfully",
+        "tools": [
+          {
+            "name": "knowledge_question",
+            "description": "Trả lời câu hỏi dựa trên tài liệu đã được cung cấp."
+          }
+        ],
+        "error_code": null,
+        "trace": [
+          {
+            "index": 0,
+            "role": "ai",
+            "message_type": "AIMessage",
+            "content": "Chào bạn, tôi là Vivi, một agent tư vấn chuyên nghiệp cho nhà hàng Shogun. Tôi ở đây để giúp bạn tìm hiểu về các chương trình khuyến mãi, menu món ăn, combo, ưu đãi và các món đặc trưng của nhà hàng."
+          }
+        ],
+        "history": [
+          {
+            "role": "HumanMessage",
+            "content": "bạn là ai"
+          },
+          {
+            "role": "AIMessage",
+            "content": "Chào bạn, tôi là Vivi, một agent tư vấn chuyên nghiệp cho nhà hàng Shogun. Tôi ở đây để giúp bạn tìm hiểu về các chương trình khuyến mãi, menu món ăn, combo, ưu đãi và các món đặc trưng của nhà hàng."
+          }
+        ],
+        "summary": "Dựa vào lịch sử hội thoại, thông tin của khách hàng có thể tóm tắt như sau:\n\n*   **Hành vi liên hệ:** Khách hàng đã chủ động liên hệ với trợ lý nhà hàng bằng cách gửi lời chào hỏi nhiều lần (bằng cả tiếng Việt và tiếng Anh).\n*   **Mục đích ban đầu:** Mục đích ban đầu của khách hàng là xác định danh tính của người/hệ thống đang tương tác (\"bạn là ai\"), chứ chưa phải tìm"
+      },
+      {
+        "step": 0,
+        "timestamp": "2026-03-04T14:55:37.366047+00:00",
+        "user_input": "tôi tên là quang 24 tuổi nhé",
+        "final_answer": "Chào Quang, rất vui được hỗ trợ bạn. Bạn muốn tìm hiểu về chương trình khuyến mãi hay menu món ăn của nhà hàng ạ?",
+        "status": "SUCCESS",
+        "message": "Agent execution successfully",
+        "tools": [
+          {
+            "name": "knowledge_question",
+            "description": "Trả lời câu hỏi dựa trên tài liệu đã được cung cấp."
+          }
+        ],
+        "error_code": null,
+        "trace": [
+          {
+            "index": 0,
+            "role": "ai",
+            "message_type": "AIMessage",
+            "content": "Chào Quang, rất vui được hỗ trợ bạn. Bạn muốn tìm hiểu về chương trình khuyến mãi hay menu món ăn của nhà hàng ạ?"
+          }
+        ],
+        "history": [
+          {
+            "role": "HumanMessage",
+            "content": "tôi tên là quang 24 tuổi nhé"
+          },
+          {
+            "role": "AIMessage",
+            "content": "Chào Quang, rất vui được hỗ trợ bạn. Bạn muốn tìm hiểu về chương trình khuyến mãi hay menu món ăn của nhà hàng ạ?"
+          }
+        ],
+        "summary": ""
+      },
+      {
+        "step": 1,
+        "timestamp": "2026-03-04T14:56:19.955577+00:00",
+        "user_input": "tôi rất thích chơi cầu lông",
+        "final_answer": "Dạ em chào anh/chị ạ 😊 Rất vui được hỗ trợ mình.",
+        "status": "SUCCESS",
+        "message": "Agent execution successfully",
+        "tools": [
+          {
+            "name": "chitchat",
+            "description": "Trả lời các câu nói xã giao, chào hỏi của khách hàng."
+          }
+        ],
+        "error_code": null,
+        "trace": [
+          {
+            "index": 0,
+            "role": "ai",
+            "message_type": "AIMessage",
+            "content": "Dạ em chào anh/chị ạ 😊 Rất vui được hỗ trợ mình."
+          }
+        ],
+        "history": [
+          {
+            "role": "HumanMessage",
+            "content": "tôi tên là quang 24 tuổi nhé"
+          },
+          {
+            "role": "AIMessage",
+            "content": "Chào Quang, rất vui được hỗ trợ bạn. Bạn muốn tìm hiểu về chương trình khuyến mãi hay menu món ăn của nhà hàng ạ?"
+          },
+          {
+            "role": "HumanMessage",
+            "content": "tôi rất thích chơi cầu lông"
+          },
+          {
+            "role": "AIMessage",
+            "content": "Dạ em chào anh/chị ạ 😊 Rất vui được hỗ trợ mình."
+          }
+        ],
+        "summary": ""
+      },
+      {
+        "step": 2,
+        "timestamp": "2026-03-04T14:56:47.644300+00:00",
+        "user_input": "bạn có món ăn nướng BBQ không",
+        "final_answer": [
+          {
+            "type": "text",
+            "text": "Chào bạn, nhà hàng có rất nhiều món nướng BBQ hấp dẫn trong menu Buffet Yatai 399k đó ạ.\n\nDưới đây là một số món nướng BBQ bạn có thể tham khảo:\n\n**Nhóm Bò BBQ:**\n*   Dẻ sườn bò Mỹ Xốt BBQ\n*   Dẻ sườn bò Mỹ Xốt miso cay\n*   Bò Hanabi xốt BBQ\n*   Bò Hanabi xốt Miso cay\n*   Lõi thăn bò xốt BBQ\n*   Lõi thăn bò xốt Miso cay\n\n**Nhóm Heo BBQ:**\n*   Sườn heo hảo hạng Xốt BBQ\n*   Sườn heo Xốt niniku\n*   Sườn heo nướng Xốt shiogoma\n*   Gáy heo nướng\n*   Ba chỉ heo Xốt sake\n*   Ba chỉ heo nướng Xốt BBQ\n\nMenu này áp dụng cả tuần bạn nhé.",
+            "extras": {
+              "signature": "CtYCAb4+9vveOwIbN937FpvJVrDOKe2PPfLWDI7//WgzyCJV2vdLuL30swrEKoFJRuF/gC96MlQaYurTWVfx9JQUeLjSe8wqgqYGs1aO38oZDrho2BsHIy6YFRm53mcZb82/BkJ9bu+T2Aqu31PTiLAeqEyNiGih7qzyXwnJBg7MYiJMZUrEGhAKDoIagbe9NDqULZhqMAsx1K3TxgAPrbGRlw+HSwsZVBIMnk2vZKu36QK07mVoxa0E7x/qhcj/infdZTVHmNM/pL1Ijr0ByDP9jkDJPHprTSMO5sgX160bKDExYNqdVftdSruSxsTLfTqJIk9XiNXhAaFc+ENQFA5ye+gnqjgPF2Ksqo5phk6t2DNUQK9ohVV1bcydvOsU2G2khx+9YklUOgMVIC/vJtCI9UNa8ZpLlFaYpLMBvvrCmls5aTdG5gA2qtqWfS1ukmgQZECSw3eK"
+            }
+          }
+        ],
+        "status": "SUCCESS",
+        "message": "Agent execution successfully",
+        "tools": [
+          {
+            "name": "knowledge_question",
+            "description": "Trả lời câu hỏi dựa trên tài liệu đã được cung cấp."
+          }
+        ],
+        "error_code": null,
+        "trace": [
+          {
+            "index": 0,
+            "role": "ai",
+            "message_type": "AIMessage",
+            "content": "Chào bạn, nhà hàng có rất nhiều món nướng BBQ hấp dẫn trong menu Buffet Yatai 399k đó ạ.\n\nDưới đây là một số món nướng BBQ bạn có thể tham khảo:\n\n**Nhóm Bò BBQ:**\n*   Dẻ sườn bò Mỹ Xốt BBQ\n*   Dẻ sườn bò Mỹ Xốt miso cay\n*   Bò Hanabi xốt BBQ\n*   Bò Hanabi xốt Miso cay\n*   Lõi thăn bò xốt BBQ\n*   Lõi thăn bò xốt Miso cay\n\n**Nhóm Heo BBQ:**\n*   Sườn heo hảo hạng Xốt BBQ\n*   Sườn heo Xốt niniku\n*   Sườn heo nướng Xốt shiogoma\n*   Gáy heo nướng\n*   Ba chỉ heo Xốt sake\n*   Ba chỉ heo nướng Xốt BBQ\n\nMenu này áp dụng cả tuần bạn nhé."
+          }
+        ],
+        "history": [
+          {
+            "role": "HumanMessage",
+            "content": "tôi tên là quang 24 tuổi nhé"
+          },
+          {
+            "role": "AIMessage",
+            "content": "Chào Quang, rất vui được hỗ trợ bạn. Bạn muốn tìm hiểu về chương trình khuyến mãi hay menu món ăn của nhà hàng ạ?"
+          },
+          {
+            "role": "HumanMessage",
+            "content": "tôi rất thích chơi cầu lông"
+          },
+          {
+            "role": "AIMessage",
+            "content": "Dạ em chào anh/chị ạ 😊 Rất vui được hỗ trợ mình."
+          },
+          {
+            "role": "HumanMessage",
+            "content": "bạn có món ăn nướng BBQ không"
+          },
+          {
+            "role": "AIMessage",
+            "content": [
+              {
+                "type": "text",
+                "text": "Chào bạn, nhà hàng có rất nhiều món nướng BBQ hấp dẫn trong menu Buffet Yatai 399k đó ạ.\n\nDưới đây là một số món nướng BBQ bạn có thể tham khảo:\n\n**Nhóm Bò BBQ:**\n*   Dẻ sườn bò Mỹ Xốt BBQ\n*   Dẻ sườn bò Mỹ Xốt miso cay\n*   Bò Hanabi xốt BBQ\n*   Bò Hanabi xốt Miso cay\n*   Lõi thăn bò xốt BBQ\n*   Lõi thăn bò xốt Miso cay\n\n**Nhóm Heo BBQ:**\n*   Sườn heo hảo hạng Xốt BBQ\n*   Sườn heo Xốt niniku\n*   Sườn heo nướng Xốt shiogoma\n*   Gáy heo nướng\n*   Ba chỉ heo Xốt sake\n*   Ba chỉ heo nướng Xốt BBQ\n\nMenu này áp dụng cả tuần bạn nhé.",
+                "extras": {
+                  "signature": "CtYCAb4+9vveOwIbN937FpvJVrDOKe2PPfLWDI7//WgzyCJV2vdLuL30swrEKoFJRuF/gC96MlQaYurTWVfx9JQUeLjSe8wqgqYGs1aO38oZDrho2BsHIy6YFRm53mcZb82/BkJ9bu+T2Aqu31PTiLAeqEyNiGih7qzyXwnJBg7MYiJMZUrEGhAKDoIagbe9NDqULZhqMAsx1K3TxgAPrbGRlw+HSwsZVBIMnk2vZKu36QK07mVoxa0E7x/qhcj/infdZTVHmNM/pL1Ijr0ByDP9jkDJPHprTSMO5sgX160bKDExYNqdVftdSruSxsTLfTqJIk9XiNXhAaFc+ENQFA5ye+gnqjgPF2Ksqo5phk6t2DNUQK9ohVV1bcydvOsU2G2khx+9YklUOgMVIC/vJtCI9UNa8ZpLlFaYpLMBvvrCmls5aTdG5gA2qtqWfS1ukmgQZECSw3eK"
+                }
+              }
+            ]
+          }
+        ],
+        "summary": ""
+      },
+      {
+        "step": 3,
+        "timestamp": "2026-03-04T14:57:18.650825+00:00",
+        "user_input": "cho tôi xem chương trình khuyến mãi Yatai",
+        "final_answer": "",
+        "status": "SUCCESS",
+        "message": "Agent execution successfully",
+        "tools": [
+          {
+            "name": "knowledge_question",
+            "description": "Trả lời câu hỏi dựa trên tài liệu đã được cung cấp."
+          }
+        ],
+        "error_code": null,
+        "trace": [
+          {
+            "index": 0,
+            "role": "ai",
+            "message_type": "AIMessage",
+            "content": ""
+          }
+        ],
+        "history": [
+          {
+            "role": "HumanMessage",
+            "content": "tôi tên là quang 24 tuổi nhé"
+          },
+          {
+            "role": "AIMessage",
+            "content": "Chào Quang, rất vui được hỗ trợ bạn. Bạn muốn tìm hiểu về chương trình khuyến mãi hay menu món ăn của nhà hàng ạ?"
+          },
+          {
+            "role": "HumanMessage",
+            "content": "tôi rất thích chơi cầu lông"
+          },
+          {
+            "role": "AIMessage",
+            "content": "Dạ em chào anh/chị ạ 😊 Rất vui được hỗ trợ mình."
+          },
+          {
+            "role": "HumanMessage",
+            "content": "bạn có món ăn nướng BBQ không"
+          },
+          {
+            "role": "AIMessage",
+            "content": [
+              {
+                "type": "text",
+                "text": "Chào bạn, nhà hàng có rất nhiều món nướng BBQ hấp dẫn trong menu Buffet Yatai 399k đó ạ.\n\nDưới đây là một số món nướng BBQ bạn có thể tham khảo:\n\n**Nhóm Bò BBQ:**\n*   Dẻ sườn bò Mỹ Xốt BBQ\n*   Dẻ sườn bò Mỹ Xốt miso cay\n*   Bò Hanabi xốt BBQ\n*   Bò Hanabi xốt Miso cay\n*   Lõi thăn bò xốt BBQ\n*   Lõi thăn bò xốt Miso cay\n\n**Nhóm Heo BBQ:**\n*   Sườn heo hảo hạng Xốt BBQ\n*   Sườn heo Xốt niniku\n*   Sườn heo nướng Xốt shiogoma\n*   Gáy heo nướng\n*   Ba chỉ heo Xốt sake\n*   Ba chỉ heo nướng Xốt BBQ\n\nMenu này áp dụng cả tuần bạn nhé.",
+                "extras": {
+                  "signature": "CtYCAb4+9vveOwIbN937FpvJVrDOKe2PPfLWDI7//WgzyCJV2vdLuL30swrEKoFJRuF/gC96MlQaYurTWVfx9JQUeLjSe8wqgqYGs1aO38oZDrho2BsHIy6YFRm53mcZb82/BkJ9bu+T2Aqu31PTiLAeqEyNiGih7qzyXwnJBg7MYiJMZUrEGhAKDoIagbe9NDqULZhqMAsx1K3TxgAPrbGRlw+HSwsZVBIMnk2vZKu36QK07mVoxa0E7x/qhcj/infdZTVHmNM/pL1Ijr0ByDP9jkDJPHprTSMO5sgX160bKDExYNqdVftdSruSxsTLfTqJIk9XiNXhAaFc+ENQFA5ye+gnqjgPF2Ksqo5phk6t2DNUQK9ohVV1bcydvOsU2G2khx+9YklUOgMVIC/vJtCI9UNa8ZpLlFaYpLMBvvrCmls5aTdG5gA2qtqWfS1ukmgQZECSw3eK"
+                }
+              }
+            ]
+          },
+          {
+            "role": "HumanMessage",
+            "content": "cho tôi xem chương trình khuyến mãi Yatai"
+          }
+        ],
+        "summary": ""
+      }
+    ]
+  }
+]

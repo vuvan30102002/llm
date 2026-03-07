@@ -67,6 +67,7 @@ class FilteredChatMessageHistory(InMemoryChatMessageHistory):
         # Bỏ ai rỗng
         # if msg_type == "ai" and not (message.content or "").strip():
         #     return
+
         if msg_type == "ai":
             text = ""
 
@@ -90,7 +91,7 @@ def get_history(session_id: str):
         SUMMARY_STORE[session_id] = ""
 
     history = STORE[session_id]
-
+    history.messages = normalize_history(history.messages)
 
     if len(history.messages) > 10:
         conversation_text = "\n".join(

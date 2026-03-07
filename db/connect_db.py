@@ -224,7 +224,7 @@ def import_messages(history_obj, conversation_id):
 
         for msg in last_two:
 
-            if msg.type in ["system", "tool"] or not msg.content:
+            if msg.type in ["system"] or not msg.content:
                 continue
 
             role = ROLE_MAPPING.get(msg.type)
