@@ -403,6 +403,434 @@
           }
         ],
         "summary": ""
+      },
+      {
+        "step": 0,
+        "timestamp": "2026-04-02T14:20:30.347012+00:00",
+        "user_input": "xin chào",
+        "final_answer": "Chào anh/chị, em là Vivi, trợ lý của nhà hàng. Em có thể giúp gì cho mình không ạ?",
+        "status": "SUCCESS",
+        "message": "Agent execution successfully",
+        "tools": [
+          {
+            "name": "chitchat",
+            "description": "Trả lời các câu nói xã giao, chào hỏi của khách hàng."
+          }
+        ],
+        "error_code": null,
+        "trace": [
+          {
+            "index": 0,
+            "role": "ai",
+            "message_type": "AIMessage",
+            "content": "Chào anh/chị, em là Vivi, trợ lý của nhà hàng. Em có thể giúp gì cho mình không ạ?"
+          }
+        ],
+        "history": [
+          {
+            "role": "HumanMessage",
+            "content": "xin chào"
+          },
+          {
+            "role": "ToolMessage",
+            "content": "Chào anh/chị, em là trợ lý của nhà hàng. Em có thể giúp gì cho mình không ạ?"
+          },
+          {
+            "role": "AIMessage",
+            "content": "Chào anh/chị, em là Vivi, trợ lý của nhà hàng. Em có thể giúp gì cho mình không ạ?"
+          }
+        ],
+        "summary": ""
+      },
+      {
+        "step": 1,
+        "timestamp": "2026-04-02T14:21:15.615308+00:00",
+        "user_input": "Tôi tên là quang, bạn cho tôi hỏi bạn có những món ăn nào",
+        "final_answer": "",
+        "status": "SUCCESS",
+        "message": "Agent execution successfully",
+        "tools": [
+          {
+            "name": "knowledge_question",
+            "description": "Trả lời câu hỏi dựa trên tài liệu đã được cung cấp."
+          }
+        ],
+        "error_code": null,
+        "trace": [
+          {
+            "index": 0,
+            "role": "ai",
+            "message_type": "AIMessage",
+            "content": ""
+          }
+        ],
+        "history": [
+          {
+            "role": "HumanMessage",
+            "content": "xin chào"
+          },
+          {
+            "role": "ToolMessage",
+            "content": "Chào anh/chị, em là trợ lý của nhà hàng. Em có thể giúp gì cho mình không ạ?"
+          },
+          {
+            "role": "AIMessage",
+            "content": "Chào anh/chị, em là Vivi, trợ lý của nhà hàng. Em có thể giúp gì cho mình không ạ?"
+          },
+          {
+            "role": "HumanMessage",
+            "content": "Tôi tên là quang, bạn cho tôi hỏi bạn có những món ăn nào"
+          }
+        ],
+        "summary": ""
+      },
+      {
+        "step": 2,
+        "timestamp": "2026-04-02T14:22:34.867685+00:00",
+        "user_input": "mình là quang",
+        "final_answer": "Chào bạn Quang, rất vui được hỗ trợ bạn. Bạn muốn tìm hiểu về chương trình khuyến mãi hay menu món ăn của nhà hàng ạ?",
+        "status": "SUCCESS",
+        "message": "Agent execution successfully",
+        "tools": [
+          {
+            "name": "get_user_by_id",
+            "description": "Sử dụng tool này khi người dùng muốn thấy thông tin của người dùng theo id mà người dùng cung cấp"
+          }
+        ],
+        "error_code": null,
+        "trace": [
+          {
+            "index": 0,
+            "role": "ai",
+            "message_type": "AIMessage",
+            "content": "Chào bạn Quang, rất vui được hỗ trợ bạn. Bạn muốn tìm hiểu về chương trình khuyến mãi hay menu món ăn của nhà hàng ạ?"
+          }
+        ],
+        "history": [
+          {
+            "role": "HumanMessage",
+            "content": "xin chào"
+          },
+          {
+            "role": "ToolMessage",
+            "content": "Chào anh/chị, em là trợ lý của nhà hàng. Em có thể giúp gì cho mình không ạ?"
+          },
+          {
+            "role": "AIMessage",
+            "content": "Chào anh/chị, em là Vivi, trợ lý của nhà hàng. Em có thể giúp gì cho mình không ạ?"
+          },
+          {
+            "role": "HumanMessage",
+            "content": "Tôi tên là quang, bạn cho tôi hỏi bạn có những món ăn nào"
+          },
+          {
+            "role": "HumanMessage",
+            "content": "mình là quang"
+          },
+          {
+            "role": "AIMessage",
+            "content": "Chào bạn Quang, rất vui được hỗ trợ bạn. Bạn muốn tìm hiểu về chương trình khuyến mãi hay menu món ăn của nhà hàng ạ?"
+          }
+        ],
+        "summary": ""
+      },
+      {
+        "step": 3,
+        "timestamp": "2026-04-02T14:23:14.287657+00:00",
+        "user_input": "bạn có những món ăn nào",
+        "final_answer": [
+          {
+            "type": "text",
+            "text": "Chào bạn, nhà hàng Vivi có rất nhiều món ăn đa dạng để bạn lựa chọn. Dưới đây là danh sách các món ăn mà nhà hàng hiện có:\n\n**I. Menu gọi món (ALC):**\n*   **Salad:** Salad hoa quả trà xanh, Salad nhiệt đới, Salad rong biển trứng tôm, Salad ba chỉ hun khói trứng onsen, Salad Khoai Tây Nghiền.\n*   **Khai vị & Món ăn kèm:** Đậu nành lông, Súp miso Awase, Dưa chuột muối, Dương xỉ ngâm, Nấm Soyu ni, Cải chíp aemono, Củ cải tsukemono, Gừng hồng, Lá rong biển, Lá tía tô.\n*   **Sashimi & Sushi:** Sashimi cá hồi, Sashimi cá hồi cá trích vàng, Sashimi Cá Trích Vàng, Cá hồi carpacio, Sushi California cá hồi trứng tôm, Sushi da cá hồi chiên, Sushi california nhân cá hồi, Sushi california cá hồi vừng đen.\n*   **Món chiên & nướng:** Cánh gà chiên kiểu Nhật, Gà chiên kiểu Nhật, Cá saba nướng muối, Cá hồi nướng mù tạt, Cá hồi nướng sốt teriyaki, Nấm hải sản chiên.\n*   **Món bò:** Bò Steak sốt mù tạt, Lưỡi Bò Áp Chảo Xốt Hành Tây.\n*   **Món khác:** Ngô Phô-mai Batayaki, Cháo hải sản, Cơm rang cá hồi trứng cua, Cơm trắng, Cơm Ohitsu-Gohan lươn Nhật, Bánh bạch tuộc phomai, Cơm gà carry, Mỳ soba xào, Mỳ Udon bò, Mỳ udon cari, Mỳ ramen cua, Mỳ Ramen KingCrab.\n\n**II. Buffet Nomikai 469k:**\n*   **Nhóm Khai Vị:** Salad hoa quả trà xanh, Tropical salad, Dưa chuột Muối, Kim chi, Đậu nành lông Nhật, Salad ba chỉ hun khói trứng onsen, Salad Khoai Tây Nghiền.\n*   **Nhóm Tráng Miệng:** Mochi nước, Dưa hấu, Kem Socola, Kem vani, Kem Dừa.\n*   **Nhóm Sashimi:** Sashimi cá hồi, Cá hồi Carpaccio, Sashimi tổng hợp, Sashimi cá trích vàng.\n*   **Nhóm Ăn Kèm:** Sushi da cá hồi chiên, Maki trứng tôm đỏ, Sushi ruốc cá hồi vừng đen, Nấm tiên xào bơ tỏi, Mỳ soba xào, Cháo hải sản, Cơm rang cá hồi trứng cua, Bánh xèo Nhật.\n\n**III. Menu Course và Combo:**\n*   **Tanabata course 769k:** Salad hoa quả trà xanh hoặc Salad Tropical, Cơm rang cá hồi trứng cua hoặc Mỳ soba xào, Kim chi, Cá saba nướng muối, Dưa hấu, Thăn vai bò Mỹ sốt BBQ, Dẻ sườn bò Mỹ sốt BBQ, Bò wagyu 150g.\n*   **Otabi course 599k:** Salad hoa quả trà xanh hoặc Salad Tropical, Cơm rang cá hồi trứng cua hoặc Mỳ soba xào, Kim chi, Gà chiên kiểu Nhật, Dưa hấu, Thăn vai bò Mỹ sốt BBQ, Dẻ sườn bò Mỹ sốt BBQ, Thăn ngoại bò Mỹ.\n*   **Tajima Course 1559k:** Đĩa thịt Tajima, Salad Tropical, Kim chi, Đậu nành lông, Gà chiên kiểu Nhật.\n\n**IV. Lunch Set (set ăn trưa):**\n*   Set cơm cá saba sốt gừng tỏi\n*   Set cơm bò xào kiểu nhật\n*   Set cơm heo xào kiểu nhật\n*   Set",
+            "extras": {
+              "signature": "Cv4DAb4+9vsWpy10c+hYy6ZUZX84hztPiL2LBoyO2Oi6/4gtfKyKKFadr18c3DGSG+NFOw4k5TB4iL/0JFzz4HQGNTXg/5q9yrSyjFr6lTPO/3mFJpEj9uBPdNRigFUY5ly6IPULNEa2aOnFCCufmopU9J5MQdQYmHz5pksd6SaWrMaXXJaARMAUUt5OhlQ0l2zCEWtBnXZTKK2VK7OFfjAwpC31TROWG1b3x7GQ1jdITBsU/M9L2CMdV/Xz8nYsWh3UwoOCiaKX8Djq9meEyvSAT+0Kn0nuDgPLLZGGFx+ThDxvPiV3nsH8UaQvaSvzdxeAAt3l1D8HbUZwPHm9pcpfdXsy4RmuI2tpBGIrxekIpKVoR6G8JMDPgBHS8mQJXJozBdXcC2PHDBdsD2uOUO+70WwiSp2Zf+MwpTBHZn+R8owges/qoriw4t5g8SGdyBsR4nY6qao+xUx16NiQJKK3ITQ1McxALC9ZxeGCLUC+hxhkeinppY8yxEygOd687Xg1/h0wkv7s4AKFKjQcdCO0md6fhhRNqpCHzzlmdSz5f/eAy/ufrGuYO+L0HeG5iERVqsST5ARe5ajxkqu+pdbaQnPXUC49k4PUeSncQpnX7kkYLu2lOeYxZw9aNXDi8TW0AM4I/d62y7S5+yuOz1rmzdoqvt8YS4WUtlK3CNlq"
+            }
+          }
+        ],
+        "status": "SUCCESS",
+        "message": "Agent execution successfully",
+        "tools": [
+          {
+            "name": "knowledge_question",
+            "description": "Trả lời câu hỏi dựa trên tài liệu đã được cung cấp."
+          }
+        ],
+        "error_code": null,
+        "trace": [
+          {
+            "index": 0,
+            "role": "ai",
+            "message_type": "AIMessage",
+            "content": "Chào bạn, nhà hàng Vivi có rất nhiều món ăn đa dạng để bạn lựa chọn. Dưới đây là danh sách các món ăn mà nhà hàng hiện có:\n\n**I. Menu gọi món (ALC):**\n*   **Salad:** Salad hoa quả trà xanh, Salad nhiệt đới, Salad rong biển trứng tôm, Salad ba chỉ hun khói trứng onsen, Salad Khoai Tây Nghiền.\n*   **Khai vị & Món ăn kèm:** Đậu nành lông, Súp miso Awase, Dưa chuột muối, Dương xỉ ngâm, Nấm Soyu ni, Cải chíp aemono, Củ cải tsukemono, Gừng hồng, Lá rong biển, Lá tía tô.\n*   **Sashimi & Sushi:** Sashimi cá hồi, Sashimi cá hồi cá trích vàng, Sashimi Cá Trích Vàng, Cá hồi carpacio, Sushi California cá hồi trứng tôm, Sushi da cá hồi chiên, Sushi california nhân cá hồi, Sushi california cá hồi vừng đen.\n*   **Món chiên & nướng:** Cánh gà chiên kiểu Nhật, Gà chiên kiểu Nhật, Cá saba nướng muối, Cá hồi nướng mù tạt, Cá hồi nướng sốt teriyaki, Nấm hải sản chiên.\n*   **Món bò:** Bò Steak sốt mù tạt, Lưỡi Bò Áp Chảo Xốt Hành Tây.\n*   **Món khác:** Ngô Phô-mai Batayaki, Cháo hải sản, Cơm rang cá hồi trứng cua, Cơm trắng, Cơm Ohitsu-Gohan lươn Nhật, Bánh bạch tuộc phomai, Cơm gà carry, Mỳ soba xào, Mỳ Udon bò, Mỳ udon cari, Mỳ ramen cua, Mỳ Ramen KingCrab.\n\n**II. Buffet Nomikai 469k:**\n*   **Nhóm Khai Vị:** Salad hoa quả trà xanh, Tropical salad, Dưa chuột Muối, Kim chi, Đậu nành lông Nhật, Salad ba chỉ hun khói trứng onsen, Salad Khoai Tây Nghiền.\n*   **Nhóm Tráng Miệng:** Mochi nước, Dưa hấu, Kem Socola, Kem vani, Kem Dừa.\n*   **Nhóm Sashimi:** Sashimi cá hồi, Cá hồi Carpaccio, Sashimi tổng hợp, Sashimi cá trích vàng.\n*   **Nhóm Ăn Kèm:** Sushi da cá hồi chiên, Maki trứng tôm đỏ, Sushi ruốc cá hồi vừng đen, Nấm tiên xào bơ tỏi, Mỳ soba xào, Cháo hải sản, Cơm rang cá hồi trứng cua, Bánh xèo Nhật.\n\n**III. Menu Course và Combo:**\n*   **Tanabata course 769k:** Salad hoa quả trà xanh hoặc Salad Tropical, Cơm rang cá hồi trứng cua hoặc Mỳ soba xào, Kim chi, Cá saba nướng muối, Dưa hấu, Thăn vai bò Mỹ sốt BBQ, Dẻ sườn bò Mỹ sốt BBQ, Bò wagyu 150g.\n*   **Otabi course 599k:** Salad hoa quả trà xanh hoặc Salad Tropical, Cơm rang cá hồi trứng cua hoặc Mỳ soba xào, Kim chi, Gà chiên kiểu Nhật, Dưa hấu, Thăn vai bò Mỹ sốt BBQ, Dẻ sườn bò Mỹ sốt BBQ, Thăn ngoại bò Mỹ.\n*   **Tajima Course 1559k:** Đĩa thịt Tajima, Salad Tropical, Kim chi, Đậu nành lông, Gà chiên kiểu Nhật.\n\n**IV. Lunch Set (set ăn trưa):**\n*   Set cơm cá saba sốt gừng tỏi\n*   Set cơm bò xào kiểu nhật\n*   Set cơm heo xào kiểu nhật\n*   Set"
+          }
+        ],
+        "history": [
+          {
+            "role": "HumanMessage",
+            "content": "xin chào"
+          },
+          {
+            "role": "ToolMessage",
+            "content": "Chào anh/chị, em là trợ lý của nhà hàng. Em có thể giúp gì cho mình không ạ?"
+          },
+          {
+            "role": "AIMessage",
+            "content": "Chào anh/chị, em là Vivi, trợ lý của nhà hàng. Em có thể giúp gì cho mình không ạ?"
+          },
+          {
+            "role": "HumanMessage",
+            "content": "Tôi tên là quang, bạn cho tôi hỏi bạn có những món ăn nào"
+          },
+          {
+            "role": "HumanMessage",
+            "content": "mình là quang"
+          },
+          {
+            "role": "AIMessage",
+            "content": "Chào bạn Quang, rất vui được hỗ trợ bạn. Bạn muốn tìm hiểu về chương trình khuyến mãi hay menu món ăn của nhà hàng ạ?"
+          },
+          {
+            "role": "HumanMessage",
+            "content": "bạn có những món ăn nào"
+          },
+          {
+            "role": "AIMessage",
+            "content": [
+              {
+                "type": "text",
+                "text": "Chào bạn, nhà hàng Vivi có rất nhiều món ăn đa dạng để bạn lựa chọn. Dưới đây là danh sách các món ăn mà nhà hàng hiện có:\n\n**I. Menu gọi món (ALC):**\n*   **Salad:** Salad hoa quả trà xanh, Salad nhiệt đới, Salad rong biển trứng tôm, Salad ba chỉ hun khói trứng onsen, Salad Khoai Tây Nghiền.\n*   **Khai vị & Món ăn kèm:** Đậu nành lông, Súp miso Awase, Dưa chuột muối, Dương xỉ ngâm, Nấm Soyu ni, Cải chíp aemono, Củ cải tsukemono, Gừng hồng, Lá rong biển, Lá tía tô.\n*   **Sashimi & Sushi:** Sashimi cá hồi, Sashimi cá hồi cá trích vàng, Sashimi Cá Trích Vàng, Cá hồi carpacio, Sushi California cá hồi trứng tôm, Sushi da cá hồi chiên, Sushi california nhân cá hồi, Sushi california cá hồi vừng đen.\n*   **Món chiên & nướng:** Cánh gà chiên kiểu Nhật, Gà chiên kiểu Nhật, Cá saba nướng muối, Cá hồi nướng mù tạt, Cá hồi nướng sốt teriyaki, Nấm hải sản chiên.\n*   **Món bò:** Bò Steak sốt mù tạt, Lưỡi Bò Áp Chảo Xốt Hành Tây.\n*   **Món khác:** Ngô Phô-mai Batayaki, Cháo hải sản, Cơm rang cá hồi trứng cua, Cơm trắng, Cơm Ohitsu-Gohan lươn Nhật, Bánh bạch tuộc phomai, Cơm gà carry, Mỳ soba xào, Mỳ Udon bò, Mỳ udon cari, Mỳ ramen cua, Mỳ Ramen KingCrab.\n\n**II. Buffet Nomikai 469k:**\n*   **Nhóm Khai Vị:** Salad hoa quả trà xanh, Tropical salad, Dưa chuột Muối, Kim chi, Đậu nành lông Nhật, Salad ba chỉ hun khói trứng onsen, Salad Khoai Tây Nghiền.\n*   **Nhóm Tráng Miệng:** Mochi nước, Dưa hấu, Kem Socola, Kem vani, Kem Dừa.\n*   **Nhóm Sashimi:** Sashimi cá hồi, Cá hồi Carpaccio, Sashimi tổng hợp, Sashimi cá trích vàng.\n*   **Nhóm Ăn Kèm:** Sushi da cá hồi chiên, Maki trứng tôm đỏ, Sushi ruốc cá hồi vừng đen, Nấm tiên xào bơ tỏi, Mỳ soba xào, Cháo hải sản, Cơm rang cá hồi trứng cua, Bánh xèo Nhật.\n\n**III. Menu Course và Combo:**\n*   **Tanabata course 769k:** Salad hoa quả trà xanh hoặc Salad Tropical, Cơm rang cá hồi trứng cua hoặc Mỳ soba xào, Kim chi, Cá saba nướng muối, Dưa hấu, Thăn vai bò Mỹ sốt BBQ, Dẻ sườn bò Mỹ sốt BBQ, Bò wagyu 150g.\n*   **Otabi course 599k:** Salad hoa quả trà xanh hoặc Salad Tropical, Cơm rang cá hồi trứng cua hoặc Mỳ soba xào, Kim chi, Gà chiên kiểu Nhật, Dưa hấu, Thăn vai bò Mỹ sốt BBQ, Dẻ sườn bò Mỹ sốt BBQ, Thăn ngoại bò Mỹ.\n*   **Tajima Course 1559k:** Đĩa thịt Tajima, Salad Tropical, Kim chi, Đậu nành lông, Gà chiên kiểu Nhật.\n\n**IV. Lunch Set (set ăn trưa):**\n*   Set cơm cá saba sốt gừng tỏi\n*   Set cơm bò xào kiểu nhật\n*   Set cơm heo xào kiểu nhật\n*   Set",
+                "extras": {
+                  "signature": "Cv4DAb4+9vsWpy10c+hYy6ZUZX84hztPiL2LBoyO2Oi6/4gtfKyKKFadr18c3DGSG+NFOw4k5TB4iL/0JFzz4HQGNTXg/5q9yrSyjFr6lTPO/3mFJpEj9uBPdNRigFUY5ly6IPULNEa2aOnFCCufmopU9J5MQdQYmHz5pksd6SaWrMaXXJaARMAUUt5OhlQ0l2zCEWtBnXZTKK2VK7OFfjAwpC31TROWG1b3x7GQ1jdITBsU/M9L2CMdV/Xz8nYsWh3UwoOCiaKX8Djq9meEyvSAT+0Kn0nuDgPLLZGGFx+ThDxvPiV3nsH8UaQvaSvzdxeAAt3l1D8HbUZwPHm9pcpfdXsy4RmuI2tpBGIrxekIpKVoR6G8JMDPgBHS8mQJXJozBdXcC2PHDBdsD2uOUO+70WwiSp2Zf+MwpTBHZn+R8owges/qoriw4t5g8SGdyBsR4nY6qao+xUx16NiQJKK3ITQ1McxALC9ZxeGCLUC+hxhkeinppY8yxEygOd687Xg1/h0wkv7s4AKFKjQcdCO0md6fhhRNqpCHzzlmdSz5f/eAy/ufrGuYO+L0HeG5iERVqsST5ARe5ajxkqu+pdbaQnPXUC49k4PUeSncQpnX7kkYLu2lOeYxZw9aNXDi8TW0AM4I/d62y7S5+yuOz1rmzdoqvt8YS4WUtlK3CNlq"
+                }
+              }
+            ]
+          }
+        ],
+        "summary": ""
+      },
+      {
+        "step": 4,
+        "timestamp": "2026-04-02T14:23:58.541784+00:00",
+        "user_input": "bạn còn nhớ tôi tên là gì không",
+        "final_answer": [
+          {
+            "type": "text",
+            "text": "Chào bạn, rất tiếc là tôi không có thông tin về tên của bạn.",
+            "extras": {
+              "signature": "CpsEAb4+9vt24Ocpj48mB6sJIlEnSv0+Ahwe3sB9tRk4UfPe95p58gY6aLxvbwTisNRXFr/wDcbqgS5gf5OfQovru7JC2IwmvabvcCYUjdu4y7WTR9abF2f++nGBUUu5TdrMFOO0SuGr4xcljNYsfbL5NEsGA71hYfkby3MgwE74KIM60uL1VJIrlicW1dtG+8+TzfKN4Ufr3q+3WJEWlOWSnqBXAW5Mq9WtWhRTX5GYP7KXBRlGjm37nLLaUGkzuPzn6soK3bRW2enTyIa+XzBtALRlrh9sYF+flN1gnZGBA/MQMmFkB9hp4fcIPTV5hjvhOOyJ6XmAPrWJnJ9O3qAZIOydCEeQazfUvij3t5LUt0ljGhv3j8oVFvXZkU6seOGEKj8xmWDAxXxS48wTDJoS3cuarz2vnA14AzDxcp2vIH9x2i/gBlTHruJnbI9HUvB8RKELmcuHPJVbsI5C5hoVc+X9jDQx0aKZzRHnvv4vtSGoG6cZ67EwgNEGWl+Wuvr56VhcoSv5vYCeDUO+ET49r13qD55laL3q1BrxUl4F5pA55L032jKGUo37ycxhn52csZor4/yoObrA1QrDse0SpzIdSYRwcX2RLvm/qt4gv3G6ZpQvkN/mUM9O9nwEUfUjnnzAnV8DrR82clzqTX1V5LL0A21qlO7+D5x9ZAOxkqVWc3bSHTmJ1yZoY57U1cFDa/seehdw4vAPEbQ="
+            }
+          }
+        ],
+        "status": "SUCCESS",
+        "message": "Agent execution successfully",
+        "tools": [
+          {
+            "name": "chitchat",
+            "description": "Trả lời các câu nói xã giao, chào hỏi của khách hàng."
+          }
+        ],
+        "error_code": null,
+        "trace": [
+          {
+            "index": 0,
+            "role": "ai",
+            "message_type": "AIMessage",
+            "content": "Chào bạn, rất tiếc là tôi không có thông tin về tên của bạn."
+          }
+        ],
+        "history": [
+          {
+            "role": "HumanMessage",
+            "content": "xin chào"
+          },
+          {
+            "role": "ToolMessage",
+            "content": "Chào anh/chị, em là trợ lý của nhà hàng. Em có thể giúp gì cho mình không ạ?"
+          },
+          {
+            "role": "AIMessage",
+            "content": "Chào anh/chị, em là Vivi, trợ lý của nhà hàng. Em có thể giúp gì cho mình không ạ?"
+          },
+          {
+            "role": "HumanMessage",
+            "content": "Tôi tên là quang, bạn cho tôi hỏi bạn có những món ăn nào"
+          },
+          {
+            "role": "HumanMessage",
+            "content": "mình là quang"
+          },
+          {
+            "role": "AIMessage",
+            "content": "Chào bạn Quang, rất vui được hỗ trợ bạn. Bạn muốn tìm hiểu về chương trình khuyến mãi hay menu món ăn của nhà hàng ạ?"
+          },
+          {
+            "role": "HumanMessage",
+            "content": "bạn có những món ăn nào"
+          },
+          {
+            "role": "AIMessage",
+            "content": [
+              {
+                "type": "text",
+                "text": "Chào bạn, nhà hàng Vivi có rất nhiều món ăn đa dạng để bạn lựa chọn. Dưới đây là danh sách các món ăn mà nhà hàng hiện có:\n\n**I. Menu gọi món (ALC):**\n*   **Salad:** Salad hoa quả trà xanh, Salad nhiệt đới, Salad rong biển trứng tôm, Salad ba chỉ hun khói trứng onsen, Salad Khoai Tây Nghiền.\n*   **Khai vị & Món ăn kèm:** Đậu nành lông, Súp miso Awase, Dưa chuột muối, Dương xỉ ngâm, Nấm Soyu ni, Cải chíp aemono, Củ cải tsukemono, Gừng hồng, Lá rong biển, Lá tía tô.\n*   **Sashimi & Sushi:** Sashimi cá hồi, Sashimi cá hồi cá trích vàng, Sashimi Cá Trích Vàng, Cá hồi carpacio, Sushi California cá hồi trứng tôm, Sushi da cá hồi chiên, Sushi california nhân cá hồi, Sushi california cá hồi vừng đen.\n*   **Món chiên & nướng:** Cánh gà chiên kiểu Nhật, Gà chiên kiểu Nhật, Cá saba nướng muối, Cá hồi nướng mù tạt, Cá hồi nướng sốt teriyaki, Nấm hải sản chiên.\n*   **Món bò:** Bò Steak sốt mù tạt, Lưỡi Bò Áp Chảo Xốt Hành Tây.\n*   **Món khác:** Ngô Phô-mai Batayaki, Cháo hải sản, Cơm rang cá hồi trứng cua, Cơm trắng, Cơm Ohitsu-Gohan lươn Nhật, Bánh bạch tuộc phomai, Cơm gà carry, Mỳ soba xào, Mỳ Udon bò, Mỳ udon cari, Mỳ ramen cua, Mỳ Ramen KingCrab.\n\n**II. Buffet Nomikai 469k:**\n*   **Nhóm Khai Vị:** Salad hoa quả trà xanh, Tropical salad, Dưa chuột Muối, Kim chi, Đậu nành lông Nhật, Salad ba chỉ hun khói trứng onsen, Salad Khoai Tây Nghiền.\n*   **Nhóm Tráng Miệng:** Mochi nước, Dưa hấu, Kem Socola, Kem vani, Kem Dừa.\n*   **Nhóm Sashimi:** Sashimi cá hồi, Cá hồi Carpaccio, Sashimi tổng hợp, Sashimi cá trích vàng.\n*   **Nhóm Ăn Kèm:** Sushi da cá hồi chiên, Maki trứng tôm đỏ, Sushi ruốc cá hồi vừng đen, Nấm tiên xào bơ tỏi, Mỳ soba xào, Cháo hải sản, Cơm rang cá hồi trứng cua, Bánh xèo Nhật.\n\n**III. Menu Course và Combo:**\n*   **Tanabata course 769k:** Salad hoa quả trà xanh hoặc Salad Tropical, Cơm rang cá hồi trứng cua hoặc Mỳ soba xào, Kim chi, Cá saba nướng muối, Dưa hấu, Thăn vai bò Mỹ sốt BBQ, Dẻ sườn bò Mỹ sốt BBQ, Bò wagyu 150g.\n*   **Otabi course 599k:** Salad hoa quả trà xanh hoặc Salad Tropical, Cơm rang cá hồi trứng cua hoặc Mỳ soba xào, Kim chi, Gà chiên kiểu Nhật, Dưa hấu, Thăn vai bò Mỹ sốt BBQ, Dẻ sườn bò Mỹ sốt BBQ, Thăn ngoại bò Mỹ.\n*   **Tajima Course 1559k:** Đĩa thịt Tajima, Salad Tropical, Kim chi, Đậu nành lông, Gà chiên kiểu Nhật.\n\n**IV. Lunch Set (set ăn trưa):**\n*   Set cơm cá saba sốt gừng tỏi\n*   Set cơm bò xào kiểu nhật\n*   Set cơm heo xào kiểu nhật\n*   Set",
+                "extras": {
+                  "signature": "Cv4DAb4+9vsWpy10c+hYy6ZUZX84hztPiL2LBoyO2Oi6/4gtfKyKKFadr18c3DGSG+NFOw4k5TB4iL/0JFzz4HQGNTXg/5q9yrSyjFr6lTPO/3mFJpEj9uBPdNRigFUY5ly6IPULNEa2aOnFCCufmopU9J5MQdQYmHz5pksd6SaWrMaXXJaARMAUUt5OhlQ0l2zCEWtBnXZTKK2VK7OFfjAwpC31TROWG1b3x7GQ1jdITBsU/M9L2CMdV/Xz8nYsWh3UwoOCiaKX8Djq9meEyvSAT+0Kn0nuDgPLLZGGFx+ThDxvPiV3nsH8UaQvaSvzdxeAAt3l1D8HbUZwPHm9pcpfdXsy4RmuI2tpBGIrxekIpKVoR6G8JMDPgBHS8mQJXJozBdXcC2PHDBdsD2uOUO+70WwiSp2Zf+MwpTBHZn+R8owges/qoriw4t5g8SGdyBsR4nY6qao+xUx16NiQJKK3ITQ1McxALC9ZxeGCLUC+hxhkeinppY8yxEygOd687Xg1/h0wkv7s4AKFKjQcdCO0md6fhhRNqpCHzzlmdSz5f/eAy/ufrGuYO+L0HeG5iERVqsST5ARe5ajxkqu+pdbaQnPXUC49k4PUeSncQpnX7kkYLu2lOeYxZw9aNXDi8TW0AM4I/d62y7S5+yuOz1rmzdoqvt8YS4WUtlK3CNlq"
+                }
+              }
+            ]
+          },
+          {
+            "role": "HumanMessage",
+            "content": "bạn còn nhớ tôi tên là gì không"
+          },
+          {
+            "role": "AIMessage",
+            "content": [
+              {
+                "type": "text",
+                "text": "Chào bạn, rất tiếc là tôi không có thông tin về tên của bạn.",
+                "extras": {
+                  "signature": "CpsEAb4+9vt24Ocpj48mB6sJIlEnSv0+Ahwe3sB9tRk4UfPe95p58gY6aLxvbwTisNRXFr/wDcbqgS5gf5OfQovru7JC2IwmvabvcCYUjdu4y7WTR9abF2f++nGBUUu5TdrMFOO0SuGr4xcljNYsfbL5NEsGA71hYfkby3MgwE74KIM60uL1VJIrlicW1dtG+8+TzfKN4Ufr3q+3WJEWlOWSnqBXAW5Mq9WtWhRTX5GYP7KXBRlGjm37nLLaUGkzuPzn6soK3bRW2enTyIa+XzBtALRlrh9sYF+flN1gnZGBA/MQMmFkB9hp4fcIPTV5hjvhOOyJ6XmAPrWJnJ9O3qAZIOydCEeQazfUvij3t5LUt0ljGhv3j8oVFvXZkU6seOGEKj8xmWDAxXxS48wTDJoS3cuarz2vnA14AzDxcp2vIH9x2i/gBlTHruJnbI9HUvB8RKELmcuHPJVbsI5C5hoVc+X9jDQx0aKZzRHnvv4vtSGoG6cZ67EwgNEGWl+Wuvr56VhcoSv5vYCeDUO+ET49r13qD55laL3q1BrxUl4F5pA55L032jKGUo37ycxhn52csZor4/yoObrA1QrDse0SpzIdSYRwcX2RLvm/qt4gv3G6ZpQvkN/mUM9O9nwEUfUjnnzAnV8DrR82clzqTX1V5LL0A21qlO7+D5x9ZAOxkqVWc3bSHTmJ1yZoY57U1cFDa/seehdw4vAPEbQ="
+                }
+              }
+            ]
+          }
+        ],
+        "summary": ""
+      },
+      {
+        "step": 5,
+        "timestamp": "2026-04-02T14:40:25.636409+00:00",
+        "user_input": "xin chào",
+        "final_answer": "Chào bạn, Vivi có thể giúp gì cho bạn ạ?",
+        "status": "SUCCESS",
+        "message": "Agent execution successfully",
+        "tools": [
+          {
+            "name": "knowledge_question",
+            "description": "Trả lời câu hỏi dựa trên tài liệu đã được cung cấp."
+          }
+        ],
+        "error_code": null,
+        "trace": [
+          {
+            "index": 0,
+            "role": "ai",
+            "message_type": "AIMessage",
+            "content": "Chào bạn, Vivi có thể giúp gì cho bạn ạ?"
+          }
+        ],
+        "history": [
+          {
+            "role": "HumanMessage",
+            "content": "xin chào"
+          },
+          {
+            "role": "AIMessage",
+            "content": "Chào bạn, Vivi có thể giúp gì cho bạn ạ?"
+          }
+        ],
+        "summary": "Dựa vào lịch sử hội thoại, thông tin của khách hàng có thể tóm tắt như sau:\n\n*   **Tên khách hàng:** Quang\n*   **Mục đích chính:** Tìm hiểu về các món ăn mà nhà hàng cung cấp (menu).\n*   **Hành vi tương tác:**\n    *   Kh"
+      },
+      {
+        "step": 6,
+        "timestamp": "2026-04-02T14:48:51.264021+00:00",
+        "user_input": "bên mình có những món ăn nào nhỉ",
+        "final_answer": "",
+        "status": "SUCCESS",
+        "message": "Agent execution successfully",
+        "tools": [
+          {
+            "name": "knowledge_question",
+            "description": "Trả lời câu hỏi dựa trên tài liệu đã được cung cấp."
+          }
+        ],
+        "error_code": null,
+        "trace": [
+          {
+            "index": 0,
+            "role": "ai",
+            "message_type": "AIMessage",
+            "content": ""
+          }
+        ],
+        "history": [
+          {
+            "role": "HumanMessage",
+            "content": "xin chào"
+          },
+          {
+            "role": "AIMessage",
+            "content": "Chào bạn, Vivi có thể giúp gì cho bạn ạ?"
+          },
+          {
+            "role": "HumanMessage",
+            "content": "bên mình có những món ăn nào nhỉ"
+          }
+        ],
+        "summary": "Dựa vào lịch sử hội thoại, thông tin của khách hàng có thể tóm tắt như sau:\n\n*   **Tên khách hàng:** Quang\n*   **Mục đích chính:** Tìm hiểu về các món ăn mà nhà hàng cung cấp (menu).\n*   **Hành vi tương tác:**\n    *   Kh"
+      },
+      {
+        "step": 7,
+        "timestamp": "2026-04-02T14:49:21.195403+00:00",
+        "user_input": "tôi tên là gì",
+        "final_answer": [
+          {
+            "type": "text",
+            "text": "Chào Quang, bạn tên là Quang ạ.",
+            "extras": {
+              "signature": "CroBAb4+9vtdZZKrMgOsxS4qkzPcl+BRJVYV2z3q4qlMT9C7uzhQh76RmTdc4nsM2T8QeVxE/ejwDIth8OMmtaH9VKMTD6v0hEIQG57wtj9mx98Jn4qP3NZ1ouUHw1t/3zVMo3Ww/0JhUopS9z3D4Mv3IauHy07jBp+NL/7xtg7CkJ9pMPfsVA1yR96BoHMHoDCE2bXe06DCaSaBKDwrYBEvjY12bJIh/Y0iZ4kvR+OU/vJnYRSwXH+JJie8"
+            }
+          }
+        ],
+        "status": "SUCCESS",
+        "message": "Agent execution successfully",
+        "tools": [
+          {
+            "name": "knowledge_question",
+            "description": "Trả lời câu hỏi dựa trên tài liệu đã được cung cấp."
+          }
+        ],
+        "error_code": null,
+        "trace": [
+          {
+            "index": 0,
+            "role": "ai",
+            "message_type": "AIMessage",
+            "content": "Chào Quang, bạn tên là Quang ạ."
+          }
+        ],
+        "history": [
+          {
+            "role": "HumanMessage",
+            "content": "xin chào"
+          },
+          {
+            "role": "AIMessage",
+            "content": "Chào bạn, Vivi có thể giúp gì cho bạn ạ?"
+          },
+          {
+            "role": "HumanMessage",
+            "content": "bên mình có những món ăn nào nhỉ"
+          },
+          {
+            "role": "HumanMessage",
+            "content": "tôi tên là gì"
+          },
+          {
+            "role": "AIMessage",
+            "content": [
+              {
+                "type": "text",
+                "text": "Chào Quang, bạn tên là Quang ạ.",
+                "extras": {
+                  "signature": "CroBAb4+9vtdZZKrMgOsxS4qkzPcl+BRJVYV2z3q4qlMT9C7uzhQh76RmTdc4nsM2T8QeVxE/ejwDIth8OMmtaH9VKMTD6v0hEIQG57wtj9mx98Jn4qP3NZ1ouUHw1t/3zVMo3Ww/0JhUopS9z3D4Mv3IauHy07jBp+NL/7xtg7CkJ9pMPfsVA1yR96BoHMHoDCE2bXe06DCaSaBKDwrYBEvjY12bJIh/Y0iZ4kvR+OU/vJnYRSwXH+JJie8"
+                }
+              }
+            ]
+          }
+        ],
+        "summary": "Dựa vào lịch sử hội thoại, thông tin của khách hàng có thể tóm tắt như sau:\n\n*   **Tên khách hàng:** Quang\n*   **Mục đích chính:** Tìm hiểu về các món ăn mà nhà hàng cung cấp (menu).\n*   **Hành vi tương tác:**\n    *   Kh"
       }
     ]
   }
